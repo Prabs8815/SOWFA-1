@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../OpenFOAM-2.4.0"
+		},
+		{
+			"path": "../ThirdParty-2.4.0"
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true
+	}
+}
