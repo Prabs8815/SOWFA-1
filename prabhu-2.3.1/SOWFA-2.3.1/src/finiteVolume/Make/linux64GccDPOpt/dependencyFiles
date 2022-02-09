@@ -1,0 +1,9 @@
+DEPENDENCIES = \
+$(derivedFvPatchFields)/turbulentABLVelocityControlled/turbulentABLVelocityControlledFvPatchField.dep\
+$(derivedFvPatchFields)/turbulentABLTemperatureControlled/turbulentABLTemperatureControlledFvPatchField.dep\
+$(derivedFvPatchFields)/timeVaryingMappedInletOutlet/timeVaryingMappedInletOutletFvPatchFields.dep\
+$(derivedFvPatchFields)/timeVaryingMappedFluctuatingFixedValue/timeVaryingMappedFluctuatingFixedValueFvPatchFields.dep\
+$(surfaceStressModels)/SchumannGrotzbach/SchumannGrotzbachFvPatchField.dep\
+$(surfaceTemperatureFluxModels)/fixedHeatingRate/fixedHeatingRateFvPatchField.dep\
+$(surfaceTemperatureFluxModels)/specifiedSurfaceTemperature/specifiedSurfaceTemperatureFvPatchField.dep\
+$(surfaceVelocityModels)/velocityABLWallFunction/velocityABLWallFunctionFvPatchField.dep

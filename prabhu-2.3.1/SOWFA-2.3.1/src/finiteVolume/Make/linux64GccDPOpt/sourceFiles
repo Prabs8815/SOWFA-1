@@ -1,0 +1,9 @@
+SOURCE = \
+$(derivedFvPatchFields)/turbulentABLVelocityControlled/turbulentABLVelocityControlledFvPatchField.C\
+$(derivedFvPatchFields)/turbulentABLTemperatureControlled/turbulentABLTemperatureControlledFvPatchField.C\
+$(derivedFvPatchFields)/timeVaryingMappedInletOutlet/timeVaryingMappedInletOutletFvPatchFields.C\
+$(derivedFvPatchFields)/timeVaryingMappedFluctuatingFixedValue/timeVaryingMappedFluctuatingFixedValueFvPatchFields.C\
+$(surfaceStressModels)/SchumannGrotzbach/SchumannGrotzbachFvPatchField.C\
+$(surfaceTemperatureFluxModels)/fixedHeatingRate/fixedHeatingRateFvPatchField.C\
+$(surfaceTemperatureFluxModels)/specifiedSurfaceTemperature/specifiedSurfaceTemperatureFvPatchField.C\
+$(surfaceVelocityModels)/velocityABLWallFunction/velocityABLWallFunctionFvPatchField.C

@@ -1,0 +1,5 @@
+LOCAL_OBJECTS = \
+scanningLidar.o\
+scanningLidarFunctionObject.o\
+spinnerLidar.o\
+spinnerLidarFunctionObject.o

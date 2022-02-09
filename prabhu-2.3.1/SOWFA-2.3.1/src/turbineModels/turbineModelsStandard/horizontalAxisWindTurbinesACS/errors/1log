@@ -1,0 +1,1806 @@
+wmake: 'Make' directory does not exist in /home/prabhu/OpenFOAM/prabhu-2.4.0/SOWFA-2.4.0/src/turbineModels/turbineModelsStandard/horizontalAxisWindTurbinesACS
+    Searching up directories tree for Make directory
+    Found target directory  ./..
+SOURCE=horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C ;  g++ -m64 -Dlinux64 -DWM_DP -Wall -Wextra -Wno-unused-parameter -Wold-style-cast -Wnon-virtual-dtor -O3  -DNoRepository -ftemplate-depth-100 -I/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/triSurface/lnInclude -I/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude -I/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/meshTools/lnInclude -I/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/turbulenceModels -I/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/turbulenceModels/LES/LESdeltas/lnInclude -I/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/turbulenceModels/LES/LESfilters/lnInclude -I/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/transportModels -IlnInclude -I. -I/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude -I/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OSspecific/POSIX/lnInclude   -fPIC -c $SOURCE -o Make/linux64GccDPOpt/horizontalAxisWindTurbinesACS.o
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/boundBox.H:256:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/polyMesh.H:54,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMesh.H:50,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:7,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/boundBoxI.H:201:13: warning: ‘bool Foam::operator==(const Foam::boundBox&, const Foam::boundBox&)’ has not been declared within Foam
+ inline bool Foam::operator==(const boundBox& a, const boundBox& b)
+             ^~~~
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/polyMesh.H:54:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMesh.H:50,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:7,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/boundBox.H:236:28: note: only here as a friend
+         inline friend bool operator==(const boundBox&, const boundBox&);
+                            ^~~~~~~~
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/boundBox.H:256:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/polyMesh.H:54,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMesh.H:50,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:7,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/boundBoxI.H:207:13: warning: ‘bool Foam::operator!=(const Foam::boundBox&, const Foam::boundBox&)’ has not been declared within Foam
+ inline bool Foam::operator!=(const boundBox& a, const boundBox& b)
+             ^~~~
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/polyMesh.H:54:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMesh.H:50,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:7,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/boundBox.H:237:28: note: only here as a friend
+         inline friend bool operator!=(const boundBox&, const boundBox&);
+                            ^~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C: In constructor ‘Foam::turbineModels::horizontalAxisWindTurbinesACS::horizontalAxisWindTurbinesACS(const volVectorField&)’:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:123:22: error: ‘const class Foam::Time’ has no member named ‘constuant’; did you mean ‘constant’?
+             runTime_.constuant(),
+                      ^~~~~~~~~
+                      constant
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:418:42: error: no match for ‘operator==’ (operand types are ‘Foam::List<Foam::word>’ and ‘Foam::word’)
+                     if(AirfoilType[i][j] == airfoilTypesDistinct[k])
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/UList.H:473:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:43,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/UList.C:158:6: note: candidate: bool Foam::UList<T>::operator==(const Foam::UList<T>&) const [with T = Foam::word]
+ bool Foam::UList<T>::operator==(const UList<T>& a) const
+      ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/UList.C:158:6: note:   no known conversion for argument 1 from ‘Foam::word’ to ‘const Foam::UList<Foam::word>&’
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/triFace.H:293:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/meshTools/lnInclude/treeDataPrimitivePatch.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/meshTools/lnInclude/treeDataPrimitivePatch.H:273,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/meshTools/lnInclude/AMIMethod.H:42,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/meshTools/lnInclude/AMIInterpolation.C:27,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/meshTools/lnInclude/AMIInterpolation.H:566,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/meshTools/lnInclude/AMIPatchToPatchInterpolation.H:29,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/meshTools/lnInclude/cyclicAMILduInterface.H:39,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/cyclicAMIFvPatch.H:39,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/ddtScheme.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/ddtScheme.H:325,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvcDdt.C:28,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvcDdt.H:199,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvc.H:44,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:8,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/triFaceI.H:374:13: note: candidate: bool Foam::operator==(const Foam::triFace&, const Foam::triFace&)
+ inline bool Foam::operator==(const triFace& a, const triFace& b)
+             ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/triFaceI.H:374:13: note:   no known conversion for argument 1 from ‘Foam::List<Foam::word>’ to ‘const Foam::triFace&’
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/meshTools/lnInclude/faceAreaIntersect.H:42:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/meshTools/lnInclude/AMIInterpolation.H:57,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/meshTools/lnInclude/AMIPatchToPatchInterpolation.H:29,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/meshTools/lnInclude/cyclicAMILduInterface.H:39,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/cyclicAMIFvPatch.H:39,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/ddtScheme.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/ddtScheme.H:325,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvcDdt.C:28,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvcDdt.H:199,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvc.H:44,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:8,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/plane.H:206:21: note: candidate: bool Foam::operator==(const Foam::plane&, const Foam::plane&)
+         friend bool operator==(const plane&, const plane&);
+                     ^~~~~~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/plane.H:206:21: note:   no known conversion for argument 1 from ‘Foam::List<Foam::word>’ to ‘const Foam::plane&’
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.H:1058:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/ddtScheme.C:29,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/ddtScheme.H:325,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvcDdt.C:28,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvcDdt.H:199,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvc.H:44,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:8,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.C:1607:34: note: candidate: template<class Type> Foam::tmp<Foam::fvMatrix<Type> > Foam::operator==(const Foam::tmp<Foam::fvMatrix<Type> >&, const Foam::zero&)
+ Foam::tmp<Foam::fvMatrix<Type> > Foam::operator==
+                                  ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.C:1607:34: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:418:67: note:   ‘Foam::List<Foam::word>’ is not derived from ‘const Foam::tmp<Foam::fvMatrix<Type> >’
+                     if(AirfoilType[i][j] == airfoilTypesDistinct[k])
+                                                                   ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.H:1058:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/ddtScheme.C:29,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/ddtScheme.H:325,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvcDdt.C:28,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvcDdt.H:199,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvc.H:44,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:8,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.C:1596:34: note: candidate: template<class Type> Foam::tmp<Foam::fvMatrix<Type> > Foam::operator==(const Foam::fvMatrix<Type>&, const Foam::zero&)
+ Foam::tmp<Foam::fvMatrix<Type> > Foam::operator==
+                                  ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.C:1596:34: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:418:67: note:   ‘Foam::List<Foam::word>’ is not derived from ‘const Foam::fvMatrix<Type>’
+                     if(AirfoilType[i][j] == airfoilTypesDistinct[k])
+                                                                   ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.H:1058:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/ddtScheme.C:29,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/ddtScheme.H:325,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvcDdt.C:28,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvcDdt.H:199,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvc.H:44,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:8,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.C:1583:34: note: candidate: template<class Type> Foam::tmp<Foam::fvMatrix<Type> > Foam::operator==(const Foam::tmp<Foam::fvMatrix<Type> >&, const Foam::dimensioned<Type>&)
+ Foam::tmp<Foam::fvMatrix<Type> > Foam::operator==
+                                  ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.C:1583:34: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:418:67: note:   ‘Foam::List<Foam::word>’ is not derived from ‘const Foam::tmp<Foam::fvMatrix<Type> >’
+                     if(AirfoilType[i][j] == airfoilTypesDistinct[k])
+                                                                   ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.H:1058:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/ddtScheme.C:29,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/ddtScheme.H:325,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvcDdt.C:28,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvcDdt.H:199,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvc.H:44,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:8,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.C:1570:34: note: candidate: template<class Type> Foam::tmp<Foam::fvMatrix<Type> > Foam::operator==(const Foam::fvMatrix<Type>&, const Foam::dimensioned<Type>&)
+ Foam::tmp<Foam::fvMatrix<Type> > Foam::operator==
+                                  ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.C:1570:34: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:418:67: note:   ‘Foam::List<Foam::word>’ is not derived from ‘const Foam::fvMatrix<Type>’
+                     if(AirfoilType[i][j] == airfoilTypesDistinct[k])
+                                                                   ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.H:1058:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/ddtScheme.C:29,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/ddtScheme.H:325,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvcDdt.C:28,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvcDdt.H:199,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvc.H:44,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:8,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.C:1556:34: note: candidate: template<class Type> Foam::tmp<Foam::fvMatrix<Type> > Foam::operator==(const Foam::tmp<Foam::fvMatrix<Type> >&, const Foam::tmp<Foam::GeometricField<Type, Foam::fvPatchField, Foam::volMesh> >&)
+ Foam::tmp<Foam::fvMatrix<Type> > Foam::operator==
+                                  ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.C:1556:34: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:418:67: note:   ‘Foam::List<Foam::word>’ is not derived from ‘const Foam::tmp<Foam::fvMatrix<Type> >’
+                     if(AirfoilType[i][j] == airfoilTypesDistinct[k])
+                                                                   ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.H:1058:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/ddtScheme.C:29,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/ddtScheme.H:325,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvcDdt.C:28,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvcDdt.H:199,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvc.H:44,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:8,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.C:1542:34: note: candidate: template<class Type> Foam::tmp<Foam::fvMatrix<Type> > Foam::operator==(const Foam::tmp<Foam::fvMatrix<Type> >&, const Foam::tmp<Foam::DimensionedField<Type, Foam::volMesh> >&)
+ Foam::tmp<Foam::fvMatrix<Type> > Foam::operator==
+                                  ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.C:1542:34: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:418:67: note:   ‘Foam::List<Foam::word>’ is not derived from ‘const Foam::tmp<Foam::fvMatrix<Type> >’
+                     if(AirfoilType[i][j] == airfoilTypesDistinct[k])
+                                                                   ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.H:1058:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/ddtScheme.C:29,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/ddtScheme.H:325,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvcDdt.C:28,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvcDdt.H:199,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvc.H:44,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:8,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.C:1529:34: note: candidate: template<class Type> Foam::tmp<Foam::fvMatrix<Type> > Foam::operator==(const Foam::tmp<Foam::fvMatrix<Type> >&, const Foam::DimensionedField<Type, Foam::volMesh>&)
+ Foam::tmp<Foam::fvMatrix<Type> > Foam::operator==
+                                  ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.C:1529:34: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:418:67: note:   ‘Foam::List<Foam::word>’ is not derived from ‘const Foam::tmp<Foam::fvMatrix<Type> >’
+                     if(AirfoilType[i][j] == airfoilTypesDistinct[k])
+                                                                   ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.H:1058:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/ddtScheme.C:29,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/ddtScheme.H:325,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvcDdt.C:28,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvcDdt.H:199,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvc.H:44,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:8,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.C:1515:34: note: candidate: template<class Type> Foam::tmp<Foam::fvMatrix<Type> > Foam::operator==(const Foam::fvMatrix<Type>&, const Foam::tmp<Foam::GeometricField<Type, Foam::fvPatchField, Foam::volMesh> >&)
+ Foam::tmp<Foam::fvMatrix<Type> > Foam::operator==
+                                  ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.C:1515:34: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:418:67: note:   ‘Foam::List<Foam::word>’ is not derived from ‘const Foam::fvMatrix<Type>’
+                     if(AirfoilType[i][j] == airfoilTypesDistinct[k])
+                                                                   ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.H:1058:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/ddtScheme.C:29,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/ddtScheme.H:325,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvcDdt.C:28,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvcDdt.H:199,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvc.H:44,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:8,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.C:1501:34: note: candidate: template<class Type> Foam::tmp<Foam::fvMatrix<Type> > Foam::operator==(const Foam::fvMatrix<Type>&, const Foam::tmp<Foam::DimensionedField<Type, Foam::volMesh> >&)
+ Foam::tmp<Foam::fvMatrix<Type> > Foam::operator==
+                                  ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.C:1501:34: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:418:67: note:   ‘Foam::List<Foam::word>’ is not derived from ‘const Foam::fvMatrix<Type>’
+                     if(AirfoilType[i][j] == airfoilTypesDistinct[k])
+                                                                   ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.H:1058:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/ddtScheme.C:29,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/ddtScheme.H:325,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvcDdt.C:28,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvcDdt.H:199,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvc.H:44,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:8,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.C:1488:34: note: candidate: template<class Type> Foam::tmp<Foam::fvMatrix<Type> > Foam::operator==(const Foam::fvMatrix<Type>&, const Foam::DimensionedField<Type, Foam::volMesh>&)
+ Foam::tmp<Foam::fvMatrix<Type> > Foam::operator==
+                                  ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.C:1488:34: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:418:67: note:   ‘Foam::List<Foam::word>’ is not derived from ‘const Foam::fvMatrix<Type>’
+                     if(AirfoilType[i][j] == airfoilTypesDistinct[k])
+                                                                   ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.H:1058:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/ddtScheme.C:29,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/ddtScheme.H:325,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvcDdt.C:28,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvcDdt.H:199,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvc.H:44,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:8,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.C:1477:34: note: candidate: template<class Type> Foam::tmp<Foam::fvMatrix<Type> > Foam::operator==(const Foam::tmp<Foam::fvMatrix<Type> >&, const Foam::tmp<Foam::fvMatrix<Type> >&)
+ Foam::tmp<Foam::fvMatrix<Type> > Foam::operator==
+                                  ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.C:1477:34: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:418:67: note:   ‘Foam::List<Foam::word>’ is not derived from ‘const Foam::tmp<Foam::fvMatrix<Type> >’
+                     if(AirfoilType[i][j] == airfoilTypesDistinct[k])
+                                                                   ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.H:1058:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/ddtScheme.C:29,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/ddtScheme.H:325,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvcDdt.C:28,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvcDdt.H:199,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvc.H:44,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:8,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.C:1466:34: note: candidate: template<class Type> Foam::tmp<Foam::fvMatrix<Type> > Foam::operator==(const Foam::fvMatrix<Type>&, const Foam::tmp<Foam::fvMatrix<Type> >&)
+ Foam::tmp<Foam::fvMatrix<Type> > Foam::operator==
+                                  ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.C:1466:34: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:418:67: note:   ‘Foam::List<Foam::word>’ is not derived from ‘const Foam::fvMatrix<Type>’
+                     if(AirfoilType[i][j] == airfoilTypesDistinct[k])
+                                                                   ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.H:1058:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/ddtScheme.C:29,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/ddtScheme.H:325,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvcDdt.C:28,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvcDdt.H:199,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvc.H:44,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:8,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.C:1455:34: note: candidate: template<class Type> Foam::tmp<Foam::fvMatrix<Type> > Foam::operator==(const Foam::tmp<Foam::fvMatrix<Type> >&, const Foam::fvMatrix<Type>&)
+ Foam::tmp<Foam::fvMatrix<Type> > Foam::operator==
+                                  ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.C:1455:34: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:418:67: note:   ‘Foam::List<Foam::word>’ is not derived from ‘const Foam::tmp<Foam::fvMatrix<Type> >’
+                     if(AirfoilType[i][j] == airfoilTypesDistinct[k])
+                                                                   ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.H:1058:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/ddtScheme.C:29,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/ddtScheme.H:325,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvcDdt.C:28,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvcDdt.H:199,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvc.H:44,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:8,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.C:1444:34: note: candidate: template<class Type> Foam::tmp<Foam::fvMatrix<Type> > Foam::operator==(const Foam::fvMatrix<Type>&, const Foam::fvMatrix<Type>&)
+ Foam::tmp<Foam::fvMatrix<Type> > Foam::operator==
+                                  ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMatrix.C:1444:34: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:418:67: note:   ‘Foam::List<Foam::word>’ is not derived from ‘const Foam::fvMatrix<Type>’
+                     if(AirfoilType[i][j] == airfoilTypesDistinct[k])
+                                                                   ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/septernion.H:196:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/transformField.H:40,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/mapDistributeTemplates.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/mapDistribute.H:777,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/globalMeshDataTemplates.C:28,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/globalMeshData.H:628,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/GeometricBoundaryField.C:28,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/GeometricField.C:1266,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/GeometricField.H:601,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/GeometricScalarField.H:38,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/GeometricFields.H:34,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/volFields.H:37,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/surfaceInterpolationScheme.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/surfaceInterpolationScheme.H:234,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/surfaceInterpolate.H:41,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvc.H:39,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:8,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/septernionI.H:158:13: note: candidate: bool Foam::operator==(const Foam::septernion&, const Foam::septernion&)
+ inline bool Foam::operator==(const septernion& tr1, const septernion& tr2)
+             ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/septernionI.H:158:13: note:   no known conversion for argument 1 from ‘Foam::List<Foam::word>’ to ‘const Foam::septernion&’
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/quaternion.H:268:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/transformField.H:39,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/mapDistributeTemplates.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/mapDistribute.H:777,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/globalMeshDataTemplates.C:28,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/globalMeshData.H:628,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/GeometricBoundaryField.C:28,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/GeometricField.C:1266,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/GeometricField.H:601,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/GeometricScalarField.H:38,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/GeometricFields.H:34,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/volFields.H:37,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/surfaceInterpolationScheme.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/surfaceInterpolationScheme.H:234,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/surfaceInterpolate.H:41,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvc.H:39,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:8,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/quaternionI.H:380:13: note: candidate: bool Foam::operator==(const Foam::quaternion&, const Foam::quaternion&)
+ inline bool Foam::operator==(const quaternion& q1, const quaternion& q2)
+             ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/quaternionI.H:380:13: note:   no known conversion for argument 1 from ‘Foam::List<Foam::word>’ to ‘const Foam::quaternion&’
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/vectorTensorTransform.H:248:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/mapDistribute.H:136,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/globalMeshDataTemplates.C:28,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/globalMeshData.H:628,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/GeometricBoundaryField.C:28,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/GeometricField.C:1266,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/GeometricField.H:601,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/GeometricScalarField.H:38,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/GeometricFields.H:34,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/volFields.H:37,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/surfaceInterpolationScheme.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/surfaceInterpolationScheme.H:234,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/surfaceInterpolate.H:41,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvc.H:39,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:8,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/vectorTensorTransformI.H:243:13: note: candidate: bool Foam::operator==(const Foam::vectorTensorTransform&, const Foam::vectorTensorTransform&)
+ inline bool Foam::operator==
+             ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/vectorTensorTransformI.H:243:13: note:   no known conversion for argument 1 from ‘Foam::List<Foam::word>’ to ‘const Foam::vectorTensorTransform&’
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/lduAddressing.H:101:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/lduMesh.H:36,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMesh.H:51,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:7,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/Tuple2.H:146:13: note: candidate: template<class Type1, class Type2> bool Foam::operator==(const Foam::Tuple2<Type1, Type2>&, const Foam::Tuple2<Type1, Type2>&)
+ inline bool operator==
+             ^~~~~~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/Tuple2.H:146:13: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:418:67: note:   ‘Foam::List<Foam::word>’ is not derived from ‘const Foam::Tuple2<Type1, Type2>’
+                     if(AirfoilType[i][j] == airfoilTypesDistinct[k])
+                                                                   ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/boundBox.H:256:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/polyMesh.H:54,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMesh.H:50,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:7,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/boundBoxI.H:201:13: note: candidate: bool Foam::operator==(const Foam::boundBox&, const Foam::boundBox&)
+ inline bool Foam::operator==(const boundBox& a, const boundBox& b)
+             ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/boundBoxI.H:201:13: note:   no known conversion for argument 1 from ‘Foam::List<Foam::word>’ to ‘const Foam::boundBox&’
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/labelPair.H:41:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/polyBoundaryMesh.H:40,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/polyMesh.H:53,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMesh.H:50,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:7,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/Pair.H:168:6: note: candidate: template<class Type> bool Foam::operator==(const Foam::Pair<Type>&, const Foam::Pair<Type>&)
+ bool operator==(const Pair<Type>& a, const Pair<Type>& b)
+      ^~~~~~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/Pair.H:168:6: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:418:67: note:   ‘Foam::List<Foam::word>’ is not derived from ‘const Foam::Pair<Type>’
+                     if(AirfoilType[i][j] == airfoilTypesDistinct[k])
+                                                                   ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/cellShapeList.H:35:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/primitiveMesh.H:58,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/polyMesh.H:45,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMesh.H:50,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:7,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/cellShape.H:157:21: note: candidate: bool Foam::operator==(const Foam::cellShape&, const Foam::cellShape&)
+         friend bool operator==(const cellShape&, const cellShape&);
+                     ^~~~~~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/cellShape.H:157:21: note:   no known conversion for argument 1 from ‘Foam::List<Foam::word>’ to ‘const Foam::cellShape&’
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/cellModel.H:184:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/cellShape.H:46,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/cellShapeList.H:35,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/primitiveMesh.H:58,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/polyMesh.H:45,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMesh.H:50,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:7,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/cellModelI.H:123:13: note: candidate: bool Foam::operator==(const Foam::cellModel&, const Foam::cellModel&)
+ inline bool operator==(const cellModel& m1, const cellModel& m2)
+             ^~~~~~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/cellModelI.H:123:13: note:   no known conversion for argument 1 from ‘Foam::List<Foam::word>’ to ‘const Foam::cellModel&’
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/cellList.H:35:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/primitiveMesh.H:57,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/polyMesh.H:45,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMesh.H:50,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:7,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/cell.H:133:21: note: candidate: bool Foam::operator==(const Foam::cell&, const Foam::cell&)
+         friend bool operator==(const cell&, const cell&);
+                     ^~~~~~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/cell.H:133:21: note:   no known conversion for argument 1 from ‘Foam::List<Foam::word>’ to ‘const Foam::cell&’
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/face.H:423:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/faceList.H:34,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/primitiveMesh.H:56,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/polyMesh.H:45,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMesh.H:50,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:7,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/faceI.H:137:13: note: candidate: bool Foam::operator==(const Foam::face&, const Foam::face&)
+ inline bool Foam::operator==(const face& a, const face& b)
+             ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/faceI.H:137:13: note:   no known conversion for argument 1 from ‘Foam::List<Foam::word>’ to ‘const Foam::face&’
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/edge.H:180:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/edgeList.H:32,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/primitiveMesh.H:54,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/polyMesh.H:45,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMesh.H:50,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:7,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/edgeI.H:177:13: note: candidate: bool Foam::operator==(const Foam::edge&, const Foam::edge&)
+ inline bool Foam::operator==(const edge& a, const edge& b)
+             ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/edgeI.H:177:13: note:   no known conversion for argument 1 from ‘Foam::List<Foam::word>’ to ‘const Foam::edge&’
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/instantList.H:35:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/Time.H:49,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:6,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/instant.H:142:21: note: candidate: bool Foam::operator==(const Foam::instant&, const Foam::instant&)
+         friend bool operator==(const instant&, const instant&);
+                     ^~~~~~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/instant.H:142:21: note:   no known conversion for argument 1 from ‘Foam::List<Foam::word>’ to ‘const Foam::instant&’
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/VectorSpace.H:168:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/Field.H:46,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/scalarField.H:38,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/dimensionSet.H:46,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/dimensionedType.H:40,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/dimensionedScalar.H:38,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/TimeState.H:38,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/Time.H:47,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:6,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/VectorSpaceI.H:634:13: note: candidate: template<class Form, class Cmpt, int nCmpt> bool Foam::operator==(const Foam::VectorSpace<Form, Cmpt, nCmpt>&, const Foam::VectorSpace<Form, Cmpt, nCmpt>&)
+ inline bool operator==
+             ^~~~~~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/VectorSpaceI.H:634:13: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:418:67: note:   ‘Foam::List<Foam::word>’ is not derived from ‘const Foam::VectorSpace<Form, Cmpt, nCmpt>’
+                     if(AirfoilType[i][j] == airfoilTypesDistinct[k])
+                                                                   ^
+In file included from /usr/include/c++/7/bits/locale_facets.h:48:0,
+                 from /usr/include/c++/7/bits/basic_ios.h:37,
+                 from /usr/include/c++/7/ios:44,
+                 from /usr/include/c++/7/ostream:38,
+                 from /usr/include/c++/7/iostream:39,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/stringI.H:26,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/string.H:230,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/word.H:42,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/int.H:39,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/label.H:61,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:47,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/usr/include/c++/7/bits/streambuf_iterator.h:204:5: note: candidate: template<class _CharT, class _Traits> bool std::operator==(const std::istreambuf_iterator<_CharT, _Traits>&, const std::istreambuf_iterator<_CharT, _Traits>&)
+     operator==(const istreambuf_iterator<_CharT, _Traits>& __a,
+     ^~~~~~~~
+/usr/include/c++/7/bits/streambuf_iterator.h:204:5: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:418:67: note:   ‘Foam::List<Foam::word>’ is not derived from ‘const std::istreambuf_iterator<_CharT, _Traits>’
+                     if(AirfoilType[i][j] == airfoilTypesDistinct[k])
+                                                                   ^
+In file included from /usr/include/c++/7/bits/ios_base.h:46:0,
+                 from /usr/include/c++/7/ios:42,
+                 from /usr/include/c++/7/ostream:38,
+                 from /usr/include/c++/7/iostream:39,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/stringI.H:26,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/string.H:230,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/word.H:42,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/int.H:39,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/label.H:61,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:47,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/usr/include/c++/7/system_error:311:3: note: candidate: bool std::operator==(const std::error_condition&, const std::error_condition&)
+   operator==(const error_condition& __lhs,
+   ^~~~~~~~
+/usr/include/c++/7/system_error:311:3: note:   no known conversion for argument 1 from ‘Foam::List<Foam::word>’ to ‘const std::error_condition&’
+/usr/include/c++/7/system_error:304:3: note: candidate: bool std::operator==(const std::error_condition&, const std::error_code&)
+   operator==(const error_condition& __lhs, const error_code& __rhs) noexcept
+   ^~~~~~~~
+/usr/include/c++/7/system_error:304:3: note:   no known conversion for argument 1 from ‘Foam::List<Foam::word>’ to ‘const std::error_condition&’
+/usr/include/c++/7/system_error:297:3: note: candidate: bool std::operator==(const std::error_code&, const std::error_condition&)
+   operator==(const error_code& __lhs, const error_condition& __rhs) noexcept
+   ^~~~~~~~
+/usr/include/c++/7/system_error:297:3: note:   no known conversion for argument 1 from ‘Foam::List<Foam::word>’ to ‘const std::error_code&’
+/usr/include/c++/7/system_error:292:3: note: candidate: bool std::operator==(const std::error_code&, const std::error_code&)
+   operator==(const error_code& __lhs, const error_code& __rhs) noexcept
+   ^~~~~~~~
+/usr/include/c++/7/system_error:292:3: note:   no known conversion for argument 1 from ‘Foam::List<Foam::word>’ to ‘const std::error_code&’
+In file included from /usr/include/c++/7/string:52:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/string.H:51,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/word.H:42,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/int.H:39,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/label.H:61,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:47,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/usr/include/c++/7/bits/basic_string.h:6043:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator==(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, const _CharT*)
+     operator==(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
+     ^~~~~~~~
+/usr/include/c++/7/bits/basic_string.h:6043:5: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:418:67: note:   ‘Foam::List<Foam::word>’ is not derived from ‘const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>’
+                     if(AirfoilType[i][j] == airfoilTypesDistinct[k])
+                                                                   ^
+In file included from /usr/include/c++/7/string:52:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/string.H:51,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/word.H:42,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/int.H:39,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/label.H:61,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:47,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/usr/include/c++/7/bits/basic_string.h:6031:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator==(const _CharT*, const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&)
+     operator==(const _CharT* __lhs,
+     ^~~~~~~~
+/usr/include/c++/7/bits/basic_string.h:6031:5: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:418:67: note:   mismatched types ‘const _CharT*’ and ‘Foam::List<Foam::word>’
+                     if(AirfoilType[i][j] == airfoilTypesDistinct[k])
+                                                                   ^
+In file included from /usr/include/c++/7/string:52:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/string.H:51,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/word.H:42,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/int.H:39,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/label.H:61,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:47,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/usr/include/c++/7/bits/basic_string.h:6017:5: note: candidate: template<class _CharT> typename __gnu_cxx::__enable_if<std::__is_char<_Tp>::__value, bool>::__type std::operator==(const std::__cxx11::basic_string<_CharT>&, const std::__cxx11::basic_string<_CharT>&)
+     operator==(const basic_string<_CharT>& __lhs,
+     ^~~~~~~~
+/usr/include/c++/7/bits/basic_string.h:6017:5: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:418:67: note:   ‘Foam::List<Foam::word>’ is not derived from ‘const std::__cxx11::basic_string<_CharT>’
+                     if(AirfoilType[i][j] == airfoilTypesDistinct[k])
+                                                                   ^
+In file included from /usr/include/c++/7/string:52:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/string.H:51,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/word.H:42,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/int.H:39,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/label.H:61,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:47,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/usr/include/c++/7/bits/basic_string.h:6009:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator==(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&)
+     operator==(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
+     ^~~~~~~~
+/usr/include/c++/7/bits/basic_string.h:6009:5: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:418:67: note:   ‘Foam::List<Foam::word>’ is not derived from ‘const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>’
+                     if(AirfoilType[i][j] == airfoilTypesDistinct[k])
+                                                                   ^
+In file included from /usr/include/c++/7/string:41:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/string.H:51,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/word.H:42,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/int.H:39,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/label.H:61,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:47,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/usr/include/c++/7/bits/allocator.h:152:5: note: candidate: template<class _Tp> bool std::operator==(const std::allocator<_CharT>&, const std::allocator<_CharT>&)
+     operator==(const allocator<_Tp>&, const allocator<_Tp>&)
+     ^~~~~~~~
+/usr/include/c++/7/bits/allocator.h:152:5: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:418:67: note:   ‘Foam::List<Foam::word>’ is not derived from ‘const std::allocator<_CharT>’
+                     if(AirfoilType[i][j] == airfoilTypesDistinct[k])
+                                                                   ^
+In file included from /usr/include/c++/7/string:41:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/string.H:51,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/word.H:42,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/int.H:39,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/label.H:61,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:47,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/usr/include/c++/7/bits/allocator.h:146:5: note: candidate: template<class _T1, class _T2> bool std::operator==(const std::allocator<_CharT>&, const std::allocator<_T2>&)
+     operator==(const allocator<_T1>&, const allocator<_T2>&)
+     ^~~~~~~~
+/usr/include/c++/7/bits/allocator.h:146:5: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:418:67: note:   ‘Foam::List<Foam::word>’ is not derived from ‘const std::allocator<_CharT>’
+                     if(AirfoilType[i][j] == airfoilTypesDistinct[k])
+                                                                   ^
+In file included from /usr/include/c++/7/bits/char_traits.h:40:0,
+                 from /usr/include/c++/7/string:40,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/string.H:51,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/word.H:42,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/int.H:39,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/label.H:61,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:47,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/usr/include/c++/7/bits/postypes.h:216:5: note: candidate: template<class _StateT> bool std::operator==(const std::fpos<_StateT>&, const std::fpos<_StateT>&)
+     operator==(const fpos<_StateT>& __lhs, const fpos<_StateT>& __rhs)
+     ^~~~~~~~
+/usr/include/c++/7/bits/postypes.h:216:5: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:418:67: note:   ‘Foam::List<Foam::word>’ is not derived from ‘const std::fpos<_StateT>’
+                     if(AirfoilType[i][j] == airfoilTypesDistinct[k])
+                                                                   ^
+In file included from /usr/include/c++/7/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/7/bits/char_traits.h:39,
+                 from /usr/include/c++/7/string:40,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/string.H:51,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/word.H:42,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/int.H:39,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/label.H:61,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:47,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/usr/include/c++/7/bits/stl_iterator.h:1127:5: note: candidate: template<class _Iterator> bool std::operator==(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorL>&)
+     operator==(const move_iterator<_Iterator>& __x,
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_iterator.h:1127:5: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:418:67: note:   ‘Foam::List<Foam::word>’ is not derived from ‘const std::move_iterator<_IteratorL>’
+                     if(AirfoilType[i][j] == airfoilTypesDistinct[k])
+                                                                   ^
+In file included from /usr/include/c++/7/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/7/bits/char_traits.h:39,
+                 from /usr/include/c++/7/string:40,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/string.H:51,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/word.H:42,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/int.H:39,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/label.H:61,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:47,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/usr/include/c++/7/bits/stl_iterator.h:1121:5: note: candidate: template<class _IteratorL, class _IteratorR> bool std::operator==(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorR>&)
+     operator==(const move_iterator<_IteratorL>& __x,
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_iterator.h:1121:5: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:418:67: note:   ‘Foam::List<Foam::word>’ is not derived from ‘const std::move_iterator<_IteratorL>’
+                     if(AirfoilType[i][j] == airfoilTypesDistinct[k])
+                                                                   ^
+In file included from /usr/include/c++/7/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/7/bits/char_traits.h:39,
+                 from /usr/include/c++/7/string:40,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/string.H:51,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/word.H:42,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/int.H:39,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/label.H:61,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:47,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/usr/include/c++/7/bits/stl_iterator.h:340:5: note: candidate: template<class _IteratorL, class _IteratorR> bool std::operator==(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)
+     operator==(const reverse_iterator<_IteratorL>& __x,
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_iterator.h:340:5: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:418:67: note:   ‘Foam::List<Foam::word>’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+                     if(AirfoilType[i][j] == airfoilTypesDistinct[k])
+                                                                   ^
+In file included from /usr/include/c++/7/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/7/bits/char_traits.h:39,
+                 from /usr/include/c++/7/string:40,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/string.H:51,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/word.H:42,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/int.H:39,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/label.H:61,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:47,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/usr/include/c++/7/bits/stl_iterator.h:302:5: note: candidate: template<class _Iterator> bool std::operator==(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_Iterator>&)
+     operator==(const reverse_iterator<_Iterator>& __x,
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_iterator.h:302:5: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:418:67: note:   ‘Foam::List<Foam::word>’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+                     if(AirfoilType[i][j] == airfoilTypesDistinct[k])
+                                                                   ^
+In file included from /usr/include/c++/7/bits/stl_algobase.h:64:0,
+                 from /usr/include/c++/7/bits/char_traits.h:39,
+                 from /usr/include/c++/7/string:40,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/string.H:51,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/word.H:42,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/int.H:39,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/label.H:61,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:47,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/usr/include/c++/7/bits/stl_pair.h:448:5: note: candidate: template<class _T1, class _T2> constexpr bool std::operator==(const std::pair<_T1, _T2>&, const std::pair<_T1, _T2>&)
+     operator==(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y)
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_pair.h:448:5: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:418:67: note:   ‘Foam::List<Foam::word>’ is not derived from ‘const std::pair<_T1, _T2>’
+                     if(AirfoilType[i][j] == airfoilTypesDistinct[k])
+                                                                   ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:43:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:438:38: error: ‘j’ was not declared in this scope
+         forAll(BladeAirfoilTypeID[i][j],k)
+                                      ^
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/UList.H:422:30: note: in definition of macro ‘forAll’
+     for (Foam::label i=0; i<(list).size(); i++)
+                              ^~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:643:108: error: no matching function for call to ‘Foam::List<Foam::List<Foam::List<Foam::Vector<double> > > >::List(int&, Foam::List<Foam::Vector<double> >)’
+         sectorPoints.append(List<List<List<vector>> >(NumBl[j], List<vector>(numLinePoints[i],vector::zero)));
+                                                                                                            ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:541:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:259,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/ListIO.C:36:1: note: candidate: Foam::List<T>::List(Foam::Istream&) [with T = Foam::List<Foam::List<Foam::Vector<double> > >]
+ Foam::List<T>::List(Istream& is)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/ListIO.C:36:1: note:   candidate expects 1 argument, 2 provided
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:259:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:289:1: note: candidate: Foam::List<T>::List(const Foam::BiIndirectList<T>&) [with T = Foam::List<Foam::List<Foam::Vector<double> > >]
+ Foam::List<T>::List(const BiIndirectList<T>& lst)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:289:1: note:   candidate expects 1 argument, 2 provided
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:271:1: note: candidate: Foam::List<T>::List(const Foam::UIndirectList<T>&) [with T = Foam::List<Foam::List<Foam::Vector<double> > >]
+ Foam::List<T>::List(const UIndirectList<T>& lst)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:271:1: note:   candidate expects 1 argument, 2 provided
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:247:1: note: candidate: Foam::List<T>::List(const Foam::SLList<T>&) [with T = Foam::List<Foam::List<Foam::Vector<double> > >]
+ Foam::List<T>::List(const SLList<T>& lst)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:247:1: note:   candidate expects 1 argument, 2 provided
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:229:1: note: candidate: Foam::List<T>::List(const Foam::PtrList<T>&) [with T = Foam::List<Foam::List<Foam::Vector<double> > >]
+ Foam::List<T>::List(const PtrList<T>& lst)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:229:1: note:   candidate expects 1 argument, 2 provided
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:126:18: note: candidate: template<unsigned int Size> Foam::List<T>::List(const Foam::FixedList<T, Size>&)
+         explicit List(const FixedList<T, Size>&);
+                  ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:126:18: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:643:108: note:   mismatched types ‘const Foam::FixedList<Foam::List<Foam::List<Foam::Vector<double> > >, Size>’ and ‘int’
+         sectorPoints.append(List<List<List<vector>> >(NumBl[j], List<vector>(numLinePoints[i],vector::zero)));
+                                                                                                            ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:122:9: note: candidate: template<class InputIterator> Foam::List<T>::List(InputIterator, InputIterator)
+         List(InputIterator first, InputIterator last);
+         ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:122:9: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:643:108: note:   deduced conflicting types for parameter ‘InputIterator’ (‘int’ and ‘Foam::List<Foam::Vector<double> >’)
+         sectorPoints.append(List<List<List<vector>> >(NumBl[j], List<vector>(numLinePoints[i],vector::zero)));
+                                                                                                            ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:259:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:158:1: note: candidate: Foam::List<T>::List(const Foam::UList<T>&, const labelUList&) [with T = Foam::List<Foam::List<Foam::Vector<double> > >; Foam::labelUList = Foam::UList<int>]
+ Foam::List<T>::List(const UList<T>& a, const labelUList& map)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:158:1: note:   no known conversion for argument 1 from ‘int’ to ‘const Foam::UList<Foam::List<Foam::List<Foam::Vector<double> > > >&’
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:124:1: note: candidate: Foam::List<T>::List(Foam::List<T>&, bool) [with T = Foam::List<Foam::List<Foam::Vector<double> > >]
+ Foam::List<T>::List(List<T>& a, bool reUse)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:124:1: note:   no known conversion for argument 1 from ‘int’ to ‘Foam::List<Foam::List<Foam::List<Foam::Vector<double> > > >&’
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:116:1: note: candidate: Foam::List<T>::List(const Foam::Xfer<Foam::List<T> >&) [with T = Foam::List<Foam::List<Foam::Vector<double> > >]
+ Foam::List<T>::List(const Xfer<List<T> >& lst)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:116:1: note:   candidate expects 1 argument, 2 provided
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:88:1: note: candidate: Foam::List<T>::List(const Foam::List<T>&) [with T = Foam::List<Foam::List<Foam::Vector<double> > >]
+ Foam::List<T>::List(const List<T>& a)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:88:1: note:   candidate expects 1 argument, 2 provided
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:63:1: note: candidate: Foam::List<T>::List(Foam::label, const T&) [with T = Foam::List<Foam::List<Foam::Vector<double> > >; Foam::label = int]
+ Foam::List<T>::List(const label s, const T& a)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:63:1: note:   no known conversion for argument 2 from ‘Foam::List<Foam::Vector<double> >’ to ‘const Foam::List<Foam::List<Foam::Vector<double> > >&’
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:43:1: note: candidate: Foam::List<T>::List(Foam::label) [with T = Foam::List<Foam::List<Foam::Vector<double> > >; Foam::label = int]
+ Foam::List<T>::List(const label s)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:43:1: note:   candidate expects 1 argument, 2 provided
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:254:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/ListI.H:29:8: note: candidate: Foam::List<T>::List() [with T = Foam::List<Foam::List<Foam::Vector<double> > >]
+ inline Foam::List<T>::List()
+        ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/ListI.H:29:8: note:   candidate expects 0 arguments, 2 provided
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:644:98: error: no matching function for call to ‘Foam::List<Foam::List<Foam::List<double> > >::List(int&, Foam::List<double>)’
+         bladeRadius.append(List<List<List<scalar>> >(NumBl[j], List<scalar>(numLinePoints[i],0.0)));
+                                                                                                  ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:541:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:259,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/ListIO.C:36:1: note: candidate: Foam::List<T>::List(Foam::Istream&) [with T = Foam::List<Foam::List<double> >]
+ Foam::List<T>::List(Istream& is)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/ListIO.C:36:1: note:   candidate expects 1 argument, 2 provided
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:259:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:289:1: note: candidate: Foam::List<T>::List(const Foam::BiIndirectList<T>&) [with T = Foam::List<Foam::List<double> >]
+ Foam::List<T>::List(const BiIndirectList<T>& lst)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:289:1: note:   candidate expects 1 argument, 2 provided
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:271:1: note: candidate: Foam::List<T>::List(const Foam::UIndirectList<T>&) [with T = Foam::List<Foam::List<double> >]
+ Foam::List<T>::List(const UIndirectList<T>& lst)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:271:1: note:   candidate expects 1 argument, 2 provided
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:247:1: note: candidate: Foam::List<T>::List(const Foam::SLList<T>&) [with T = Foam::List<Foam::List<double> >]
+ Foam::List<T>::List(const SLList<T>& lst)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:247:1: note:   candidate expects 1 argument, 2 provided
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:229:1: note: candidate: Foam::List<T>::List(const Foam::PtrList<T>&) [with T = Foam::List<Foam::List<double> >]
+ Foam::List<T>::List(const PtrList<T>& lst)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:229:1: note:   candidate expects 1 argument, 2 provided
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:126:18: note: candidate: template<unsigned int Size> Foam::List<T>::List(const Foam::FixedList<T, Size>&)
+         explicit List(const FixedList<T, Size>&);
+                  ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:126:18: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:644:98: note:   mismatched types ‘const Foam::FixedList<Foam::List<Foam::List<double> >, Size>’ and ‘int’
+         bladeRadius.append(List<List<List<scalar>> >(NumBl[j], List<scalar>(numLinePoints[i],0.0)));
+                                                                                                  ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:122:9: note: candidate: template<class InputIterator> Foam::List<T>::List(InputIterator, InputIterator)
+         List(InputIterator first, InputIterator last);
+         ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:122:9: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:644:98: note:   deduced conflicting types for parameter ‘InputIterator’ (‘int’ and ‘Foam::List<double>’)
+         bladeRadius.append(List<List<List<scalar>> >(NumBl[j], List<scalar>(numLinePoints[i],0.0)));
+                                                                                                  ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:259:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:158:1: note: candidate: Foam::List<T>::List(const Foam::UList<T>&, const labelUList&) [with T = Foam::List<Foam::List<double> >; Foam::labelUList = Foam::UList<int>]
+ Foam::List<T>::List(const UList<T>& a, const labelUList& map)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:158:1: note:   no known conversion for argument 1 from ‘int’ to ‘const Foam::UList<Foam::List<Foam::List<double> > >&’
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:124:1: note: candidate: Foam::List<T>::List(Foam::List<T>&, bool) [with T = Foam::List<Foam::List<double> >]
+ Foam::List<T>::List(List<T>& a, bool reUse)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:124:1: note:   no known conversion for argument 1 from ‘int’ to ‘Foam::List<Foam::List<Foam::List<double> > >&’
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:116:1: note: candidate: Foam::List<T>::List(const Foam::Xfer<Foam::List<T> >&) [with T = Foam::List<Foam::List<double> >]
+ Foam::List<T>::List(const Xfer<List<T> >& lst)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:116:1: note:   candidate expects 1 argument, 2 provided
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:88:1: note: candidate: Foam::List<T>::List(const Foam::List<T>&) [with T = Foam::List<Foam::List<double> >]
+ Foam::List<T>::List(const List<T>& a)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:88:1: note:   candidate expects 1 argument, 2 provided
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:63:1: note: candidate: Foam::List<T>::List(Foam::label, const T&) [with T = Foam::List<Foam::List<double> >; Foam::label = int]
+ Foam::List<T>::List(const label s, const T& a)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:63:1: note:   no known conversion for argument 2 from ‘Foam::List<double>’ to ‘const Foam::List<Foam::List<double> >&’
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:43:1: note: candidate: Foam::List<T>::List(Foam::label) [with T = Foam::List<Foam::List<double> >; Foam::label = int]
+ Foam::List<T>::List(const label s)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:43:1: note:   candidate expects 1 argument, 2 provided
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:254:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/ListI.H:29:8: note: candidate: Foam::List<T>::List() [with T = Foam::List<Foam::List<double> >]
+ inline Foam::List<T>::List()
+        ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/ListI.H:29:8: note:   candidate expects 0 arguments, 2 provided
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:656:38: error: ‘class Foam::List<Foam::Vector<double> >’ has no member named ‘x’
+                sectorPoints[i][k][m].x() = root.x() + dist*Foam::sin(beta);
+                                      ^
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:657:38: error: ‘class Foam::List<Foam::Vector<double> >’ has no member named ‘y’
+                sectorPoints[i][k][m].y() = root.y();
+                                      ^
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:658:38: error: ‘class Foam::List<Foam::Vector<double> >’ has no member named ‘z’
+                sectorPoints[i][k][m].z() = root.z() + dist*Foam::cos(beta);
+                                      ^
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:670:131: error: no matching function for call to ‘Foam::turbineModels::horizontalAxisWindTurbinesACS::rotatePoint(Foam::List<Foam::Vector<double> >&, Foam::Vector<double>&, Foam::Vector<double>&, double)’
+                     sectorPoints[i][k][m] = rotatePoint(sectorPoints[i][k][m], rotorApex[i], uvShaft[i], (360.0/NumBl[j])*k*degRad);
+                                                                                                                                   ^
+In file included from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:0:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:699:16: note: candidate: Foam::vector Foam::turbineModels::horizontalAxisWindTurbinesACS::rotatePoint(Foam::vector, Foam::vector, Foam::vector, Foam::scalar)
+         vector rotatePoint(vector point, vector rotationPoint, vector axis, scalar angle);
+                ^~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:699:16: note:   no known conversion for argument 1 from ‘Foam::List<Foam::Vector<double> >’ to ‘Foam::vector {aka Foam::Vector<double>}’
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:693:106: error: no matching function for call to ‘Foam::List<Foam::List<Foam::List<Foam::Vector<double> > > >::List(int&, Foam::List<Foam::Vector<double> >)’
+         bladeForce.append(List<List<List<vector>> >(NumBl[j], List<vector>(numLinePoints[i],vector::zero)));
+                                                                                                          ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:541:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:259,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/ListIO.C:36:1: note: candidate: Foam::List<T>::List(Foam::Istream&) [with T = Foam::List<Foam::List<Foam::Vector<double> > >]
+ Foam::List<T>::List(Istream& is)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/ListIO.C:36:1: note:   candidate expects 1 argument, 2 provided
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:259:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:289:1: note: candidate: Foam::List<T>::List(const Foam::BiIndirectList<T>&) [with T = Foam::List<Foam::List<Foam::Vector<double> > >]
+ Foam::List<T>::List(const BiIndirectList<T>& lst)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:289:1: note:   candidate expects 1 argument, 2 provided
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:271:1: note: candidate: Foam::List<T>::List(const Foam::UIndirectList<T>&) [with T = Foam::List<Foam::List<Foam::Vector<double> > >]
+ Foam::List<T>::List(const UIndirectList<T>& lst)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:271:1: note:   candidate expects 1 argument, 2 provided
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:247:1: note: candidate: Foam::List<T>::List(const Foam::SLList<T>&) [with T = Foam::List<Foam::List<Foam::Vector<double> > >]
+ Foam::List<T>::List(const SLList<T>& lst)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:247:1: note:   candidate expects 1 argument, 2 provided
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:229:1: note: candidate: Foam::List<T>::List(const Foam::PtrList<T>&) [with T = Foam::List<Foam::List<Foam::Vector<double> > >]
+ Foam::List<T>::List(const PtrList<T>& lst)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:229:1: note:   candidate expects 1 argument, 2 provided
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:126:18: note: candidate: template<unsigned int Size> Foam::List<T>::List(const Foam::FixedList<T, Size>&)
+         explicit List(const FixedList<T, Size>&);
+                  ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:126:18: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:693:106: note:   mismatched types ‘const Foam::FixedList<Foam::List<Foam::List<Foam::Vector<double> > >, Size>’ and ‘int’
+         bladeForce.append(List<List<List<vector>> >(NumBl[j], List<vector>(numLinePoints[i],vector::zero)));
+                                                                                                          ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:122:9: note: candidate: template<class InputIterator> Foam::List<T>::List(InputIterator, InputIterator)
+         List(InputIterator first, InputIterator last);
+         ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:122:9: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:693:106: note:   deduced conflicting types for parameter ‘InputIterator’ (‘int’ and ‘Foam::List<Foam::Vector<double> >’)
+         bladeForce.append(List<List<List<vector>> >(NumBl[j], List<vector>(numLinePoints[i],vector::zero)));
+                                                                                                          ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:259:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:158:1: note: candidate: Foam::List<T>::List(const Foam::UList<T>&, const labelUList&) [with T = Foam::List<Foam::List<Foam::Vector<double> > >; Foam::labelUList = Foam::UList<int>]
+ Foam::List<T>::List(const UList<T>& a, const labelUList& map)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:158:1: note:   no known conversion for argument 1 from ‘int’ to ‘const Foam::UList<Foam::List<Foam::List<Foam::Vector<double> > > >&’
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:124:1: note: candidate: Foam::List<T>::List(Foam::List<T>&, bool) [with T = Foam::List<Foam::List<Foam::Vector<double> > >]
+ Foam::List<T>::List(List<T>& a, bool reUse)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:124:1: note:   no known conversion for argument 1 from ‘int’ to ‘Foam::List<Foam::List<Foam::List<Foam::Vector<double> > > >&’
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:116:1: note: candidate: Foam::List<T>::List(const Foam::Xfer<Foam::List<T> >&) [with T = Foam::List<Foam::List<Foam::Vector<double> > >]
+ Foam::List<T>::List(const Xfer<List<T> >& lst)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:116:1: note:   candidate expects 1 argument, 2 provided
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:88:1: note: candidate: Foam::List<T>::List(const Foam::List<T>&) [with T = Foam::List<Foam::List<Foam::Vector<double> > >]
+ Foam::List<T>::List(const List<T>& a)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:88:1: note:   candidate expects 1 argument, 2 provided
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:63:1: note: candidate: Foam::List<T>::List(Foam::label, const T&) [with T = Foam::List<Foam::List<Foam::Vector<double> > >; Foam::label = int]
+ Foam::List<T>::List(const label s, const T& a)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:63:1: note:   no known conversion for argument 2 from ‘Foam::List<Foam::Vector<double> >’ to ‘const Foam::List<Foam::List<Foam::Vector<double> > >&’
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:43:1: note: candidate: Foam::List<T>::List(Foam::label) [with T = Foam::List<Foam::List<Foam::Vector<double> > >; Foam::label = int]
+ Foam::List<T>::List(const label s)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:43:1: note:   candidate expects 1 argument, 2 provided
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:254:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/ListI.H:29:8: note: candidate: Foam::List<T>::List() [with T = Foam::List<Foam::List<Foam::Vector<double> > >]
+ inline Foam::List<T>::List()
+        ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/ListI.H:29:8: note:   candidate expects 0 arguments, 2 provided
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:696:93: error: no matching function for call to ‘Foam::DynamicList<Foam::List<Foam::List<Foam::List<Foam::Vector<double> > > > >::append(Foam::List<Foam::List<Foam::Vector<double> > >)’
+         lineAlignedVectors.append(List<List<vector> >(NumBl[j],List<vector>(3,vector::zero)));
+                                                                                             ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/DynamicList.H:252:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/UPstream.H:43,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/Pstream.H:42,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/parRun.H:35,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:4,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/DynamicListI.H:309:1: note: candidate: Foam::DynamicList<T, SizeInc, SizeMult, SizeDiv>& Foam::DynamicList<T, SizeInc, SizeMult, SizeDiv>::append(const T&) [with T = Foam::List<Foam::List<Foam::List<Foam::Vector<double> > > >; unsigned int SizeInc = 0; unsigned int SizeMult = 2; unsigned int SizeDiv = 1]
+ Foam::DynamicList<T, SizeInc, SizeMult, SizeDiv>::append
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/DynamicListI.H:309:1: note:   no known conversion for argument 1 from ‘Foam::List<Foam::List<Foam::Vector<double> > >’ to ‘const Foam::List<Foam::List<Foam::List<Foam::Vector<double> > > >&’
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/DynamicListI.H:324:1: note: candidate: Foam::DynamicList<T, SizeInc, SizeMult, SizeDiv>& Foam::DynamicList<T, SizeInc, SizeMult, SizeDiv>::append(const Foam::UList<T>&) [with T = Foam::List<Foam::List<Foam::List<Foam::Vector<double> > > >; unsigned int SizeInc = 0; unsigned int SizeMult = 2; unsigned int SizeDiv = 1]
+ Foam::DynamicList<T, SizeInc, SizeMult, SizeDiv>::append
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/DynamicListI.H:324:1: note:   no known conversion for argument 1 from ‘Foam::List<Foam::List<Foam::Vector<double> > >’ to ‘const Foam::UList<Foam::List<Foam::List<Foam::List<Foam::Vector<double> > > > >&’
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/DynamicListI.H:351:1: note: candidate: Foam::DynamicList<T, SizeInc, SizeMult, SizeDiv>& Foam::DynamicList<T, SizeInc, SizeMult, SizeDiv>::append(const Foam::UIndirectList<T>&) [with T = Foam::List<Foam::List<Foam::List<Foam::Vector<double> > > >; unsigned int SizeInc = 0; unsigned int SizeMult = 2; unsigned int SizeDiv = 1]
+ Foam::DynamicList<T, SizeInc, SizeMult, SizeDiv>::append
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/DynamicListI.H:351:1: note:   no known conversion for argument 1 from ‘Foam::List<Foam::List<Foam::Vector<double> > >’ to ‘const Foam::UIndirectList<Foam::List<Foam::List<Foam::List<Foam::Vector<double> > > > >&’
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:699:106: error: no matching function for call to ‘Foam::List<Foam::List<Foam::List<Foam::Vector<double> > > >::List(int&, Foam::List<Foam::Vector<double> >)’
+         windVectors.append(List<List<List<vector>> >(NumBl[j],List<vector>(numLinePoints[i],vector::zero)));
+                                                                                                          ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:541:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:259,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/ListIO.C:36:1: note: candidate: Foam::List<T>::List(Foam::Istream&) [with T = Foam::List<Foam::List<Foam::Vector<double> > >]
+ Foam::List<T>::List(Istream& is)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/ListIO.C:36:1: note:   candidate expects 1 argument, 2 provided
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:259:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:289:1: note: candidate: Foam::List<T>::List(const Foam::BiIndirectList<T>&) [with T = Foam::List<Foam::List<Foam::Vector<double> > >]
+ Foam::List<T>::List(const BiIndirectList<T>& lst)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:289:1: note:   candidate expects 1 argument, 2 provided
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:271:1: note: candidate: Foam::List<T>::List(const Foam::UIndirectList<T>&) [with T = Foam::List<Foam::List<Foam::Vector<double> > >]
+ Foam::List<T>::List(const UIndirectList<T>& lst)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:271:1: note:   candidate expects 1 argument, 2 provided
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:247:1: note: candidate: Foam::List<T>::List(const Foam::SLList<T>&) [with T = Foam::List<Foam::List<Foam::Vector<double> > >]
+ Foam::List<T>::List(const SLList<T>& lst)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:247:1: note:   candidate expects 1 argument, 2 provided
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:229:1: note: candidate: Foam::List<T>::List(const Foam::PtrList<T>&) [with T = Foam::List<Foam::List<Foam::Vector<double> > >]
+ Foam::List<T>::List(const PtrList<T>& lst)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:229:1: note:   candidate expects 1 argument, 2 provided
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:126:18: note: candidate: template<unsigned int Size> Foam::List<T>::List(const Foam::FixedList<T, Size>&)
+         explicit List(const FixedList<T, Size>&);
+                  ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:126:18: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:699:106: note:   mismatched types ‘const Foam::FixedList<Foam::List<Foam::List<Foam::Vector<double> > >, Size>’ and ‘int’
+         windVectors.append(List<List<List<vector>> >(NumBl[j],List<vector>(numLinePoints[i],vector::zero)));
+                                                                                                          ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:122:9: note: candidate: template<class InputIterator> Foam::List<T>::List(InputIterator, InputIterator)
+         List(InputIterator first, InputIterator last);
+         ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:122:9: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:699:106: note:   deduced conflicting types for parameter ‘InputIterator’ (‘int’ and ‘Foam::List<Foam::Vector<double> >’)
+         windVectors.append(List<List<List<vector>> >(NumBl[j],List<vector>(numLinePoints[i],vector::zero)));
+                                                                                                          ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:259:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:158:1: note: candidate: Foam::List<T>::List(const Foam::UList<T>&, const labelUList&) [with T = Foam::List<Foam::List<Foam::Vector<double> > >; Foam::labelUList = Foam::UList<int>]
+ Foam::List<T>::List(const UList<T>& a, const labelUList& map)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:158:1: note:   no known conversion for argument 1 from ‘int’ to ‘const Foam::UList<Foam::List<Foam::List<Foam::Vector<double> > > >&’
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:124:1: note: candidate: Foam::List<T>::List(Foam::List<T>&, bool) [with T = Foam::List<Foam::List<Foam::Vector<double> > >]
+ Foam::List<T>::List(List<T>& a, bool reUse)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:124:1: note:   no known conversion for argument 1 from ‘int’ to ‘Foam::List<Foam::List<Foam::List<Foam::Vector<double> > > >&’
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:116:1: note: candidate: Foam::List<T>::List(const Foam::Xfer<Foam::List<T> >&) [with T = Foam::List<Foam::List<Foam::Vector<double> > >]
+ Foam::List<T>::List(const Xfer<List<T> >& lst)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:116:1: note:   candidate expects 1 argument, 2 provided
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:88:1: note: candidate: Foam::List<T>::List(const Foam::List<T>&) [with T = Foam::List<Foam::List<Foam::Vector<double> > >]
+ Foam::List<T>::List(const List<T>& a)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:88:1: note:   candidate expects 1 argument, 2 provided
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:63:1: note: candidate: Foam::List<T>::List(Foam::label, const T&) [with T = Foam::List<Foam::List<Foam::Vector<double> > >; Foam::label = int]
+ Foam::List<T>::List(const label s, const T& a)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:63:1: note:   no known conversion for argument 2 from ‘Foam::List<Foam::Vector<double> >’ to ‘const Foam::List<Foam::List<Foam::Vector<double> > >&’
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:43:1: note: candidate: Foam::List<T>::List(Foam::label) [with T = Foam::List<Foam::List<Foam::Vector<double> > >; Foam::label = int]
+ Foam::List<T>::List(const label s)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:43:1: note:   candidate expects 1 argument, 2 provided
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:254:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/ListI.H:29:8: note: candidate: Foam::List<T>::List() [with T = Foam::List<Foam::List<Foam::Vector<double> > >]
+ inline Foam::List<T>::List()
+        ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/ListI.H:29:8: note:   candidate expects 0 arguments, 2 provided
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:706:92: error: no matching function for call to ‘Foam::List<Foam::List<Foam::List<double> > >::List(int&, Foam::List<double>)’
+         alpha.append(List<List<List<scalar>> >(NumBl[j], List<scalar>(numLinePoints[i],0.0)));
+                                                                                            ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:541:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:259,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/ListIO.C:36:1: note: candidate: Foam::List<T>::List(Foam::Istream&) [with T = Foam::List<Foam::List<double> >]
+ Foam::List<T>::List(Istream& is)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/ListIO.C:36:1: note:   candidate expects 1 argument, 2 provided
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:259:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:289:1: note: candidate: Foam::List<T>::List(const Foam::BiIndirectList<T>&) [with T = Foam::List<Foam::List<double> >]
+ Foam::List<T>::List(const BiIndirectList<T>& lst)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:289:1: note:   candidate expects 1 argument, 2 provided
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:271:1: note: candidate: Foam::List<T>::List(const Foam::UIndirectList<T>&) [with T = Foam::List<Foam::List<double> >]
+ Foam::List<T>::List(const UIndirectList<T>& lst)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:271:1: note:   candidate expects 1 argument, 2 provided
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:247:1: note: candidate: Foam::List<T>::List(const Foam::SLList<T>&) [with T = Foam::List<Foam::List<double> >]
+ Foam::List<T>::List(const SLList<T>& lst)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:247:1: note:   candidate expects 1 argument, 2 provided
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:229:1: note: candidate: Foam::List<T>::List(const Foam::PtrList<T>&) [with T = Foam::List<Foam::List<double> >]
+ Foam::List<T>::List(const PtrList<T>& lst)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:229:1: note:   candidate expects 1 argument, 2 provided
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:126:18: note: candidate: template<unsigned int Size> Foam::List<T>::List(const Foam::FixedList<T, Size>&)
+         explicit List(const FixedList<T, Size>&);
+                  ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:126:18: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:706:92: note:   mismatched types ‘const Foam::FixedList<Foam::List<Foam::List<double> >, Size>’ and ‘int’
+         alpha.append(List<List<List<scalar>> >(NumBl[j], List<scalar>(numLinePoints[i],0.0)));
+                                                                                            ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:122:9: note: candidate: template<class InputIterator> Foam::List<T>::List(InputIterator, InputIterator)
+         List(InputIterator first, InputIterator last);
+         ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:122:9: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:706:92: note:   deduced conflicting types for parameter ‘InputIterator’ (‘int’ and ‘Foam::List<double>’)
+         alpha.append(List<List<List<scalar>> >(NumBl[j], List<scalar>(numLinePoints[i],0.0)));
+                                                                                            ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:259:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:158:1: note: candidate: Foam::List<T>::List(const Foam::UList<T>&, const labelUList&) [with T = Foam::List<Foam::List<double> >; Foam::labelUList = Foam::UList<int>]
+ Foam::List<T>::List(const UList<T>& a, const labelUList& map)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:158:1: note:   no known conversion for argument 1 from ‘int’ to ‘const Foam::UList<Foam::List<Foam::List<double> > >&’
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:124:1: note: candidate: Foam::List<T>::List(Foam::List<T>&, bool) [with T = Foam::List<Foam::List<double> >]
+ Foam::List<T>::List(List<T>& a, bool reUse)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:124:1: note:   no known conversion for argument 1 from ‘int’ to ‘Foam::List<Foam::List<Foam::List<double> > >&’
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:116:1: note: candidate: Foam::List<T>::List(const Foam::Xfer<Foam::List<T> >&) [with T = Foam::List<Foam::List<double> >]
+ Foam::List<T>::List(const Xfer<List<T> >& lst)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:116:1: note:   candidate expects 1 argument, 2 provided
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:88:1: note: candidate: Foam::List<T>::List(const Foam::List<T>&) [with T = Foam::List<Foam::List<double> >]
+ Foam::List<T>::List(const List<T>& a)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:88:1: note:   candidate expects 1 argument, 2 provided
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:63:1: note: candidate: Foam::List<T>::List(Foam::label, const T&) [with T = Foam::List<Foam::List<double> >; Foam::label = int]
+ Foam::List<T>::List(const label s, const T& a)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:63:1: note:   no known conversion for argument 2 from ‘Foam::List<double>’ to ‘const Foam::List<Foam::List<double> >&’
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:43:1: note: candidate: Foam::List<T>::List(Foam::label) [with T = Foam::List<Foam::List<double> >; Foam::label = int]
+ Foam::List<T>::List(const label s)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:43:1: note:   candidate expects 1 argument, 2 provided
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:254:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/ListI.H:29:8: note: candidate: Foam::List<T>::List() [with T = Foam::List<Foam::List<double> >]
+ inline Foam::List<T>::List()
+        ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/ListI.H:29:8: note:   candidate expects 0 arguments, 2 provided
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:709:91: error: no matching function for call to ‘Foam::List<Foam::List<Foam::List<double> > >::List(int&, Foam::List<double>)’
+         Vmag.append(List<List<List<scalar>> >(NumBl[j], List<scalar>(numLinePoints[i],0.0)));
+                                                                                           ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:541:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:259,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/ListIO.C:36:1: note: candidate: Foam::List<T>::List(Foam::Istream&) [with T = Foam::List<Foam::List<double> >]
+ Foam::List<T>::List(Istream& is)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/ListIO.C:36:1: note:   candidate expects 1 argument, 2 provided
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:259:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:289:1: note: candidate: Foam::List<T>::List(const Foam::BiIndirectList<T>&) [with T = Foam::List<Foam::List<double> >]
+ Foam::List<T>::List(const BiIndirectList<T>& lst)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:289:1: note:   candidate expects 1 argument, 2 provided
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:271:1: note: candidate: Foam::List<T>::List(const Foam::UIndirectList<T>&) [with T = Foam::List<Foam::List<double> >]
+ Foam::List<T>::List(const UIndirectList<T>& lst)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:271:1: note:   candidate expects 1 argument, 2 provided
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:247:1: note: candidate: Foam::List<T>::List(const Foam::SLList<T>&) [with T = Foam::List<Foam::List<double> >]
+ Foam::List<T>::List(const SLList<T>& lst)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:247:1: note:   candidate expects 1 argument, 2 provided
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:229:1: note: candidate: Foam::List<T>::List(const Foam::PtrList<T>&) [with T = Foam::List<Foam::List<double> >]
+ Foam::List<T>::List(const PtrList<T>& lst)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:229:1: note:   candidate expects 1 argument, 2 provided
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:126:18: note: candidate: template<unsigned int Size> Foam::List<T>::List(const Foam::FixedList<T, Size>&)
+         explicit List(const FixedList<T, Size>&);
+                  ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:126:18: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:709:91: note:   mismatched types ‘const Foam::FixedList<Foam::List<Foam::List<double> >, Size>’ and ‘int’
+         Vmag.append(List<List<List<scalar>> >(NumBl[j], List<scalar>(numLinePoints[i],0.0)));
+                                                                                           ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:122:9: note: candidate: template<class InputIterator> Foam::List<T>::List(InputIterator, InputIterator)
+         List(InputIterator first, InputIterator last);
+         ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:122:9: note:   template argument deduction/substitution failed:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:709:91: note:   deduced conflicting types for parameter ‘InputIterator’ (‘int’ and ‘Foam::List<double>’)
+         Vmag.append(List<List<List<scalar>> >(NumBl[j], List<scalar>(numLinePoints[i],0.0)));
+                                                                                           ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:259:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:158:1: note: candidate: Foam::List<T>::List(const Foam::UList<T>&, const labelUList&) [with T = Foam::List<Foam::List<double> >; Foam::labelUList = Foam::UList<int>]
+ Foam::List<T>::List(const UList<T>& a, const labelUList& map)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:158:1: note:   no known conversion for argument 1 from ‘int’ to ‘const Foam::UList<Foam::List<Foam::List<double> > >&’
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:124:1: note: candidate: Foam::List<T>::List(Foam::List<T>&, bool) [with T = Foam::List<Foam::List<double> >]
+ Foam::List<T>::List(List<T>& a, bool reUse)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:124:1: note:   no known conversion for argument 1 from ‘int’ to ‘Foam::List<Foam::List<Foam::List<double> > >&’
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:116:1: note: candidate: Foam::List<T>::List(const Foam::Xfer<Foam::List<T> >&) [with T = Foam::List<Foam::List<double> >]
+ Foam::List<T>::List(const Xfer<List<T> >& lst)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:116:1: note:   candidate expects 1 argument, 2 provided
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:88:1: note: candidate: Foam::List<T>::List(const Foam::List<T>&) [with T = Foam::List<Foam::List<double> >]
+ Foam::List<T>::List(const List<T>& a)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:88:1: note:   candidate expects 1 argument, 2 provided
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:63:1: note: candidate: Foam::List<T>::List(Foam::label, const T&) [with T = Foam::List<Foam::List<double> >; Foam::label = int]
+ Foam::List<T>::List(const label s, const T& a)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:63:1: note:   no known conversion for argument 2 from ‘Foam::List<double>’ to ‘const Foam::List<Foam::List<double> >&’
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:43:1: note: candidate: Foam::List<T>::List(Foam::label) [with T = Foam::List<Foam::List<double> >; Foam::label = int]
+ Foam::List<T>::List(const label s)
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.C:43:1: note:   candidate expects 1 argument, 2 provided
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:254:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/ListI.H:29:8: note: candidate: Foam::List<T>::List() [with T = Foam::List<Foam::List<double> >]
+ inline Foam::List<T>::List()
+        ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/ListI.H:29:8: note:   candidate expects 0 arguments, 2 provided
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:712:24: error: temporary of non-literal type ‘Foam::List<Foam::List<double> >’ in a constant expression
+         Cl.append(List<List<List<scalar> >(NumBl[j], List<scalar>(numLinePoints[i],0.0)));
+                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:78:7: note: ‘Foam::List<Foam::List<double> >’ is not literal because:
+ class List
+       ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:78:7: note:   ‘Foam::List<Foam::List<double> >’ has a non-trivial destructor
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:712:88: error: type/value mismatch at argument 1 in template parameter list for ‘template<class T> class Foam::List’
+         Cl.append(List<List<List<scalar> >(NumBl[j], List<scalar>(numLinePoints[i],0.0)));
+                                                                                        ^
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:712:88: note:   expected a type, got ‘Foam::List<Foam::List<double> >(((Foam::turbineModels::horizontalAxisWindTurbinesACS*)this)->Foam::turbineModels::horizontalAxisWindTurbinesACS::NumBl.Foam::DynamicList<int>::<anonymous>.Foam::List<int>::<anonymous>.Foam::UList<int>::operator[](j), Foam::List<double>(((Foam::turbineModels::horizontalAxisWindTurbinesACS*)this)->Foam::turbineModels::horizontalAxisWindTurbinesACS::numLinePoints.Foam::DynamicList<int>::<anonymous>.Foam::List<int>::<anonymous>.Foam::UList<int>::operator[](i), 0.0))’
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:715:24: error: temporary of non-literal type ‘Foam::List<Foam::List<double> >’ in a constant expression
+         Cd.append(List<List<List<scalar> >(NumBl[j], List<scalar>(numLinePoints[i],0.0)));
+                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:715:88: error: type/value mismatch at argument 1 in template parameter list for ‘template<class T> class Foam::List’
+         Cd.append(List<List<List<scalar> >(NumBl[j], List<scalar>(numLinePoints[i],0.0)));
+                                                                                        ^
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:715:88: note:   expected a type, got ‘Foam::List<Foam::List<double> >(((Foam::turbineModels::horizontalAxisWindTurbinesACS*)this)->Foam::turbineModels::horizontalAxisWindTurbinesACS::NumBl.Foam::DynamicList<int>::<anonymous>.Foam::List<int>::<anonymous>.Foam::UList<int>::operator[](j), Foam::List<double>(((Foam::turbineModels::horizontalAxisWindTurbinesACS*)this)->Foam::turbineModels::horizontalAxisWindTurbinesACS::numLinePoints.Foam::DynamicList<int>::<anonymous>.Foam::List<int>::<anonymous>.Foam::UList<int>::operator[](i), 0.0))’
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:718:26: error: temporary of non-literal type ‘Foam::List<Foam::List<double> >’ in a constant expression
+         lift.append(List<List<List<scalar> >(NumBl[j], List<scalar>(numLinePoints[i],0.0)));
+                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:718:90: error: type/value mismatch at argument 1 in template parameter list for ‘template<class T> class Foam::List’
+         lift.append(List<List<List<scalar> >(NumBl[j], List<scalar>(numLinePoints[i],0.0)));
+                                                                                          ^
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:718:90: note:   expected a type, got ‘Foam::List<Foam::List<double> >(((Foam::turbineModels::horizontalAxisWindTurbinesACS*)this)->Foam::turbineModels::horizontalAxisWindTurbinesACS::NumBl.Foam::DynamicList<int>::<anonymous>.Foam::List<int>::<anonymous>.Foam::UList<int>::operator[](j), Foam::List<double>(((Foam::turbineModels::horizontalAxisWindTurbinesACS*)this)->Foam::turbineModels::horizontalAxisWindTurbinesACS::numLinePoints.Foam::DynamicList<int>::<anonymous>.Foam::List<int>::<anonymous>.Foam::UList<int>::operator[](i), 0.0))’
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:721:26: error: temporary of non-literal type ‘Foam::List<Foam::List<double> >’ in a constant expression
+         drag.append(List<List<List<scalar> >(NumBl[j], List<scalar>(numLinePoints[i],0.0)));
+                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:721:90: error: type/value mismatch at argument 1 in template parameter list for ‘template<class T> class Foam::List’
+         drag.append(List<List<List<scalar> >(NumBl[j], List<scalar>(numLinePoints[i],0.0)));
+                                                                                          ^
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:721:90: note:   expected a type, got ‘Foam::List<Foam::List<double> >(((Foam::turbineModels::horizontalAxisWindTurbinesACS*)this)->Foam::turbineModels::horizontalAxisWindTurbinesACS::NumBl.Foam::DynamicList<int>::<anonymous>.Foam::List<int>::<anonymous>.Foam::UList<int>::operator[](j), Foam::List<double>(((Foam::turbineModels::horizontalAxisWindTurbinesACS*)this)->Foam::turbineModels::horizontalAxisWindTurbinesACS::numLinePoints.Foam::DynamicList<int>::<anonymous>.Foam::List<int>::<anonymous>.Foam::UList<int>::operator[](i), 0.0))’
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:724:32: error: temporary of non-literal type ‘Foam::List<Foam::List<double> >’ in a constant expression
+         axialForce.append(List<List<List<scalar> >(NumBl[j], List<scalar>(numLinePoints[i],0.0)));
+                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:724:96: error: type/value mismatch at argument 1 in template parameter list for ‘template<class T> class Foam::List’
+         axialForce.append(List<List<List<scalar> >(NumBl[j], List<scalar>(numLinePoints[i],0.0)));
+                                                                                                ^
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:724:96: note:   expected a type, got ‘Foam::List<Foam::List<double> >(((Foam::turbineModels::horizontalAxisWindTurbinesACS*)this)->Foam::turbineModels::horizontalAxisWindTurbinesACS::NumBl.Foam::DynamicList<int>::<anonymous>.Foam::List<int>::<anonymous>.Foam::UList<int>::operator[](j), Foam::List<double>(((Foam::turbineModels::horizontalAxisWindTurbinesACS*)this)->Foam::turbineModels::horizontalAxisWindTurbinesACS::numLinePoints.Foam::DynamicList<int>::<anonymous>.Foam::List<int>::<anonymous>.Foam::UList<int>::operator[](i), 0.0))’
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:727:97: error: no matching function for call to ‘Foam::DynamicList<Foam::List<Foam::List<Foam::List<double> > > >::append(Foam::List<Foam::List<double> >)’
+         tangentialForce.append(List<List<scalar> >(NumBl[j], List<scalar>(numLinePoints[i],0.0)));
+                                                                                                 ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/DynamicList.H:252:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/UPstream.H:43,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/Pstream.H:42,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/parRun.H:35,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:4,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:62,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/DynamicListI.H:309:1: note: candidate: Foam::DynamicList<T, SizeInc, SizeMult, SizeDiv>& Foam::DynamicList<T, SizeInc, SizeMult, SizeDiv>::append(const T&) [with T = Foam::List<Foam::List<Foam::List<double> > >; unsigned int SizeInc = 0; unsigned int SizeMult = 2; unsigned int SizeDiv = 1]
+ Foam::DynamicList<T, SizeInc, SizeMult, SizeDiv>::append
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/DynamicListI.H:309:1: note:   no known conversion for argument 1 from ‘Foam::List<Foam::List<double> >’ to ‘const Foam::List<Foam::List<Foam::List<double> > >&’
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/DynamicListI.H:324:1: note: candidate: Foam::DynamicList<T, SizeInc, SizeMult, SizeDiv>& Foam::DynamicList<T, SizeInc, SizeMult, SizeDiv>::append(const Foam::UList<T>&) [with T = Foam::List<Foam::List<Foam::List<double> > >; unsigned int SizeInc = 0; unsigned int SizeMult = 2; unsigned int SizeDiv = 1]
+ Foam::DynamicList<T, SizeInc, SizeMult, SizeDiv>::append
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/DynamicListI.H:324:1: note:   no known conversion for argument 1 from ‘Foam::List<Foam::List<double> >’ to ‘const Foam::UList<Foam::List<Foam::List<Foam::List<double> > > >&’
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/DynamicListI.H:351:1: note: candidate: Foam::DynamicList<T, SizeInc, SizeMult, SizeDiv>& Foam::DynamicList<T, SizeInc, SizeMult, SizeDiv>::append(const Foam::UIndirectList<T>&) [with T = Foam::List<Foam::List<Foam::List<double> > >; unsigned int SizeInc = 0; unsigned int SizeMult = 2; unsigned int SizeDiv = 1]
+ Foam::DynamicList<T, SizeInc, SizeMult, SizeDiv>::append
+ ^~~~
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/DynamicListI.H:351:1: note:   no known conversion for argument 1 from ‘Foam::List<Foam::List<double> >’ to ‘const Foam::UIndirectList<Foam::List<Foam::List<Foam::List<double> > > >&’
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C: In member function ‘void Foam::turbineModels::horizontalAxisWindTurbinesACS::rotateBlades()’:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:799:115: error: no matching function for call to ‘Foam::turbineModels::horizontalAxisWindTurbinesACS::rotatePoint(Foam::List<Foam::Vector<double> >&, Foam::Vector<double>&, Foam::Vector<double>&, Foam::scalar&)’
+                 sectorPoints[i][j][k] = rotatePoint(sectorPoints[i][j][k], rotorApex[i], uvShaft[i], deltaAzimuthI);
+                                                                                                                   ^
+In file included from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:0:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:699:16: note: candidate: Foam::vector Foam::turbineModels::horizontalAxisWindTurbinesACS::rotatePoint(Foam::vector, Foam::vector, Foam::vector, Foam::scalar)
+         vector rotatePoint(vector point, vector rotationPoint, vector axis, scalar angle);
+                ^~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:699:16: note:   no known conversion for argument 1 from ‘Foam::List<Foam::Vector<double> >’ to ‘Foam::vector {aka Foam::Vector<double>}’
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C: In member function ‘void Foam::turbineModels::horizontalAxisWindTurbinesACS::yawNacelle()’:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:834:126: error: no matching function for call to ‘Foam::turbineModels::horizontalAxisWindTurbinesACS::rotatePoint(Foam::List<Foam::Vector<double> >&, Foam::Vector<double>&, Foam::Vector<double>&, double&)’
+                 sectorPoints[i][j][k] = rotatePoint(sectorPoints[i][j][k], towerShaftIntersect[i], uvTower[i], deltaNacYaw[i]);
+                                                                                                                              ^
+In file included from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:0:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:699:16: note: candidate: Foam::vector Foam::turbineModels::horizontalAxisWindTurbinesACS::rotatePoint(Foam::vector, Foam::vector, Foam::vector, Foam::scalar)
+         vector rotatePoint(vector point, vector rotationPoint, vector axis, scalar angle);
+                ^~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:699:16: note:   no known conversion for argument 1 from ‘Foam::List<Foam::Vector<double> >’ to ‘Foam::vector {aka Foam::Vector<double>}’
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C: In member function ‘void Foam::turbineModels::horizontalAxisWindTurbinesACS::findControlProcNo()’:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1042:26: error: no match for ‘operator+=’ (operand types are ‘int’ and ‘Foam::tmp<Foam::Field<int> >’)
+                     iter += numLinePoints[n] *numLines* NumBl[turbineTypeID[n]];
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1055:117: error: cannot convert ‘Foam::tmp<Foam::Field<double> >’ to ‘Foam::scalar {aka double}’ in initialization
+                 scalar minDis = mag(mesh_.C()[cellID] - (sectorPoints[i][j][k] + sectorPointsPerturbVector[i][j][k]));
+                                                                                                                     ^
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1059:129: error: cannot convert ‘Foam::tmp<Foam::Field<double> >’ to ‘Foam::scalar {aka double}’ in initialization
+                     scalar dis = mag(mesh_.C()[sphereCells[i][m]] - (sectorPoints[i][j][k] + sectorPointsPerturbVector[i][j][k]));
+                                                                                                                                 ^
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1064:114: error: cannot convert ‘Foam::tmp<Foam::Field<double> >’ to ‘Foam::scalar {aka double}’ in assignment
+                     minDis = mag(mesh_.C()[cellID] - (sectorPoints[i][j][k] + sectorPointsPerturbVector[i][j][k]));
+                                                                                                                  ^
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1089:22: error: no match for ‘operator+=’ (operand types are ‘int’ and ‘Foam::tmp<Foam::Field<int> >’)
+                 iter += numLinePoints[n] *numLines* NumBl[turbineTypeID[n]];      //iter = no. of points on one line  * total number of lines ; total no. of lines  = numLines[j] * NumBl[turbineTypeID[n]]
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C: In member function ‘void Foam::turbineModels::horizontalAxisWindTurbinesACS::computeWindVectors()’:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1125:22: error: no match for ‘operator+=’ (operand types are ‘int’ and ‘Foam::tmp<Foam::Field<int> >’)
+                 iter += numLinePoints[n] *numLines* NumBl[turbineTypeID[n]];           //iter = no. of points on one line  * total number of lines ; total no. of lines  = numLines[j] * NumBl[turbineTypeID[n]]
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1144:59: error: conversion from ‘Foam::tmp<Foam::Field<Foam::Vector<double> > >’ to non-scalar type ‘Foam::vector {aka Foam::Vector<double>}’ requested
+                         vector dx = sectorPoints[i][j][k] - mesh_.C()[minDisCellID[i][j][k]];
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C: In member function ‘void Foam::turbineModels::horizontalAxisWindTurbinesACS::computeBladeForce()’:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1243:179: error: invalid types ‘double[Foam::label {aka int}]’ for array subscript
+                 windVectors[i][j][lineId][k].y() = (lineAlignedVectors[i][j][lineId][1] & windVectorsInt) + (rotSpeed[i] * bladeRadius[i][j][lineId][k] * cos(PreCone[n][j][lineId]));
+                                                                                                                                                                                   ^
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1330:37: error: invalid types ‘double[Foam::label {aka int}]’ for array subscript
+                 lift[i][j][lineId][k] = 0.5 * Cl[i][j][lineId][k] * Vmag[i][j][lineId][k] * Vmag[i][j][lineId][k] * chord * db[i][k];
+                                     ^
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1331:37: error: invalid types ‘double[Foam::label {aka int}]’ for array subscript
+                 drag[i][j][lineId][k] = 0.5 * Cd[i][j][lineId][k]* Vmag[i][j][lineId][k] * Vmag[i][j][lineId][k] * chord * db[i][k];
+                                     ^
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1340:51: error: invalid types ‘double[Foam::label {aka int}]’ for array subscript
+                 liftVector = -lift[i][j][lineId][k] * liftVector;
+                                                   ^
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1341:51: error: invalid types ‘double[Foam::label {aka int}]’ for array subscript
+                 dragVector = -drag[i][j][lineId][k] * dragVector;
+                                                   ^
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C: At global scope:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1376:6: error: ‘horizontalAxisWindTurbinesACS’ has not been declared
+ void horizontalAxisWindTurbinesACS::computeBodyForce()
+      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C: In function ‘void Foam::computeBodyForce()’:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1379:5: error: ‘bodyForce’ was not declared in this scope
+     bodyForce *= 0.0;
+     ^~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1379:5: note: suggested alternative: ‘dimForce’
+     bodyForce *= 0.0;
+     ^~~~~~~~~
+     dimForce
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/List.H:43:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.C:30,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:555,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.H:58,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:36:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1387:12: error: ‘bladeForce’ was not declared in this scope
+     forAll(bladeForce, i)
+            ^
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/UList.H:422:30: note: in definition of macro ‘forAll’
+     for (Foam::label i=0; i<(list).size(); i++)
+                              ^~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1387:12: note: suggested alternative: ‘dimForce’
+     forAll(bladeForce, i)
+            ^
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/UList.H:422:30: note: in definition of macro ‘forAll’
+     for (Foam::label i=0; i<(list).size(); i++)
+                              ^~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1390:17: error: ‘turbineTypeID’ was not declared in this scope
+         int n = turbineTypeID[i];
+                 ^~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1393:13: error: ‘sphereCells’ was not declared in this scope
+         if (sphereCells[i].size() > 0)
+             ^~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1410:42: error: ‘mesh_’ was not declared in this scope
+                         scalar dis = mag(mesh_.C()[sphereCells[i][m]] - sectorPoints[i][j][lineId][k]);
+                                          ^~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1410:73: error: ‘sectorPoints’ was not declared in this scope
+                         scalar dis = mag(mesh_.C()[sphereCells[i][m]] - sectorPoints[i][j][lineId][k]);
+                                                                         ^~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1410:73: note: suggested alternative: ‘mergePoints’
+                         scalar dis = mag(mesh_.C()[sphereCells[i][m]] - sectorPoints[i][j][lineId][k]);
+                                                                         ^~~~~~~~~~~~
+                                                                         mergePoints
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1411:36: error: ‘projectionRadius’ was not declared in this scope
+                         if (dis <= projectionRadius[i])
+                                    ^~~~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1413:117: error: ‘epsilon’ was not declared in this scope
+                             bodyForce[sphereCells[i][m]] += bladeForce[i][j][lineId][k] * (Foam::exp(-Foam::sqr(dis/epsilon[i]))/(Foam::pow(epsilon[i],3)*Foam::pow(Foam::constant::mathematical::pi,1.5)));
+                                                                                                                     ^~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1415:85: error: ‘uvShaft’ was not declared in this scope
+                                                     mesh_.V()[sphereCells[i][m]]) & uvShaft[i];
+                                                                                     ^~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1417:53: error: ‘bladeRadius’ was not declared in this scope
+                                                     bladeRadius[i][j][lineId][k] * cos(PreCone[n][j]) * mesh_.V()[sphereCells[i][m]]) & lineAlignedVectors[i][j][lineId][1];
+                                                     ^~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1417:88: error: ‘PreCone’ was not declared in this scope
+                                                     bladeRadius[i][j][lineId][k] * cos(PreCone[n][j]) * mesh_.V()[sphereCells[i][m]]) & lineAlignedVectors[i][j][lineId][1];
+                                                                                        ^~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1417:88: note: suggested alternative: ‘remove’
+                                                     bladeRadius[i][j][lineId][k] * cos(PreCone[n][j]) * mesh_.V()[sphereCells[i][m]]) & lineAlignedVectors[i][j][lineId][1];
+                                                                                        ^~~~~~~
+                                                                                        remove
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1417:137: error: ‘lineAlignedVectors’ was not declared in this scope
+                                                     bladeRadius[i][j][lineId][k] * cos(PreCone[n][j]) * mesh_.V()[sphereCells[i][m]]) & lineAlignedVectors[i][j][lineId][1];
+                                                                                                                                         ^~~~~~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1417:137: note: suggested alternative: ‘dimensionedVector’
+                                                     bladeRadius[i][j][lineId][k] * cos(PreCone[n][j]) * mesh_.V()[sphereCells[i][m]]) & lineAlignedVectors[i][j][lineId][1];
+                                                                                                                                         ^~~~~~~~~~~~~~~~~~
+                                                                                                                                         dimensionedVector
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1425:22: error: ‘thrust’ was not declared in this scope
+         thrustSum += thrust[i];
+                      ^~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1425:22: note: suggested alternative: ‘thrustSum’
+         thrustSum += thrust[i];
+                      ^~~~~~
+                      thrustSum
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1426:22: error: ‘torqueRotor’ was not declared in this scope
+         torqueSum += torqueRotor[i];
+                      ^~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1426:22: note: suggested alternative: ‘torqueSum’
+         torqueSum += torqueRotor[i];
+                      ^~~~~~~~~~~
+                      torqueSum
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C: At global scope:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1437:8: error: ‘horizontalAxisWindTurbinesACS’ has not been declared
+ vector horizontalAxisWindTurbinesACS::rotatePoint(vector point, vector rotationPoint, vector axis, scalar angle)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1467:8: error: ‘horizontalAxisWindTurbinesACS’ has not been declared
+ scalar horizontalAxisWindTurbinesACS::interpolate(scalar xNew, DynamicList<scalar>& xOld, DynamicList<scalar>& yOld)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1521:7: error: ‘horizontalAxisWindTurbinesACS’ has not been declared
+ label horizontalAxisWindTurbinesACS::interpolate(scalar xNew, DynamicList<scalar>& xOld, DynamicList<label>& yOld)
+       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1574:8: error: ‘horizontalAxisWindTurbinesACS’ has not been declared
+ scalar horizontalAxisWindTurbinesACS::compassToStandard(scalar dir)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1589:8: error: ‘horizontalAxisWindTurbinesACS’ has not been declared
+ scalar horizontalAxisWindTurbinesACS::standardToCompass(scalar dir)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1604:6: error: ‘horizontalAxisWindTurbinesACS’ has not been declared
+ void horizontalAxisWindTurbinesACS::update()
+      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C: In function ‘void Foam::update()’:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1607:5: error: ‘dt’ was not declared in this scope
+     dt = runTime_.deltaT().value();
+     ^~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1607:5: note: suggested alternative: ‘det’
+     dt = runTime_.deltaT().value();
+     ^~
+     det
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1607:10: error: ‘runTime_’ was not declared in this scope
+     dt = runTime_.deltaT().value();
+          ^~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1607:10: note: suggested alternative: ‘dimTime’
+     dt = runTime_.deltaT().value();
+          ^~~~~~~~
+          dimTime
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1611:5: error: ‘t’ was not declared in this scope
+     t = runTime_.value();
+     ^
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1611:5: note: suggested alternative: ‘tr’
+     t = runTime_.value();
+     ^
+     tr
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1613:8: error: ‘bladeUpdateType’ was not declared in this scope
+     if(bladeUpdateType[0] == "oldPosition")
+        ^~~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1618:9: error: ‘findControlProcNo’ was not declared in this scope
+         findControlProcNo();
+         ^~~~~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1619:9: error: ‘computeWindVectors’ was not declared in this scope
+         computeWindVectors();
+         ^~~~~~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1619:9: note: suggested alternative: ‘computeBodyForce’
+         computeWindVectors();
+         ^~~~~~~~~~~~~~~~~~
+         computeBodyForce
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1622:9: error: ‘filterRotSpeed’ was not declared in this scope
+         filterRotSpeed();
+         ^~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1623:9: error: ‘controlGenTorque’ was not declared in this scope
+         controlGenTorque();
+         ^~~~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1624:9: error: ‘controlBladePitch’ was not declared in this scope
+         controlBladePitch();
+         ^~~~~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1625:9: error: ‘controlNacYaw’ was not declared in this scope
+         controlNacYaw();
+         ^~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1626:9: error: ‘computeRotSpeed’ was not declared in this scope
+         computeRotSpeed();
+         ^~~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1626:9: note: suggested alternative: ‘computeBodyForce’
+         computeRotSpeed();
+         ^~~~~~~~~~~~~~~
+         computeBodyForce
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1627:9: error: ‘rotateBlades’ was not declared in this scope
+         rotateBlades();
+         ^~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1627:9: note: suggested alternative: ‘rotatePoint’
+         rotateBlades();
+         ^~~~~~~~~~~~
+         rotatePoint
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1628:9: error: ‘yawNacelle’ was not declared in this scope
+         yawNacelle();
+         ^~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1629:9: error: ‘printDebug’ was not declared in this scope
+         printDebug();
+         ^~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1629:9: note: suggested alternative: ‘pointMesh’
+         printDebug();
+         ^~~~~~~~~~
+         pointMesh
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1634:9: error: ‘filterRotSpeed’ was not declared in this scope
+         filterRotSpeed();
+         ^~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1635:9: error: ‘controlGenTorque’ was not declared in this scope
+         controlGenTorque();
+         ^~~~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1636:9: error: ‘controlBladePitch’ was not declared in this scope
+         controlBladePitch();
+         ^~~~~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1637:9: error: ‘controlNacYaw’ was not declared in this scope
+         controlNacYaw();
+         ^~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1638:9: error: ‘computeRotSpeed’ was not declared in this scope
+         computeRotSpeed();
+         ^~~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1638:9: note: suggested alternative: ‘computeBodyForce’
+         computeRotSpeed();
+         ^~~~~~~~~~~~~~~
+         computeBodyForce
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1639:9: error: ‘rotateBlades’ was not declared in this scope
+         rotateBlades();
+         ^~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1639:9: note: suggested alternative: ‘rotatePoint’
+         rotateBlades();
+         ^~~~~~~~~~~~
+         rotatePoint
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1640:9: error: ‘yawNacelle’ was not declared in this scope
+         yawNacelle();
+         ^~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1645:9: error: ‘findControlProcNo’ was not declared in this scope
+         findControlProcNo();
+         ^~~~~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1646:9: error: ‘computeWindVectors’ was not declared in this scope
+         computeWindVectors();
+         ^~~~~~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1646:9: note: suggested alternative: ‘computeBodyForce’
+         computeWindVectors();
+         ^~~~~~~~~~~~~~~~~~
+         computeBodyForce
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1650:5: error: ‘computeBladeForce’ was not declared in this scope
+     computeBladeForce();
+     ^~~~~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1650:5: note: suggested alternative: ‘computeBodyForce’
+     computeBladeForce();
+     ^~~~~~~~~~~~~~~~~
+     computeBodyForce
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1658:9: error: ‘outputIndex’ was not declared in this scope
+         outputIndex++;
+         ^~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1660:13: error: ‘outputControl’ was not declared in this scope
+         if (outputControl == "timeStep")
+             ^~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1660:13: note: suggested alternative: ‘ParRunControl’
+         if (outputControl == "timeStep")
+             ^~~~~~~~~~~~~
+             ParRunControl
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1662:32: error: ‘outputInterval’ was not declared in this scope
+             if (outputIndex >= outputInterval)
+                                ^~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1665:10: error: ‘printOutputFiles’ was not declared in this scope
+          printOutputFiles();
+          ^~~~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1665:10: note: suggested alternative: ‘findEtcFiles’
+          printOutputFiles();
+          ^~~~~~~~~~~~~~~~
+          findEtcFiles
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1670:37: error: ‘lastOutputTime’ was not declared in this scope
+             if ((runTime_.value() - lastOutputTime) >= outputInterval)
+                                     ^~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1670:37: note: suggested alternative: ‘strptime’
+             if ((runTime_.value() - lastOutputTime) >= outputInterval)
+                                     ^~~~~~~~~~~~~~
+                                     strptime
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1670:56: error: ‘outputInterval’ was not declared in this scope
+             if ((runTime_.value() - lastOutputTime) >= outputInterval)
+                                                        ^~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1673:10: error: ‘printOutputFiles’ was not declared in this scope
+          printOutputFiles();
+          ^~~~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1673:10: note: suggested alternative: ‘findEtcFiles’
+          printOutputFiles();
+          ^~~~~~~~~~~~~~~~
+          findEtcFiles
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1678:13: error: ‘printOutputFiles’ was not declared in this scope
+             printOutputFiles();
+             ^~~~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1678:13: note: suggested alternative: ‘findEtcFiles’
+             printOutputFiles();
+             ^~~~~~~~~~~~~~~~
+             findEtcFiles
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:1683:5: error: ‘pastFirstTimeStep’ was not declared in this scope
+     pastFirstTimeStep = true;
+     ^~~~~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C: At global scope:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:2015:1: error: expected declaration before ‘}’ token
+ } // End namespace Foam
+ ^
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.dep:685: recipe for target 'Make/linux64GccDPOpt/horizontalAxisWindTurbinesACS.o' failed
+make: *** [Make/linux64GccDPOpt/horizontalAxisWindTurbinesACS.o] Error 1

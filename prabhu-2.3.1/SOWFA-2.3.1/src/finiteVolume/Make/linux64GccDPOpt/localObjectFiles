@@ -1,0 +1,9 @@
+LOCAL_OBJECTS = \
+turbulentABLVelocityControlledFvPatchField.o\
+turbulentABLTemperatureControlledFvPatchField.o\
+timeVaryingMappedInletOutletFvPatchFields.o\
+timeVaryingMappedFluctuatingFixedValueFvPatchFields.o\
+SchumannGrotzbachFvPatchField.o\
+fixedHeatingRateFvPatchField.o\
+specifiedSurfaceTemperatureFvPatchField.o\
+velocityABLWallFunctionFvPatchField.o

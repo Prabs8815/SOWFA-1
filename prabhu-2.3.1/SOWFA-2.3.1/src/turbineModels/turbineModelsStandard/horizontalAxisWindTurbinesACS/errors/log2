@@ -1,0 +1,64 @@
+wmake: 'Make' directory does not exist in /home/prabhu/OpenFOAM/prabhu-2.4.0/SOWFA-2.4.0/src/turbineModels/turbineModelsStandard/horizontalAxisWindTurbinesACS
+    Searching up directories tree for Make directory
+    Found target directory  ./..
+SOURCE=horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C ;  g++ -m64 -Dlinux64 -DWM_DP -Wall -Wextra -Wno-unused-parameter -Wold-style-cast -Wnon-virtual-dtor -O3  -DNoRepository -ftemplate-depth-100 -I/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/triSurface/lnInclude -I/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude -I/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/meshTools/lnInclude -I/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/turbulenceModels -I/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/turbulenceModels/LES/LESdeltas/lnInclude -I/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/turbulenceModels/LES/LESfilters/lnInclude -I/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/transportModels -IlnInclude -I. -I/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude -I/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OSspecific/POSIX/lnInclude   -fPIC -c $SOURCE -o Make/linux64GccDPOpt/horizontalAxisWindTurbinesACS.o
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/boundBox.H:256:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/polyMesh.H:54,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMesh.H:50,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:7,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:6:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/boundBoxI.H:201:13: warning: ‘bool Foam::operator==(const Foam::boundBox&, const Foam::boundBox&)’ has not been declared within Foam
+ inline bool Foam::operator==(const boundBox& a, const boundBox& b)
+             ^~~~
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/polyMesh.H:54:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMesh.H:50,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:7,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:6:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/boundBox.H:236:28: note: only here as a friend
+         inline friend bool operator==(const boundBox&, const boundBox&);
+                            ^~~~~~~~
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/boundBox.H:256:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/polyMesh.H:54,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMesh.H:50,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:7,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:6:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/boundBoxI.H:207:13: warning: ‘bool Foam::operator!=(const Foam::boundBox&, const Foam::boundBox&)’ has not been declared within Foam
+ inline bool Foam::operator!=(const boundBox& a, const boundBox& b)
+             ^~~~
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/polyMesh.H:54:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMesh.H:50,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:7,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:6:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/boundBox.H:237:28: note: only here as a friend
+         inline friend bool operator!=(const boundBox&, const boundBox&);
+                            ^~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C: In member function ‘void MyTest::computeBladeForce()’:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:64:56: warning: use of old-style cast [-Wold-style-cast]
+         int labelTurbine = (int)turbineTypeID[turbineID];
+                                                        ^
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:110:25: error: ‘scaler’ was not declared in this scope
+                         scaler pscaler = PreCone[labelTurbine][bladeID][lineId];
+                         ^~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:110:25: note: suggested alternative: ‘scalbn’
+                         scaler pscaler = PreCone[labelTurbine][bladeID][lineId];
+                         ^~~~~~
+                         scalbn
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:111:209: error: invalid types ‘double[Foam::label {aka int}]’ for array subscript
+                         windVectors[turbineID][bladeID][lineId][k].y() = (lineAlignedVectors[turbineID][bladeID][lineId][1] & windVectorsInt) + (rotSpeed[turbineID] * bladeRadius[turbineID][bladeID][lineId][k] * cos(pscaler));
+                                                                                                                                                                                                                 ^
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:111:217: error: ‘pscaler’ was not declared in this scope
+                         windVectors[turbineID][bladeID][lineId][k].y() = (lineAlignedVectors[turbineID][bladeID][lineId][1] & windVectorsInt) + (rotSpeed[turbineID] * bladeRadius[turbineID][bladeID][lineId][k] * cos(pscaler));
+                                                                                                                                                                                                                         ^~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:111:217: note: suggested alternative: ‘scalbn’
+                         windVectors[turbineID][bladeID][lineId][k].y() = (lineAlignedVectors[turbineID][bladeID][lineId][1] & windVectorsInt) + (rotSpeed[turbineID] * bladeRadius[turbineID][bladeID][lineId][k] * cos(pscaler));
+                                                                                                                                                                                                                         ^~~~~~~
+                                                                                                                                                                                                                         scalbn
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:64:13: warning: unused variable ‘labelTurbine’ [-Wunused-variable]
+         int labelTurbine = (int)turbineTypeID[turbineID];
+             ^~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C: At global scope:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:248:5: warning: second argument of ‘int main(int, char*)’ should be ‘char **’ [-Wmain]
+ int main(int argc, char * argv){
+     ^~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.dep:674: recipe for target 'Make/linux64GccDPOpt/horizontalAxisWindTurbinesACS.o' failed
+make: *** [Make/linux64GccDPOpt/horizontalAxisWindTurbinesACS.o] Error 1

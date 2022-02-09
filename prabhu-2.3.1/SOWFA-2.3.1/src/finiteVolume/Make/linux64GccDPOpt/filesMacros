@@ -1,0 +1,6 @@
+fvPatchFields = fields/fvPatchFields
+derivedFvPatchFields = $(fvPatchFields)/derived
+surfaceStressModels = $(derivedFvPatchFields)/surfaceStressModels
+surfaceTemperatureFluxModels = $(derivedFvPatchFields)/surfaceTemperatureFluxModels
+surfaceVelocityModels = $(derivedFvPatchFields)/surfaceVelocityModels
+LIB = $(SOWFA_DIR)/lib/$(WM_OPTIONS)/libSOWFAfiniteVolume

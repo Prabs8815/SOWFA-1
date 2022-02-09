@@ -1,0 +1,9 @@
+OBJECTS = \
+$(OBJECTS_DIR)/turbulentABLVelocityControlledFvPatchField.o\
+$(OBJECTS_DIR)/turbulentABLTemperatureControlledFvPatchField.o\
+$(OBJECTS_DIR)/timeVaryingMappedInletOutletFvPatchFields.o\
+$(OBJECTS_DIR)/timeVaryingMappedFluctuatingFixedValueFvPatchFields.o\
+$(OBJECTS_DIR)/SchumannGrotzbachFvPatchField.o\
+$(OBJECTS_DIR)/fixedHeatingRateFvPatchField.o\
+$(OBJECTS_DIR)/specifiedSurfaceTemperatureFvPatchField.o\
+$(OBJECTS_DIR)/velocityABLWallFunctionFvPatchField.o

@@ -1,0 +1,55 @@
+/*-----------------------------------
+By Gonzalo Pablo Navarro Diaz - 2020
+gonzalo.navarro@geo.uu.se
+
+This file creates the filds for the forest model:
+
+1- Plant Area Density "a_" [m3/m2]
+2- Volumetric forest force "forestF" [N/m3]
+
+*/----------------------------------
+
+
+    //Create the Plant Area Density field "a_" for the forest model
+    Info << "Creating the Plant Area Density field a_ for the forest model..." << endl;
+    volScalarField PAD
+    (
+        IOobject
+        (
+            "a_",
+            runTime.timeName(),
+            mesh,
+            IOobject::READ_IF_PRESENT,
+            IOobject::AUTO_WRITE //output for paraview
+        ),
+        mesh,
+        dimensionedScalar
+        (
+            "a_",
+            dimensionSet(0,-1,0,0,0,0,0),//(kg, m, s, K, mol, A, cd)
+            0.0 //fill the field with cero values in all cells
+        ) 
+    );
+
+    //Create the volumetric forest force "forestF"
+    Info << "Creating the volumetric forest force forestF for the forest model..." << endl;
+    volVectorField forestF
+    (
+        IOobject
+        (
+            "forestF",
+            runTime.timeName(),
+            mesh,
+            IOobject::READ_IF_PRESENT,
+            IOobject::AUTO_WRITE
+        ),
+        mesh_,
+        dimensionedVector
+        (
+            "forestF",
+            //eqn.dimensions()/dimVolume, //for volumetric force [N/m3]
+            ,dimensionSet(0, 1, -2, 0, 0, 0, 0),// same as coriolis force
+            vector::zero
+        )
+    );
+

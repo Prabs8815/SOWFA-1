@@ -1,0 +1,5 @@
+SOURCE = \
+scanningLidar/scanningLidar.C\
+scanningLidar/scanningLidarFunctionObject.C\
+spinnerLidar/spinnerLidar.C\
+spinnerLidar/spinnerLidarFunctionObject.C

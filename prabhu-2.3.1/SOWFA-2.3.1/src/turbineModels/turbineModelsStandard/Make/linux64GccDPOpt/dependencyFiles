@@ -1,0 +1,5 @@
+DEPENDENCIES = \
+horizontalAxisWindTurbinesALM/horizontalAxisWindTurbinesALM.dep\
+horizontalAxisWindTurbinesALMAdvanced/horizontalAxisWindTurbinesALMAdvanced.dep\
+horizontalAxisWindTurbinesADM/horizontalAxisWindTurbinesADM.dep\
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.dep

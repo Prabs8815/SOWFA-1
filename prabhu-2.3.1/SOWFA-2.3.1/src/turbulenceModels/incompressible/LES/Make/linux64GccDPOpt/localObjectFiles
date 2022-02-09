@@ -1,0 +1,7 @@
+LOCAL_OBJECTS = \
+dynLagrangianCs.o\
+dynLagrangianCsBound.o\
+GenEddyViscABL.o\
+oneEqEddyABL.o\
+SmagorinskyABL.o\
+KosovicOneEqNBA.o

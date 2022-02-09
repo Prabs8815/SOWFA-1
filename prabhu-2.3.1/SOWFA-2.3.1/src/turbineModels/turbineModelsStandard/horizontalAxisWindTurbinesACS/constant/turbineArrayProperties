@@ -1,0 +1,43 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.6                                   |
+|   \\  /    A nd           | Web:      http://www.OpenFOAM.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      turbineProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+globalProperties
+{
+    outputControl       "timeStep";
+    outputInterval       1;
+}
+
+turbine0
+{
+    turbineType         "NREL5MWRef";
+    baseLocation        (378 378 288); 
+       //numBladePoints      40; 
+      numLines             3;
+    numLinePoints        12;
+    pointDistType       "uniform";
+    pointInterpType     "linear";
+    bladeUpdateType     "oldPosition";
+    epsilon              20; //to avoid numerical problems upstream
+    tipRootLossCorrType "Glauert";
+    rotationDir         "cw";
+    Azimuth              0.0;
+    RotSpeed            9.1552;
+    TorqueGen            0.0;
+    Pitch                0.0;
+    NacYaw              270.0;
+    fluidDensity        1.225;
+}
+

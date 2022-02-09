@@ -10,6 +10,21 @@
             "cStandard": "c11",
             "cppStandard": "c++14",
             "intelliSenseMode": "clang-x64"
+        },
+        {
+            "name": "UI",
+            "includePath": [
+                "${workspaceFolder}/**", "${FOAM_SRC}"
+            ],
+            //"includePath": [
+              //  "${workspaceFolder}/**"
+            //],
+            "defines": [],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c11",
+            "cppStandard": "c++14",
+            "intelliSenseMode": "gcc-x64"
+          //  "intelliSenseMode": "linux-clang-x64"
         }
     ],
     "version": 4

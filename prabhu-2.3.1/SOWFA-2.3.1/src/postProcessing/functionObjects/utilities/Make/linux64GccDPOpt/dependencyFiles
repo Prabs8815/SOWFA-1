@@ -1,0 +1,5 @@
+DEPENDENCIES = \
+scanningLidar/scanningLidar.dep\
+scanningLidar/scanningLidarFunctionObject.dep\
+spinnerLidar/spinnerLidar.dep\
+spinnerLidar/spinnerLidarFunctionObject.dep

@@ -1,0 +1,7 @@
+DEPENDENCIES = \
+dynLagrangianCs/dynLagrangianCs.dep\
+dynLagrangianCsBound/dynLagrangianCsBound.dep\
+GenEddyViscABL/GenEddyViscABL.dep\
+oneEqEddyABL/oneEqEddyABL.dep\
+SmagorinskyABL/SmagorinskyABL.dep\
+KosovicOneEqNBA/KosovicOneEqNBA.dep

@@ -1,0 +1,5 @@
+OBJECTS = \
+$(OBJECTS_DIR)/scanningLidar.o\
+$(OBJECTS_DIR)/scanningLidarFunctionObject.o\
+$(OBJECTS_DIR)/spinnerLidar.o\
+$(OBJECTS_DIR)/spinnerLidarFunctionObject.o

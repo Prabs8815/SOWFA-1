@@ -1,0 +1,1 @@
+../horizontalAxisWindTurbinesADM/controllers/genTorqueControllers/none.H

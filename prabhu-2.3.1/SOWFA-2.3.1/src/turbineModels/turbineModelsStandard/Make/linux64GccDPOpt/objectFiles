@@ -1,0 +1,5 @@
+OBJECTS = \
+$(OBJECTS_DIR)/horizontalAxisWindTurbinesALM.o\
+$(OBJECTS_DIR)/horizontalAxisWindTurbinesALMAdvanced.o\
+$(OBJECTS_DIR)/horizontalAxisWindTurbinesADM.o\
+$(OBJECTS_DIR)/horizontalAxisWindTurbinesACS.o

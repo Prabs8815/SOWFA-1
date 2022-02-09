@@ -1,0 +1,7 @@
+OBJECTS = \
+$(OBJECTS_DIR)/dynLagrangianCs.o\
+$(OBJECTS_DIR)/dynLagrangianCsBound.o\
+$(OBJECTS_DIR)/GenEddyViscABL.o\
+$(OBJECTS_DIR)/oneEqEddyABL.o\
+$(OBJECTS_DIR)/SmagorinskyABL.o\
+$(OBJECTS_DIR)/KosovicOneEqNBA.o

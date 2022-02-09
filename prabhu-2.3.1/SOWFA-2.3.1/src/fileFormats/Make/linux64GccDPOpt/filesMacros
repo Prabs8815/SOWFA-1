@@ -1,0 +1,2 @@
+setWriters = sampledSetWriters
+LIB = $(SOWFA_DIR)/lib/$(WM_OPTIONS)/libSOWFAfileFormats

@@ -76,7 +76,8 @@ export WM_PRECISION_OPTION=DP
 
 #- Optimised, debug, profiling:
 #    WM_COMPILE_OPTION = Opt | Debug | Prof
-export WM_COMPILE_OPTION=Opt
+#export WM_COMPILE_OPTION=Opt
+export WM_COMPILE_OPTION=Debug
 
 #- MPI implementation:
 #    WM_MPLIB = SYSTEMOPENMPI | OPENMPI | SYSTEMMPI | MPICH | MPICH-GM | HPMPI

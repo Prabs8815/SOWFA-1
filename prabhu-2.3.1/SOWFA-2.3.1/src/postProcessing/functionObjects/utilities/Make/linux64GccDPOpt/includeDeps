@@ -1,0 +1,4 @@
+include scanningLidar/scanningLidar.dep
+include scanningLidar/scanningLidarFunctionObject.dep
+include spinnerLidar/spinnerLidar.dep
+include spinnerLidar/spinnerLidarFunctionObject.dep

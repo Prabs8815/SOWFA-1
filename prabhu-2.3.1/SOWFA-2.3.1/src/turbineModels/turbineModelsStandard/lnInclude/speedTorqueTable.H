@@ -1,0 +1,1 @@
+../horizontalAxisWindTurbinesADM/controllers/genTorqueControllers/speedTorqueTable.H
