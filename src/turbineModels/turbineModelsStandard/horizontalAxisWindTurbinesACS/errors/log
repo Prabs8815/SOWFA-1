@@ -1,0 +1,126 @@
+wmake: 'Make' directory does not exist in /home/prabhu/OpenFOAM/prabhu-2.4.0/SOWFA-2.4.0/src/turbineModels/turbineModelsStandard/horizontalAxisWindTurbinesACS
+    Searching up directories tree for Make directory
+    Found target directory  ./..
+SOURCE=horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C ;  g++ -m64 -Dlinux64 -DWM_DP -Wall -Wextra -Wno-unused-parameter -Wold-style-cast -Wnon-virtual-dtor -O3  -DNoRepository -ftemplate-depth-100 -I/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/triSurface/lnInclude -I/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude -I/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/meshTools/lnInclude -I/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/turbulenceModels -I/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/turbulenceModels/LES/LESdeltas/lnInclude -I/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/turbulenceModels/LES/LESfilters/lnInclude -I/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/transportModels -IlnInclude -I. -I/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude -I/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OSspecific/POSIX/lnInclude   -fPIC -c $SOURCE -o Make/linux64GccDPOpt/horizontalAxisWindTurbinesACS.o
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/boundBox.H:256:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/polyMesh.H:54,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMesh.H:50,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:7,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:6:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/boundBoxI.H:201:13: warning: ‘bool Foam::operator==(const Foam::boundBox&, const Foam::boundBox&)’ has not been declared within Foam
+ inline bool Foam::operator==(const boundBox& a, const boundBox& b)
+             ^~~~
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/polyMesh.H:54:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMesh.H:50,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:7,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:6:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/boundBox.H:236:28: note: only here as a friend
+         inline friend bool operator==(const boundBox&, const boundBox&);
+                            ^~~~~~~~
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/boundBox.H:256:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/polyMesh.H:54,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMesh.H:50,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:7,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:6:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/boundBoxI.H:207:13: warning: ‘bool Foam::operator!=(const Foam::boundBox&, const Foam::boundBox&)’ has not been declared within Foam
+ inline bool Foam::operator!=(const boundBox& a, const boundBox& b)
+             ^~~~
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/polyMesh.H:54:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvMesh.H:50,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:7,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:6:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/boundBox.H:237:28: note: only here as a friend
+         inline friend bool operator!=(const boundBox&, const boundBox&);
+                            ^~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:42:6: error: ‘horizontalAxisWindTurbinesACS’ has not been declared
+ void horizontalAxisWindTurbinesACS::computeBladeForce()
+      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C: In member function ‘void MyTest::computeBladeForce()’:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:60:125: error: ‘rotorApex’ was not declared in this scope
+                         lineAlignedVectors[turbineID][bladeID][lineId][2] =   sectorPoints[turbineID][bladeID][lineId][0] - rotorApex[turbineID];
+                                                                                                                             ^~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:63:38: error: ‘i’ was not declared in this scope
+                 else if (rotationDir[i] == "ccw")
+                                      ^
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:65:125: error: ‘rotorApex’ was not declared in this scope
+                         lineAlignedVectors[turbineID][bladeID][lineId][2] = -(sectorPoints[turbineID][bladeID][lineId][0] - rotorApex[turbineID]);
+                                                                                                                             ^~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:87:37: error: ‘i’ was not declared in this scope
+                         windVectors[i][j][lineId][k] = vector::zero;
+                                     ^
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:87:40: error: ‘j’ was not declared in this scope
+                         windVectors[i][j][lineId][k] = vector::zero;
+                                        ^
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:87:40: note: suggested alternative: ‘jn’
+                         windVectors[i][j][lineId][k] = vector::zero;
+                                        ^
+                                        jn
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:92:146: error: ‘rotSpeed’ was not declared in this scope
+                         windVectors[turbineID][bladeID][lineId][k].y() = (lineAlignedVectors[turbineID][bladeID][lineId][1] & windVectorsInt) + (rotSpeed[turbineID] * bladeRadius[turbineID][bladeID][lineId][k] * cos(PreCone[labelTurbine ][bladeID][lineId]));
+                                                                                                                                                  ^~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:92:168: error: ‘bladeRadius’ was not declared in this scope
+                         windVectors[turbineID][bladeID][lineId][k].y() = (lineAlignedVectors[turbineID][bladeID][lineId][1] & windVectorsInt) + (rotSpeed[turbineID] * bladeRadius[turbineID][bladeID][lineId][k] * cos(PreCone[labelTurbine ][bladeID][lineId]));
+                                                                                                                                                                        ^~~~~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:92:256: error: call of overloaded ‘cos(double&)’ is ambiguous
+                         windVectors[turbineID][bladeID][lineId][k].y() = (lineAlignedVectors[turbineID][bladeID][lineId][1] & windVectorsInt) + (rotSpeed[turbineID] * bladeRadius[turbineID][bladeID][lineId][k] * cos(PreCone[labelTurbine ][bladeID][lineId]));
+                                                                                                                                                                                                                                                                ^
+In file included from /usr/include/features.h:424:0,
+                 from /usr/include/x86_64-linux-gnu/c++/7/bits/os_defines.h:39,
+                 from /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h:533,
+                 from /usr/include/c++/7/climits:41,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/label.H:38,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:47,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:2:
+/usr/include/x86_64-linux-gnu/bits/mathcalls.h:62:1: note: candidate: double cos(double)
+ __MATHCALL_VEC (cos,, (_Mdouble_ __x));
+ ^
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/TimeState.H:38:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/Time.H:47,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/finiteVolume/lnInclude/fvCFD.H:6,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:6:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/dimensionedScalar.H:77:19: note: candidate: Foam::dimensionedScalar Foam::cos(const dimensionedScalar&)
+ dimensionedScalar cos(const dimensionedScalar&);
+                   ^~~
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/scalar.H:40:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/IOstream.H:49,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/Ostream.H:39,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/OSstream.H:39,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/messageStream.H:220,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/error.H:51,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTableI.H:26,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:549,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:2:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/Scalar.H:266:11: note: candidate: Foam::doubleScalar Foam::cos(Foam::doubleScalar)
+ transFunc(cos)
+           ^
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/doubleScalar.H:83:15: note: in definition of macro ‘transFunc’
+ inline Scalar func(const Scalar s) \
+               ^~~~
+In file included from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/scalar.H:39:0,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/IOstream.H:49,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/Ostream.H:39,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/OSstream.H:39,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/messageStream.H:220,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/error.H:51,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTableI.H:26,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashTable.H:549,
+                 from /home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/HashPtrTable.H:39,
+                 from horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:2:
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/Scalar.H:266:11: note: candidate: Foam::floatScalar Foam::cos(Foam::floatScalar)
+ transFunc(cos)
+           ^
+/home/prabhu/OpenFOAM/OpenFOAM-2.4.0/src/OpenFOAM/lnInclude/floatScalar.H:83:15: note: in definition of macro ‘transFunc’
+ inline Scalar func(const Scalar s) \
+               ^~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C: At global scope:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:229:5: warning: second argument of ‘int main(int, char*)’ should be ‘char **’ [-Wmain]
+ int main(int argc, char * argv){
+     ^~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C: In function ‘int main(int, char*)’:
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.C:231:4: error: ‘class MyTest’ has no member named ‘testfunc’
+  m.testfunc();
+    ^~~~~~~~
+horizontalAxisWindTurbinesACS/horizontalAxisWindTurbinesACS.dep:674: recipe for target 'Make/linux64GccDPOpt/horizontalAxisWindTurbinesACS.o' failed
+make: *** [Make/linux64GccDPOpt/horizontalAxisWindTurbinesACS.o] Error 1
