@@ -112,7 +112,7 @@ horizontalAxisWindTurbinesACS::horizontalAxisWindTurbinesACS
         dimensionedVector("bodyForce",dimForce/dimVolume/dimDensity,vector::zero)
     )
 
- // {cout << "ADM version of ACS starte here " << endl;}
+  //Info << "Defining my own turbine model" << endl;
 
 
 
@@ -152,25 +152,17 @@ horizontalAxisWindTurbinesACS::horizontalAxisWindTurbinesACS
     outputIndex = 0;
 
     forAll(turbineName,turbineID)    // TODO: should i declare a separate dynamicList for turbineID ? 
-                                      // This is current version of ACS called AD1 
     {
         turbineType.append(word(turbineArrayProperties.subDict(turbineName[turbineID]).lookup("turbineType")));
         baseLocation.append(vector(turbineArrayProperties.subDict(turbineName[turbineID]).lookup("baseLocation")));
-        //numLinePoints.append(int(readScalar(turbineArrayProperties.subDict(turbineName[turbineID]).lookup("numLinePoints"))));
-        //numLines.append(int(readScalar(turbineArrayProperties.subDict(turbineName[turbineID]).lookup("numLines"))));  // number of lines in a sector
+        numLinePoints.append(int(readScalar(turbineArrayProperties.subDict(turbineName[turbineID]).lookup("numLinePoints"))));
+        numLines.append(int(readScalar(turbineArrayProperties.subDict(turbineName[turbineID]).lookup("numLines"))));  // number of lines in a sector
         cout<< "number of lines" <<  numLines[turbineID] << "  "  << endl ;
         sectorAngle.append(scalar(readScalar(turbineArrayProperties.subDict(turbineName[turbineID]).lookup("sectorAngle"))));
         pointDistType.append(word(turbineArrayProperties.subDict(turbineName[turbineID]).lookup("pointDistType")));
         pointInterpType.append(word(turbineArrayProperties.subDict(turbineName[turbineID]).lookup("pointInterpType")));
         bladeUpdateType.append(word(turbineArrayProperties.subDict(turbineName[turbineID]).lookup("bladeUpdateType")));
         epsilon.append(scalar(readScalar(turbineArrayProperties.subDict(turbineName[turbineID]).lookup("epsilon"))));
-        //************************Extra variables and inputs required for ADM version ******************************
-        nRadial.append(int(readScalar(turbineArrayProperties.subDict(turbineName[turbineID]).lookup("nRadial"))));
-        azimuthMaxDis.append(scalar(readScalar(turbineArrayProperties.subDict(turbineName[turbineID]).lookup("azimuthMaxDis"))));
-        nAvgSector.append(int(readScalar(turbineArrayProperties.subDict(turbineName[turbineID]).lookup("nAvgSector")))); 
-        forceScalar.append(scalar(readScalar(turbineArrayProperties.subDict(turbineName[turbineID]).lookup("forceScalar"))));
-        inflowVelocityScalar.append(scalar(readScalar(turbineArrayProperties.subDict(turbineName[turbineID]).lookup("inflowVelocityScalar"))));
-        //*******************************************************************************************************
         tipRootLossCorrType.append(word(turbineArrayProperties.subDict(turbineName[turbineID]).lookup("tipRootLossCorrType")));
         rotationDir.append(word(turbineArrayProperties.subDict(turbineName[turbineID]).lookup("rotationDir")));
         rotSpeed.append(scalar(readScalar(turbineArrayProperties.subDict(turbineName[turbineID]).lookup("RotSpeed"))));
@@ -219,7 +211,7 @@ horizontalAxisWindTurbinesACS::horizontalAxisWindTurbinesACS
         }
     }
 
-    Info << "I am the master in generic model" << endl;
+    Info << "I am the master" << endl;
 
     Pout << "I am the slave" << endl;
 
@@ -340,19 +332,25 @@ horizontalAxisWindTurbinesACS::horizontalAxisWindTurbinesACS
 
         BladeData.append(turbineProperties.lookup("BladeData"));
 
-        DynamicList<scalar> station;
-        DynamicList<scalar> chord;
-        DynamicList<scalar> twist;
-        DynamicList<label> id;
+        DynamicList<List<scalar>> station;
+        DynamicList<List<scalar>> chord;
+        DynamicList<List<scalar>> twist;
+        DynamicList<List<label>> id;
 
+//TODO: See if one more loopshould be added here 
 
         forAll(BladeData[i], j)
         {
-            station.append(BladeData[i][j][0]);
-            chord.append(BladeData[i][j][1]);
-            twist.append(BladeData[i][j][2]);
-            id.append(BladeData[i][j][3]);
+            forAll(BladeData[i][j], lineId)
+            {      
+                station.append(BladeData[i][j][lineId][0]);
+                chord.append(BladeData[i][j][lineId][1]);
+                twist.append(BladeData[i][j][lineId][2]);
+                id.append(BladeData[i][j][lineId][3]);
+            }    
         }
+
+        
 
         BladeStation.append(station);
         BladeChord.append(chord);
@@ -519,7 +517,7 @@ horizontalAxisWindTurbinesACS::horizontalAxisWindTurbinesACS
     // turbine, the j-index is for each type of turbine--if all turbines
     // are the same, j is always 0, and the k-index is at the individual
     // blade level.)
-        for(int i = 0; i < numTurbines; i++)
+    for(int i = 0; i < numTurbines; i++)
     {
         // First compute the radius of the force projection (to the radius
         // where the projection is only 0.001 its maximum value - this seems
@@ -527,48 +525,68 @@ horizontalAxisWindTurbinesACS::horizontalAxisWindTurbinesACS
         projectionRadius.append(epsilon[i] * Foam::sqrt(Foam::log(1.0/0.001)));
 
         // Calculate the sphere of influence radius.
+        scalar sphereRadius = 0.0;
         int j = turbineTypeID[i];
-        scalar sphereRadius = Foam::sqrt(Foam::sqr((OverHang[j] + UndSling[j]) + TipRad[j]*Foam::sin(PreCone[j][0])) + Foam::sqr(TipRad[j]*Foam::cos(PreCone[j][0])));
-        sphereRadius += projectionRadius[i];
+        forAll(PreCone[j],k)
 
-        // Find the cells within the sphere of influence.
-        DynamicList<label> sphereCellsI;
-        forAll(U_.mesh().cells(),cellI)
-        {
-            if (mag(U_.mesh().C()[cellI] - towerShaftIntersect[i]) <= sphereRadius)
-            {
-                sphereCellsI.append(cellI);
-            }
-        }
-        sphereCells.append(sphereCellsI);
-        sphereCellsI.clear();
+                  {
 
-        // Create a list of turbines that this processor could forseeably control.
-        // If sphereCells[i] is not empty, then turbine i belongs in the list.
-        if (sphereCells[i].size() > 0)
-        {
-            turbinesControlled.append(i);
-        }
-    }
+                    /*
+                  //        forAll(PreCone[j][k], lineId)
+                  //{
+
+           scalar sphereRadiusI = Foam::sqrt(Foam::sqr(
+                                                                   (OverHang[j] + UndSling[j] + TipRad[j])
+                                                                 ) + Foam::sqr(TipRad[j])
+                                                      );
+
+          */
+                      scalar sphereRadiusI = Foam::sqrt(Foam::sqr((OverHang[j] + UndSling[j]) + TipRad[j]*Foam::sin(PreCone[j][k])) + Foam::sqr(TipRad[j]*Foam::cos(PreCone[j][k])));
+                      if(sphereRadiusI > sphereRadius)
+                      {
+                          sphereRadius = sphereRadiusI;
+                      }
+                 // }
+                 }
+                  sphereRadius += projectionRadius[i];
+
+                  // Find the cells within the sphere of influence.
+                  DynamicList<label> sphereCellsI;
+                  forAll(U_.mesh().cells(),cellI)
+                  {
+                      if (mag(U_.mesh().C()[cellI] - towerShaftIntersect[i]) <= sphereRadius)
+                      {
+                          sphereCellsI.append(cellI);
+                      }
+                  }
+                  sphereCells.append(sphereCellsI);
+                  sphereCellsI.clear();
+
+                  // Create a list of turbines that this processor could forseeably control.
+                  // If sphereCells[i] is not empty, then turbine i belongs in the list.
+                  if (sphereCells[i].size() > 0)
+                  {
+                      turbinesControlled.append(i);
+                  }
+              }
 
 
-    
-    // Create the actuator sector points (not yet rotated for initial nacelle
-    // yaw). i-index is at array level, j-index is
-    // for the type of turbine, k-index is for each blade(sector), and m-index is
+
+
+    //Azimuth
+    // for the type of turbine, k-index is for each blade, and m-index is
     // for each actuator point.  Also create other important vectors, and
     // initialize the blade force, blade aligned coordinate system, and
     // wind vectors to zero.
-    totSectorPointsArray = 0;
+    totBladePoints = 0;
     Random rndGen(123456);
     for(int i = 0; i < numTurbines; i++)
     {
-        totSectorPoints.append(0);
         int j = turbineTypeID[i];
 
         // Define which way the shaft points to distinguish between
         // upwind and downwind turbines.
-        uvShaftDir.append(OverHang[j]/mag(OverHang[j]));
+	uvShaftDir.append(OverHang[j]/mag(OverHang[j]));
 
         // Define the vector along the shaft pointing in the
         // direction of the wind.
@@ -577,204 +595,238 @@ horizontalAxisWindTurbinesACS::horizontalAxisWindTurbinesACS
 
         // Define the vector aligned with the tower pointing from
         // the ground to the nacelle.
-	    uvTower.append(towerShaftIntersect[i] - baseLocation[i]);
-	    uvTower[i] = uvTower[i]/mag(uvTower[i]);
+	uvTower.append(towerShaftIntersect[i] - baseLocation[i]);
+	uvTower[i] = uvTower[i]/mag(uvTower[i]);
 
         // Calculate the width of each actuator section.
-        dr.append(DynamicList<scalar>(0));
+        db.append(DynamicList<scalar>(0));
         if(pointDistType[i] == "uniform")
         {
-            scalar actuatorRadialWidth = (TipRad[j]-HubRad[j])/nRadial[i];
-            for(int m = 0; m < nRadial[i]; m++)
-            {
-                dr[i].append(actuatorRadialWidth);
-            }
+            scalar actuatorWidth = (TipRad[j]-HubRad[j])/numLinePoints[i];
+                          for(int m = 0; m < numLinePoints[i]; m++)
+                          {
+                              db[i].append(actuatorWidth);
+                          }
         }
         // Add other point distribution types here, such as cosine, tanh.
 
-        // Calculate how many azimuthal sections are at each radial station
-        sectorRadius.append(List<scalar>(nRadial[i],0.0));
-        solidity.append(List<scalar>(nRadial[i],0.0));
-        nAzimuth.append(List<int>(nRadial[i],0));
-        scalar dist = 0.0;
-        for(int m = 0; m < nRadial[i]; m++)
-        {
-            dist = dist + 0.5*dr[i][m];
-            sectorRadius[i][m] = HubRad[j] + dist;
-            dist = dist + 0.5*dr[i][m];
-
-            // Get the local length of sector
-            scalar sector =  0.66 * Foam::constant::mathematical::pi * sectorRadius[i][m];
-
-            // Divide it by the max azimuthal distance
-            nAzimuth[i][m] = sector/azimuthMaxDis[i];
-
-            // Make sure that each sector over which averaging is done has
-            // an equal number of actuator elements in the azimuth direction
-            if (nAzimuth[i][m] % nAvgSector[i] != 0)
-            {
-                nAzimuth[i][m] = nAzimuth[i][m] - (nAzimuth[i][m] % nAvgSector[i]) + nAvgSector[i];
-            }
-
-            // Make sure that each sector has at least 1 actuator element in it.
-            if (nAzimuth[i][m] < nAvgSector[i])
-            {
-                nAzimuth[i][m] = nAvgSector[i];
-            }
-
-            // Calculate the solidity factor at this radius.
-          //scalar chord = interpolate(sectorRadius[i][m], BladeStation[j], BladeChord[j]);
-          //solidity[i][m] = NumBl[j]*chord / (2.0 * Foam::constant::mathematical::pi * sectorRadius[i][m] * Foam::cos(PreCone[j][0]));
-            solidity[i][m] = scalar(NumBl[j]) / scalar(nAzimuth[i][m]);
-        }
-
-
-        sectorIndices.append(List<List<label> >(nRadial[i]));
-        sectorPointLocations.append(List<List<vector> >(nRadial[i]));
-        sectorPointsPerturbVector.append(List<List<vector> >(nRadial[i]));
-        elementAzimuth.append(List<List<scalar> >(nRadial[i]));
-        bladeForce.append(List<List<vector> >(nRadial[i]));
-        lineAlignedVectors.append(List<List<List<vector > > >(nRadial[i]));
-        windVectors.append(List<List<vector> >(nRadial[i]));
-        alpha.append(List<List<scalar> >(nRadial[i]));
-        Vmag.append(List<List<scalar> >(nRadial[i]));
-        Cl.append(List<List<scalar> >(nRadial[i]));
-        Cd.append(List<List<scalar> >(nRadial[i]));
-        lift.append(List<List<scalar> >(nRadial[i]));
-        drag.append(List<List<scalar> >(nRadial[i]));
-        axialForce.append(List<List<scalar> >(nRadial[i]));
-        tangentialForce.append(List<List<scalar> >(nRadial[i]));
-        minDisCellID.append(List<List<label> >(nRadial[i]));
-        deltaNacYaw.append(0.0);
-        deltaAzimuth.append(0.0);
-        thrust.append(0.0);
-        torqueRotor.append(0.0);
-        powerRotor.append(0.0);
-        powerGenerator.append(0.0);
-        for(int m = 0; m < nRadial[i]; m++)
-        {
-            sectorIndices[i][m].append(List<label>(nAzimuth[i][m],0));
-            sectorPointLocations[i][m].append(List<vector>(nAzimuth[i][m],vector::zero));
-            sectorPointsPerturbVector[i][m].append(List<vector>(nAzimuth[i][m],vector::zero));
-            elementAzimuth[i][m].append(List<scalar>(nAzimuth[i][m],0.0));
-            bladeForce[i][m].append(List<vector>(nAzimuth[i][m],vector::zero));
-            lineAlignedVectors[i][m].append(List<List<vector> >(nAzimuth[i][m]));
-            for(int n = 0; n < nAzimuth[i][m]; n++)
-            {
-                lineAlignedVectors[i][m][n].append(List<vector>(3,vector::zero));
-            }
-            windVectors[i][m].append(List<vector>(nAzimuth[i][m],vector::zero));
-            alpha[i][m].append(List<scalar>(nAzimuth[i][m],0.0));
-            Vmag[i][m].append(List<scalar>(nAzimuth[i][m],0.0));
-            Cl[i][m].append(List<scalar>(nAzimuth[i][m],0.0));
-            Cd[i][m].append(List<scalar>(nAzimuth[i][m],0.0));
-            lift[i][m].append(List<scalar>(nAzimuth[i][m],0.0));
-            drag[i][m].append(List<scalar>(nAzimuth[i][m],0.0));
-            axialForce[i][m].append(List<scalar>(nAzimuth[i][m],0.0));
-            tangentialForce[i][m].append(List<scalar>(nAzimuth[i][m],0.0));
-            minDisCellID[i][m].append(List<label>(nAzimuth[i][m],-1));
-        }
-        
-
-
-        windVectorsSecAvg.append(List<List<vector> >(nAvgSector[i]));
-        alphaSecAvg.append(List<List<scalar> >(nAvgSector[i]));
-        VmagSecAvg.append(List<List<scalar> >(nAvgSector[i]));
-        ClSecAvg.append(List<List<scalar> >(nAvgSector[i]));
-        CdSecAvg.append(List<List<scalar> >(nAvgSector[i]));
-        liftSecAvg.append(List<List<scalar> >(nAvgSector[i]));
-        dragSecAvg.append(List<List<scalar> >(nAvgSector[i]));
-        axialForceSecAvg.append(List<List<scalar> >(nAvgSector[i]));
-        tangentialForceSecAvg.append(List<List<scalar> >(nAvgSector[i]));
-        for(int m = 0; m < nAvgSector[i]; m++)
-        {
-            windVectorsSecAvg[i][m].append(List<vector>(nRadial[i],vector::zero));
-            alphaSecAvg[i][m].append(List<scalar>(nRadial[i],0.0));
-            VmagSecAvg[i][m].append(List<scalar>(nRadial[i],0.0));
-            ClSecAvg[i][m].append(List<scalar>(nRadial[i],0.0));
-            CdSecAvg[i][m].append(List<scalar>(nRadial[i],0.0));
-            liftSecAvg[i][m].append(List<scalar>(nRadial[i],0.0));
-            dragSecAvg[i][m].append(List<scalar>(nRadial[i],0.0));
-            axialForceSecAvg[i][m].append(List<scalar>(nRadial[i],0.0));
-            tangentialForceSecAvg[i][m].append(List<scalar>(nRadial[i],0.0));
-        }
-
-          
-        // Now calculate the actuator section center points for each blade(sector) 
-        // of each turbine in the array.  All sector points will be calculated
+        // Now calculate the actuator section center points for each blade
+        // of each turbine in the array.  All blades points will be calculated
         // at zero azimuth (blade pointing up), and then rotated to its correct
         // position before doing a global rotation to the initial azimuth of
         // the rotor.  Also calculate the radius of each point (not including coning).
 
 
-    /*   Detailed explanation of append function
+        /*   Detailed explanation of append function
 
-        //< [0,0], [0,0]> << one list of vector << temp1
-        //< temp1 , temp1 , temp1  << one list of list of vector
+                  //< [0,0], [0,0]> << one list of vector << temp1
+                  //< temp1 , temp1 , temp1  << one list of list of vector
 
-            List<vector> temp1(numLinePoints[i], vector::zero);
-            List<List<vector>> temp2(numLines[i], temp1);
-            List<List<List<vector>>> temp3(NumBl[j], temp2);
-            sectorPoints.append(temp3);
+                          List<vector> temp1(numLinePoints[i], vector::zero);
+                          List<List<vector>> temp2(numLines[i], temp1);
+                          List<List<List<vector>>> temp3(NumBl[j], temp2);
+                          sectorPoints.append(temp3);
 
                   */
 
 
-        vector root = rotorApex[i];
-        scalar beta = PreCone[j][0] - ShftTilt[j];
-        root.x() = root.x() + HubRad[j]*Foam::sin(beta);
-        root.z() = root.z() + HubRad[j]*Foam::cos(beta);
-        dist = 0.0;
-        for(int m = 0; m < nRadial[i]; m ++)
-        {
-            dist = dist + 0.5*dr[i][m];
-            scalar dAzimuth = 2.0*Foam::constant::mathematical::pi/nAzimuth[i][m];
-            for(int k = 0; k < nAzimuth[i][m]; k++)
-            {
-               totSectorPointsArray++;
-               totSectorPoints[i]++;
-               elementAzimuth[i][m][k] = k*dAzimuth;
-               sectorPointLocations[i][m][k].x() = root.x() + dist*Foam::sin(beta);
-               sectorPointLocations[i][m][k].y() = root.y();
-               sectorPointLocations[i][m][k].z() = root.z() + dist*Foam::cos(beta);
-
-               scalar elementAzimuthInt = elementAzimuth[i][m][k] + 0.5 * (2.0*Foam::constant::mathematical::pi) / scalar(nAvgSector[i]);
-               scalar sectorWidth = (2.0*Foam::constant::mathematical::pi) / scalar(nAvgSector[i]);
-               if (elementAzimuthInt >= 2.0*Foam::constant::mathematical::pi)
-               {
-                   elementAzimuthInt -= 2.0*Foam::constant::mathematical::pi;
-               }
-               sectorIndices[i][m][k] = elementAzimuthInt / sectorWidth;
-
-               if (k > 0)
-               {
-                   sectorPointLocations[i][m][k] = rotatePoint(sectorPointLocations[i][m][k], rotorApex[i], uvShaft[i], elementAzimuth[i][m][k]);
-               }
-            }
-            dist = dist + 0.5*dr[i][m];
-        }
-  
           
-        // Generate random numbers for the blade point perturbation during control
+          //for(int jj =0; jj< j ; jj++)
+            //{
+           // sectorPoints.append(List<List<List<vector>>>(NumBl[jj], List<List<vector>>(numLines[i],List<vector> (numLinePoints[i], vector::zero))));
+           // cout << "sectorpoints = " << sectorPoints[i][jj].size << " turbine= " << i << " blade=" << jj<< endl;
+           // }
+            
+          
+        sectorPoints.append(List<List<List<vector> > >(NumBl[j], List<List<vector> >(numLines[i],List<vector>  (numLinePoints[i], vector::zero))));
+        
+        bladeRadius.append(List<List<List<scalar> > >(NumBl[j], List<List<scalar> >(numLines[i],List<scalar>  (numLinePoints[i], 0.0))));
+        for(int k = 0; k < NumBl[j]; k++)
+                  {
+                      vector root = rotorApex[i];
+                      scalar beta =  PreCone[j][k] -ShftTilt[j];       // CL    original form : PreCone[j][k] -ShftTilt[j]
+                      root.x() = root.x() + HubRad[j]*Foam::sin(beta);
+                      root.z() = root.z() + HubRad[j]*Foam::cos(beta);
+          //          scalar dist = HubRad[j];                            // originally commented, dont get confused
+                      scalar dist = 0.0;
+
+                      for (int lineId = 0 ; lineId < numLines[i] ; lineId++ )   // doing the same for number of lines in each sector, later update the definition
+                      {                                                           //  w.r.t sector angle
+
+                      vector root = rotorApex[i];
+                      scalar beta =  PreCone[j][k] -ShftTilt[j];       // CL    update the sector angle in the constructor
+                      root.x() = root.x() + HubRad[j]*Foam::sin(beta);
+                      root.z() = root.z() + HubRad[j]*Foam::cos(beta);
+                      scalar dist = 0.0;
+
+                      //info<< "print the number of lines"<< lineId << endl ;
+                     // printf("print the number of lines \t %i  \n ", lineId);
+
+
+                          for(int m = 0; m < numLinePoints[i]; m++)
+                          {
+                             dist = dist + 0.5*db[i][m];
+
+                             
+                             sectorPoints[i][k][lineId][m].x() = root.x() + dist*Foam::sin(beta);
+                             sectorPoints[i][k][lineId][m].y() = root.y();
+                             sectorPoints[i][k][lineId][m].z() = root.z() + dist*Foam::cos(beta);
+                             bladeRadius[i][k][lineId][m] = HubRad[j] + dist;
+                                
+                             totBladePoints++;
+                            dist = dist + 0.5*db[i][m];
+                          }
+
+
+                          // Apply rotation to get blades, other than blade 1, in the right
+                          // place.
+                           if (k > 0)
+                           {
+                                   scalar bladeRotationAngle = (360.0/NumBl[j])*k*degRad  ;
+                                   scalar lineRotationAngle  = (double(sectorAngle[i])/(numLines[i]-1))*lineId*degRad ;
+                                     /* 
+                                     if (lineId >01)                                 
+                                    {
+                                           scalar lineRotationAngle  = (double(sectorAngle[i])/(numLines[i]-1))*lineId*degRad ;//???
+                                          // lineRotationAngle = 
+                                     else 
+
+                                       lineRotationAngle = scalar 0 ;
+                                    }  
+                                    */
+                                  scalar elementAngle = bladeRotationAngle + lineRotationAngle ; 
+
+                              for(int m = 0; m < numLinePoints[i]; m++)
+
+                              {  
+
+                                  //scalar elementAngle = (360.0/NumBl[j])*k*degRad +  (double(sectorAngle[i])/numLines[i])*lineId*degRad ;
+                                  // put a print statement for printing the sector angle maybe also like a staus report regarding all the intersting parameters 
+
+                                 // Info << "sectorAngle in loop" << sectorAngle[i] << "  " << endl; 
+                                  //Info <<  "numLines changing in loop ? "  << numLines[i]   << "             "  << endl;
+
+                                  //Info << "element angle" << elementAngle << "  " << endl ;                          // how to put a print statment with a counter ? 
+
+                                  Info << " the blade number " << k  << " is azimuthally moved to "  <<  bladeRotationAngle/degRad << "  " << endl ;
+
+                                  Info << "the sector line number "  << lineId<< " is azimuthally moved to  " << elementAngle/degRad << " " << endl ;  
+                                  Info << "all this is calculated for point " << m << " in this line " << lineId << "of blade " << k << endl ; 
+                                 // Info
+
+                                  // TODO:  Add one more statement for total azimuth angle - find out how its done in openFOAM ?? 
+
+
+                                  
+                                   
+                                  sectorPoints[i][k][lineId][m] = rotatePoint(sectorPoints[i][k][lineId][m], rotorApex[i], uvShaft[i], elementAngle); //replace it with elementAngle later 
+                                        
+                                  
+                                  
+                                
+                                       /*
+                                    
+                                 // sectorPoints[i][k][lineId][m] = rotatePoint(sectorPoints[i][k][lineId][m], rotorApex[i], uvShaft[i],
+                                   //                                                 (
+                                     //                                                      (360.0/NumBl[j])*k*degRad +  
+                                       //                                                 (double(sectorAngle[0])/numLines[i])*lineId*degRad
+                                         //                                           )
+                               
+                                           //                                   );  //sectorAngle/numLines[i])*k*degRad   30.0/numLines[i])*k*degRad
+                                  
+                               */
+                              }
+                            } // CL: TODO: end of blade identification loop - may not be necessary 
+                      } // end of lines loop
+
+                  }
+            
+                 
+         
+
+    
+
+
+        // Generate randome numbers for the blade point perturbation during control
         // processor identification.  This does not affect the actual location--it is
         // just there to break ties and make sure > 1 processors don't account for a
         // single blade point.
-        if(Pstream::myProcNo() == 0)
-        {
-            for(int m = 0; m < nRadial[i]; m++)
-            {
-                for(int k = 0; k < nAzimuth[i][m]; k++)
-                {
-                    sectorPointsPerturbVector[i][m][k] = perturb*(2.0*rndGen.vector01()-vector::one); 
-                }
-            }
-        }
-        
-    }
-    Pstream::scatter(sectorPointsPerturbVector);
+        sectorPointsPerturbVector.append(List<List<List<vector> > >(NumBl[j], List<List<vector> >(numLines[i],List<vector>  (numLinePoints[i], vector::zero))));
+                  if(Pstream::myProcNo() == 0)
+                  {
+                      for(int k =  0; k < NumBl[j]; k++)
 
-    //end of definition of turbine array object
-   
+                      {
+                          for (int lineId = 0 ; lineId < numLines[i] ; lineId++ )
+                        {
+
+                          for(int m = 0; m < numLinePoints[i]; m++)
+                          {
+                              sectorPointsPerturbVector[i][k][lineId][m] = perturb*(2.0*rndGen.vector01()-vector::one);
+
+                           }
+                        }
+                      }
+
+                  }
+
+
+                  // Define the size of the bladeForce array and set to zero.
+                  bladeForce.append(List<List<List<vector> > >(NumBl[j], List<List<vector> >(numLines[i],List<vector>  (numLinePoints[i], vector::zero))));
+
+                  // Define the size of the lineAlignedVectors array and set to zero.
+                  lineAlignedVectors.append(List<List<List<vector> > >(NumBl[j], List<List<vector> >(numLines[i],List<vector>  (3, vector::zero))));
+
+                  // Define the windVectors array and set it to zero.
+                  windVectors.append(List<List<List<vector> > >(NumBl[j], List<List<vector> >(numLines[i],List<vector>  (numLinePoints[i], vector::zero))));
+
+                  // Define the size of the deltaNacYaw, deltaAzimuth, and deltaPitch lists and set to zero.
+                 // deltaNacYaw.append(0.0);
+                  deltaAzimuth.append(0.0);
+
+                  // Define the size of the angle of attack lists and set to zero.
+                  alpha.append(List<List<List<scalar> > >(NumBl[j], List<List<scalar> >(numLines[i],List<scalar>(numLinePoints[i], 0.0))));
+
+                  // Define the size of the wind speed magnitude lists and set to zero.
+                  Vmag.append(List<List<List<scalar> > >(NumBl[j], List<List<scalar> >(numLines[i],List<scalar> (numLinePoints[i], 0.0))));
+
+                  // Define the size of the coefficient of lift lists and set to zero.
+                  Cl.append(List<List<List<scalar> > >(NumBl[j], List<List<scalar> >(numLines[i],List<scalar> (numLinePoints[i], 0.0))));
+
+                  // Define the size of the coefficient of drag lists and set to zero.
+                  Cd.append(List<List<List<scalar> > >(NumBl[j], List<List<scalar> >(numLines[i],List<scalar>  (numLinePoints[i], 0.0))));
+
+                  // Define the size of the lift lists and set to zero.
+                  lift.append(List<List<List<scalar> > >(NumBl[j], List<List<scalar> >(numLines[i],List<scalar>  (numLinePoints[i], 0.0))));
+
+                  // Define the size of the drag lists and set to zero.
+                  drag.append(List<List<List<scalar> > >(NumBl[j], List<List<scalar> >(numLines[i],List<scalar>  (numLinePoints[i], 0.0))));
+
+                  // Define the size of the axial force lists and set to zero.
+                  axialForce.append(List<List<List<scalar> > >(NumBl[j], List<List<scalar> >(numLines[i],List<scalar>  (numLinePoints[i], 0.0))));
+
+                  // Define the size of the tangential force lists and set to zero.
+                  tangentialForce.append(List<List<List<scalar> > >(NumBl[j], List<List<scalar> >(numLines[i],List<scalar>  (numLinePoints[i], 0.0))));
+
+                  // Define the size of the thrust lists and set to zero.
+                  thrust.append(0.0);
+
+                  // Define the size of the aerodynamic torque lists and set to zero.
+                  torqueRotor.append(0.0);
+
+                  // Define the size of the rotor power lists and set to zero.
+                  powerRotor.append(0.0);
+
+                  // Define the size of the generator power lists and set to zero.
+                  powerGenerator.append(0.0);
+
+                  // Define the size of the cell-containing-actuator-point ID list and set to -1.
+                  minDisCellID.append(List<List<List<label> > >(NumBl[j], List<List<label> >(numLines[i],List<label>  (numLinePoints[i], -1))));
+
+              }
+              Pstream::scatter(sectorPointsPerturbVector);
+
+
     // Yaw the nacelle to initial position.
     deltaNacYaw = nacYaw;
     yawNacelle();
@@ -790,21 +842,18 @@ horizontalAxisWindTurbinesACS::horizontalAxisWindTurbinesACS
     computeWindVectors();
 
     // Compute the blade forces due to this wind at the initial time step.
+    Info << "before" << endl;
     computeBladeForce();
+    Info << "after" << endl;
 
     // Compute the resultant body force at this initial time step.
     computeBodyForce();
+    Info << "computeBodyForce" << endl;
 
     // Open the turbine data output files and print initial information.
     openOutputFiles();
-    computeSectorAverage(); 
     printOutputFiles();
-
-
-
-} // end of constructor of class horizontalAxisWindTurbinesACS   
-
-
+}
 
 // * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * * * //
 
@@ -815,24 +864,32 @@ void horizontalAxisWindTurbinesACS::rotateBlades()
     {	
         // Check the rotation direction first and set the local delta azimuth
 	// variable accordingly.
-      //scalar deltaAzimuthI = 0.0;
-      //if (rotationDir[i] == "cw")
-      //{
-      //    deltaAzimuthI =  deltaAzimuth[i];
-      //}
-      //if (rotationDir[i] == "ccw")
-      //{
-      //    deltaAzimuthI = -deltaAzimuth[i];
-      //}
+	scalar deltaAzimuthI = 0.0;
+	if (rotationDir[i] == "cw")
+	{
+            deltaAzimuthI =  deltaAzimuth[i] + sectorAngle[i];
+        }
+	if (rotationDir[i] == "ccw")
+	{
+            deltaAzimuthI = -deltaAzimuth[i] - sectorAngle[i];
+        }
 
 	// Rotate turbine blades, blade by blade, point by point.
-      //forAll(sectorPointLocations[i], j)
-      //{
-      //    forAll(sectorPointLocations[i][j], k)
-      //    {
-      //        sectorPointLocations[i][j][k] = rotatePoint(sectorPointLocations[i][j][k], rotorApex[i], uvShaft[i], deltaAzimuthI);
-      //    }
-      //}   
+        forAll(sectorPoints[i], j)
+                {
+                    forAll(sectorPoints[i][j], lineId)
+                    {
+
+                        forAll(sectorPoints[i][j][lineId], k)
+                        {
+                        sectorPoints[i][j][lineId][k] = rotatePoint(sectorPoints[i][j][lineId][k], rotorApex[i], uvShaft[i], deltaAzimuthI);
+
+                        }
+                    }
+
+                }
+
+         cout<< "when is this used" << endl ;
 
 	// Calculate the new azimuth angle and make sure it isn't
         // bigger than 2*pi.
@@ -846,37 +903,43 @@ void horizontalAxisWindTurbinesACS::rotateBlades()
         }
     }
 }
-
+        
 
 void horizontalAxisWindTurbinesACS::yawNacelle()
 {
     // Perform rotation turbine by turbine.
-    forAll(uvTower, TurbineId)
+    forAll(uvTower, i)
     {
 	// Rotate the rotor apex first.
-        rotorApex[TurbineId] = rotatePoint(rotorApex[TurbineId], towerShaftIntersect[TurbineId], uvTower[TurbineId], deltaNacYaw[TurbineId]);
+        rotorApex[i] = rotatePoint(rotorApex[i], towerShaftIntersect[i], uvTower[i], deltaNacYaw[i]);
 
 	// Recompute the shaft unit vector since the shaft has rotated.
-	uvShaft[TurbineId] = rotorApex[TurbineId] - towerShaftIntersect[TurbineId];
-	uvShaft[TurbineId] = (uvShaft[TurbineId]/mag(uvShaft[TurbineId])) * uvShaftDir[TurbineId];
+	uvShaft[i] = rotorApex[i] - towerShaftIntersect[i];
+	uvShaft[i] = (uvShaft[i]/mag(uvShaft[i])) * uvShaftDir[i];
 	
 	// Rotate turbine blades, blade by blade, point by point.
-	forAll(sectorPointLocations[TurbineId], bladeId)
+        forAll(sectorPoints[i], j)
         {
-            forAll(sectorPointLocations[TurbineId][bladeId], pointId)
+            forAll(sectorPoints[i][j], lineId)
             {
-                sectorPointLocations[TurbineId][bladeId][pointId] = rotatePoint(sectorPointLocations[TurbineId][bladeId][pointId], towerShaftIntersect[TurbineId], uvTower[bladeId], deltaNacYaw[pointId]);
+
+                  forAll(sectorPoints[i][j][lineId], k)
+                        {
+                        sectorPoints[i][j][lineId][k] = rotatePoint(sectorPoints[i][j][lineId][k], towerShaftIntersect[i], uvTower[i], deltaNacYaw[i]);
+                        }
+
             }
-        }   
+          }
+
 
 	// Compute the new yaw angle and make sure it isn't
         // bigger than 2*pi.
         if (pastFirstTimeStep)
         {
-	    nacYaw[TurbineId] = nacYaw[TurbineId] + deltaNacYaw[TurbineId];
-            if (nacYaw[TurbineId] >= 2.0 * Foam::constant::mathematical::pi)
+	    nacYaw[i] = nacYaw[i] + deltaNacYaw[i];
+            if (nacYaw[i] >= 2.0 * Foam::constant::mathematical::pi)
             {
-                nacYaw[TurbineId] -= 2.0 * Foam::constant::mathematical::pi;
+                nacYaw[i] -= 2.0 * Foam::constant::mathematical::pi;
             }
         }
     }
@@ -894,9 +957,9 @@ void horizontalAxisWindTurbinesACS::computeRotSpeed()
         // If the generator torque and blade pitch controllers are both set to "none", then
         // the rotor speed will remain fixed at its initial speed.
         if ((GenTorqueControllerType[j] == "none") && (BladePitchControllerType[j] == "none"))
-        {
-            // Do nothing.
-        }
+            {
+                // Do nothing.
+            }
 
         // Otherwise numerically solve the dynamics of the rotor to compute the new rotor speed
         // based on the summation of aerodynamic and generator torque on the rotor.
@@ -904,7 +967,6 @@ void horizontalAxisWindTurbinesACS::computeRotSpeed()
         {
             rotSpeed[i] += (dt/DriveTrainIner[j])*(GBEfficiency[j]*torqueRotor[i]*fluidDensity[i] - GBRatio[j]*torqueGen[i]);
         }
-
 
         // Limit the rotor speed to be positive and such that the generator does not turn
         // faster than rated.
@@ -976,10 +1038,11 @@ void horizontalAxisWindTurbinesACS::controlGenTorque()
             #include "limiters/genTorqueRateLimiter.H"
         }
 
-        // Update the pitch array.
+        // Update the generator torque array.
         torqueGen[i] = torqueGenCommanded;
     }
 }
+        
 
 void horizontalAxisWindTurbinesACS::controlNacYaw()
 {
@@ -1016,6 +1079,7 @@ void horizontalAxisWindTurbinesACS::controlNacYaw()
 
     }
 }
+        
 
 void horizontalAxisWindTurbinesACS::controlBladePitch()
 {
@@ -1056,52 +1120,145 @@ void horizontalAxisWindTurbinesACS::controlBladePitch()
 }
 
 
+//**************************************************** SectorLine***********************************//
+
+
+     /*            
+     void horizontalAxisWindTurbinesACS::sectorLines() 
+     {
+                 scalar omega ;
+                 scalar  TipRad ;
+                  int density;
+                  label celli ;
+                 // volVectorField U;
+                  //mesh_(U.mesh()) ;
+                  
+                  
+                  //const fvMesh& mesh = this->mesh_()  ;
+                  //const volVectorField& C = mesh.C() ;
+               
+                      const faceList & ff = mesh_.faces();
+                      const pointField & pp = mesh_.points();
+
+               forAll ( mesh_.C(), celli)
+                        {
+                   const cell & cc = mesh_.cells()[celli];
+                    labelList pLabels(cc.labels(ff));
+                    pointField pLocal(pLabels.size(), vector::zero);
+
+                    forAll (pLabels, pointi)
+                        pLocal[pointi] = pp[pLabels[pointi]];
+
+                    scalar xDim = Foam::max(pLocal & vector(1,0,0)) - Foam::min(pLocal & vector(1,0,0));
+
+                       // And similar for yDim and zDim
+                        }
+                          forAll(rotSpeed, i) 
+                          {
+                            omega = rotSpeed[i] ;
+
+                          } 
+                             //const fvMesh& =  mesh_(mesh_.delta()) ;
+                            scalar time_step = dt;
+
+                           // vector dx = sectorPoints[i][j][lineId][k] - mesh_.C()[minDisCellID[i][j][lineId][k]];
+                           // vector dU = dx & gradU[minDisCellID[i][j][lineId][k]];
+
+                          scalar  velocity =  U_(U_);       //CL: should be same as the velcoity sampled !! 
+                            scalar cellw= scalar xdim;
+
+         
+                  int num_of_lines = calculate_lines(omega, cellw, time_step, velocity, CFL, cell_width, radius);
+     }       
+              
+               int horizontalAxisWindTurbinesACS::calculate_lines(double omega,
+                  double cellw,
+                  double time_step,
+                  double velocity,
+                  double CFL,
+                  int cell_width,
+                  TipRad )
+                  {
+
+                  double theta = std::asin(cellw / TipRad);
+                  double rot_time = theta / omega;
+                  //double dt ;
+                  double rot_angle = omega * dt;
+                  int num_of_lines = rot_angle / theta;
+                  return num_of_lines;
+
+                  }
+
+                 
+
+void horizontalAxisWindTurbinesACS::rotateLines ()
+
+{ 
+
+}    
+
+*/
+
 void horizontalAxisWindTurbinesACS::findControlProcNo()
 {
-    // Create a local and global list of minimum distance cells to actuator line 
+    // Create a local and global list of minimum distance cells to actuator line
     // points of turbines that this processor controls.  Initialize the values to huge.
-    List<scalar> minDisLocal(totSectorPointsArray,1.0E30);
-    List<scalar> minDisGlobal(totSectorPointsArray,1.0E30);
+    List<scalar> minDisLocal(totBladePoints,1.0E30);
+    List<scalar> minDisGlobal(totBladePoints,1.0E30);
 
     forAll(turbinesControlled, p)
     {
         int i = turbinesControlled[p];
+
         int iter = 0;
         if(i > 0)
         {
             for(int n = 0; n < i; n++)
             {
-                iter += totSectorPoints[n];
+                
+
+                   
+                iter += numLinePoints[n] *numLines[i]* NumBl[turbineTypeID[n]];           //iter = no. of points on one line  * total number of lines ; total no. of lines  = numLines[j] * NumBl[turbineTypeID[n]]
+                                                                                          // CL: not sure if this is physically correct, check later (CL)
+
             }
+
         }
-        
-        forAll(sectorPointLocations[i], j)
+
+        forAll(sectorPoints[i], j)
         {
-            forAll(sectorPointLocations[i][j], k)
+            forAll(sectorPoints[i][j], lineId)
+            {
+                      forAll(sectorPoints[i][j][lineId], k)
+
             {
                 // Find the cell that the actuator point lies within and the distance
                 // from the actuator line point to that cell center.
-                label cellID = sphereCells[i][0];
-                scalar minDis = mag(mesh_.C()[cellID] - (sectorPointLocations[i][j][k] + sectorPointsPerturbVector[i][j][k]));
+                label cellID = sphereCells[i][0];                             //a spehere cell is attributed to a turbine
+                                                                             //  so only two indices exsist ie; the turbineID and the spehere cellId
+
+
+                scalar minDis = mag(mesh_.C()[cellID] - (sectorPoints[i][j][lineId][k] + sectorPointsPerturbVector[i][j][lineId][k]));
 
                 forAll(sphereCells[i], m)
                 {
-                    scalar dis = mag(mesh_.C()[sphereCells[i][m]] - (sectorPointLocations[i][j][k] + sectorPointsPerturbVector[i][j][k]));
+                    scalar dis = mag(mesh_.C()[sphereCells[i][m]] - (sectorPoints[i][j][lineId][k] + sectorPointsPerturbVector[i][j][lineId][k]));
                     if(dis <= minDis)
                     {
                         cellID = sphereCells[i][m];
                     }
-                    minDis = mag(mesh_.C()[cellID] - (sectorPointLocations[i][j][k] + sectorPointsPerturbVector[i][j][k]));
+                    minDis = mag(mesh_.C()[cellID] - (sectorPoints[i][j][lineId][k] + sectorPointsPerturbVector[i][j][lineId][k]));
                 }
                 minDisLocal[iter] = minDis;
                 minDisGlobal[iter] = minDis;
-                minDisCellID[i][j][k] = cellID;
+                minDisCellID[i][j][lineId][k] = cellID;
                 iter++;
             }
+           }
         }
     }
 
-    // Parallel gather/scatter the global minimum distance list and reduce it by keeping 
+    // Parallel gather/scatter the global minimum distance list and reduce it by keeping
     // only the minimum values.
     Pstream::gather(minDisGlobal,minOp<List<scalar> >());
     Pstream::scatter(minDisGlobal);
@@ -1116,13 +1273,15 @@ void horizontalAxisWindTurbinesACS::findControlProcNo()
         {
             for(int n = 0; n < i; n++)
             {
-                iter += totSectorPoints[n];
-            }
+                 
+                iter += numLinePoints[n] *numLines[i]* NumBl[turbineTypeID[n]];           //iter = no. of points on one line  * total number of lines ; total no. of lines  = numLines[j] * NumBl[turbineTypeID[n]]
+            }                                                                              // CL: not sure if this is physically correct, check later (CL)
+
         }
-        
-        forAll(sectorPointLocations[i], j)
+
+        forAll(sectorPoints[i], j)
         {
-            forAll(sectorPointLocations[i][j], k)
+            forAll(sectorPoints[i][j], k)
             {
                 if(minDisGlobal[iter] != minDisLocal[iter])
                 {
@@ -1134,10 +1293,11 @@ void horizontalAxisWindTurbinesACS::findControlProcNo()
     }
 }
 
+
 void horizontalAxisWindTurbinesACS::computeWindVectors()
 {
     // Create a list of wind velocity in x, y, z coordinates for each blade point.
-    List<vector> windVectorsLocal(totSectorPointsArray,vector::zero);
+    List<vector> windVectorsLocal(totBladePoints,vector::zero);
 
     // If linear interpolation of the velocity from the CFD mesh to the actuator
     // points is used, we need velocity gradient information.
@@ -1151,35 +1311,47 @@ void horizontalAxisWindTurbinesACS::computeWindVectors()
         {
             for(int n = 0; n < i; n++)
             {
-                iter += totSectorPoints[n];
-            }
+
+                
+                iter += numLinePoints[n] *numLines[i]* NumBl[turbineTypeID[n]];           //iter = no. of points on one line  * total number of lines ; total no. of lines  = numLines[j] * NumBl[turbineTypeID[n]]
+            }                                                                              // CL: not sure if this is physically correct, check later (CL)
         }
-        
-        forAll(sectorPointLocations[i], j)
+
+        forAll(sectorPoints[i], j)
         {
-            forAll(sectorPointLocations[i][j], k)
+            forAll(sectorPoints[i][j], lineId)
             {
-                if(minDisCellID[i][j][k] != -1)
+                forAll(sectorPoints[i][j][lineId], k)
+              {
+
+                if(minDisCellID[i][j][lineId][k] != -1)
                 {
-                    // If the velocity interpolation is "cellCenter", then just use 
+                    // If the velocity interpolation is "cellCenter", then just use
                     // the velocity at the center of the cell within which this
                     // actuator point lies
-                    windVectorsLocal[iter] = U_[minDisCellID[i][j][k]];
+                    windVectorsLocal[iter] = U_[minDisCellID[i][j][lineId][k]];
 
                     // But if linear interpolation is used, add a correction based
                     // on the local velocity gradient.
                     if (pointInterpType[i] == "linear")
                     {
-                        vector dx = sectorPointLocations[i][j][k] - mesh_.C()[minDisCellID[i][j][k]];
-                        vector dU = dx & gradU[minDisCellID[i][j][k]];
+                        vector dx = sectorPoints[i][j][lineId][k] - mesh_.C()[minDisCellID[i][j][lineId][k]];
+                        vector dU = dx & gradU[minDisCellID[i][j][lineId][k]];
                         windVectorsLocal[iter] += dU;
                     }
                 }
+
+
                 iter++;
-            }
-        }
+
+              }  //lineId
+            }    // blades j loop
+
+        } // turbines main i  loop
     }
 
+
+ //cout<<"Hello I am here in line 1702, hi again this is a big step " << endl;
     // Perform a parallel gather of this local list to the master processor and
     // and then parallel scatter the list back out to all the processors.
     Pstream::gather(windVectorsLocal,sumOp<List<vector> >());
@@ -1192,80 +1364,97 @@ void horizontalAxisWindTurbinesACS::computeWindVectors()
     {
         // Proceed sector by sector.
         forAll(windVectors[i], j)
-        { 
+        {
+            //Proceed line by line
+            forAll (windVectors[i][j], lineId )
+
+            {
             // Proceed point by point.
-            forAll(windVectors[i][j], k)
+            forAll(windVectors[i][j][lineId], k)
             {
                 // Zero the wind vector.
-                windVectors[i][j][k] = vector::zero;
+                windVectors[i][j][lineId][k] = vector::zero;
 
                 // Now put the velocity in that cell into blade-oriented coordinates.
-                windVectors[i][j][k] = windVectorsLocal[iter];
-
-                // Scale the inflow velocity by the specified scaling factor.
-                windVectors[i][j][k] *= inflowVelocityScalar[i];
+                windVectors[i][j][lineId][k] = windVectorsLocal[iter];
 
                 iter++;
             }
+           }
         }
     }
 }
+
 
 void horizontalAxisWindTurbinesACS::computeBladeForce()
 {
     // Take the x,y,z wind vectors and project them into the blade coordinate system.
     // Proceed turbine by turbine.
-    forAll(windVectors, i)
+    forAll(windVectors, turbineID)    // how to make the i etc. indices recognizable or in the scope ?
     {
-        int n = turbineTypeID[i];
+        int labelTurbine = (int)turbineTypeID[turbineID];
 
         // Proceed blade by blade.
-        forAll(windVectors[i], j)
+        forAll(windVectors[turbineID], bladeID)
         {
-            forAll(windVectors[i][j], k)
-            {
+ //  cout<<"Hello I am here in line 1759, dont get stuck here " << endl;
 
-                // If clockwise rotating, this vector points along the blade toward the tip.
+            // Proceeed line by line
+            forAll(windVectors[turbineID][bladeID], lineId)
+            {
+                    // If clockwise rotating, this vector points along the blade toward the tip.
                 // If counter-clockwise rotating, this vector points along the blade toward the root.
-                if (rotationDir[i] == "cw")
+                if (rotationDir[turbineID] == "cw")          //how to know nwhich index is what
                 {
-                    lineAlignedVectors[i][j][k][2] =   sectorPointLocations[i][j][k] - rotorApex[i];
-                    lineAlignedVectors[i][j][k][2] =   lineAlignedVectors[i][j][k][2]/mag(lineAlignedVectors[i][j][k][2]);
+                    lineAlignedVectors[turbineID][bladeID][lineId][2] =   sectorPoints[turbineID][bladeID][lineId][0] - rotorApex[turbineID];
+                    lineAlignedVectors[turbineID][bladeID][lineId][2] =   lineAlignedVectors[turbineID][bladeID][lineId][2]/mag(lineAlignedVectors[turbineID][bladeID][lineId][2]);
                 }
-                else if (rotationDir[i] == "ccw")
+                else if (rotationDir[turbineID] == "ccw")
                 {
-                    lineAlignedVectors[i][j][k][2] = -(sectorPointLocations[i][j][k] - rotorApex[i]);
-                    lineAlignedVectors[i][j][k][2] =   lineAlignedVectors[i][j][k][2]/mag(lineAlignedVectors[i][j][k][2]);
+                    lineAlignedVectors[turbineID][bladeID][lineId][2] = -(sectorPoints[turbineID][bladeID][lineId][0] - rotorApex[turbineID]);
+                    lineAlignedVectors[turbineID][bladeID][lineId][2] =   lineAlignedVectors[turbineID][bladeID][lineId][2]/mag(lineAlignedVectors[turbineID][bladeID][lineId][2]);
                 }
 
                 // This vector points in the tangential direction opposite the turbines rotation type.  It is
                 // set up this way because it will point in the direction of oncoming flow that the blade sees
                 // due to rotation.
-                lineAlignedVectors[i][j][k][1] = lineAlignedVectors[i][j][k][2]^uvShaft[i];
-                lineAlignedVectors[i][j][k][1] = lineAlignedVectors[i][j][k][1]/mag(lineAlignedVectors[i][j][k][1]);
+                lineAlignedVectors[turbineID][bladeID][lineId][1] = lineAlignedVectors[turbineID][bladeID][lineId][2]^uvShaft[turbineID];
+                lineAlignedVectors[turbineID][bladeID][lineId][1] = lineAlignedVectors[turbineID][bladeID][lineId][1]/mag(lineAlignedVectors[turbineID][bladeID][lineId][1]);
 
                 // This vector points normal to the other two and toward downwind (not exactly downwind if
                 // the blade is coned).  It points in the direction of the oncoming flow due to wind that the
                 // blade sees.
-                lineAlignedVectors[i][j][k][0] = lineAlignedVectors[i][j][k][1]^lineAlignedVectors[i][j][k][2];
-                lineAlignedVectors[i][j][k][0] = lineAlignedVectors[i][j][k][0]/mag(lineAlignedVectors[i][j][k][0]);
+                lineAlignedVectors[turbineID][bladeID][lineId][0] = lineAlignedVectors[turbineID][bladeID][lineId][1]^lineAlignedVectors[turbineID][bladeID][lineId][2];
+                lineAlignedVectors[turbineID][bladeID][lineId][0] = lineAlignedVectors[turbineID][bladeID][lineId][0]/mag(lineAlignedVectors[turbineID][bladeID][lineId][0]);
+
+                // Proceed point by point.
+                forAll(windVectors[turbineID][bladeID][lineId], k)
+                {
+                    vector windVectorsInt = windVectors[turbineID][bladeID][lineId][k];
+
+                    // Zero the wind vector.
+                    windVectors[turbineID][bladeID][lineId][k] = vector::zero;
+
+                    // Now put the velocity in that cell into blade-oriented coordinates and add on the
+                    // velocity due to blade rotation.
+                    windVectors[turbineID][bladeID][lineId][k].x() = (lineAlignedVectors[turbineID][bladeID][lineId][0] & windVectorsInt);
+                    //windVectors[i][j][lineId][k].y() = (lineAlignedVectors[i][j][lineId][1] & windVectorsInt) + (rotSpeed[i] * bladeRadius[i][j][lineId][k] * cos(PreCone[n][j][lineId]));
+
+                    //scalar pscaler = PreCone[labelTurbine][bladeID][lineId];
+                    windVectors[turbineID][bladeID][lineId][k].y() = (lineAlignedVectors[turbineID][bladeID][lineId][1] & windVectorsInt) + (rotSpeed[turbineID] * bladeRadius[turbineID][bladeID][lineId][k]*cos(PreCone[labelTurbine][bladeID]));
+
+                    windVectors[turbineID][bladeID][lineId][k].z() = (lineAlignedVectors[turbineID][bladeID][lineId][2] & windVectorsInt);
+
+                }//points
+
+            } //lines
+
+        } // blades
+
+    } // windVectors
 
 
-                vector windVectorsInt = windVectors[i][j][k];
-
-                // Zero the wind vector.
-                windVectors[i][j][k] = vector::zero;
-
-                // Now put the velocity in that cell into blade-oriented coordinates and add on the
-                // velocity due to blade rotation.
-                windVectors[i][j][k].x() = (lineAlignedVectors[i][j][k][0] & windVectorsInt);
-                windVectors[i][j][k].y() = (lineAlignedVectors[i][j][k][1] & windVectorsInt) + (rotSpeed[i] * sectorRadius[i][j] * cos(PreCone[n][0]));
-                windVectors[i][j][k].z() = (lineAlignedVectors[i][j][k][2] & windVectorsInt);
-            }
-        }
-    }
-
-
+// cout<<" what is your problem if you are here already  " << endl;
 
     // Proceed turbine by turbine.
     forAll(windVectors, i)
@@ -1280,39 +1469,54 @@ void horizontalAxisWindTurbinesACS::computeBladeForce()
         // wise basis.
         torqueRotor[i] = 0.0;
 
-        // Proceed blade by blade.
-        forAll(windVectors[i], j)
-        {
+       forAll(windVectors[i], j)
+       {
+
+            //Proceed line by line //- Thrust/density on turbine.
+            //DynamicList<scalar> thrust;
+
+            //- Total rotor torque/density on turbine.
+            //DynamicList<scalar> torqueRotor;
+
+
+            forAll(windVectors[i][j], lineId)
+
+            {
+                cout<< "lineId" <<""<< lineId << endl; 
 
             // Proceed point by point.
-            forAll(windVectors[i][j], k)
+            forAll(windVectors[i][j][lineId], k)
             {
                 // Interpolate the local twist angle.
-                scalar twistAng = interpolate(sectorRadius[i][j], BladeStation[m], BladeTwist[m]);
+                scalar twistAng = interpolate(bladeRadius[i][j][lineId][k], BladeStation[m], BladeTwist[m]);
 
                 // Interpolate the local chord.
-                scalar chord = interpolate(sectorRadius[i][j], BladeStation[m], BladeChord[m]);
+                scalar chord = interpolate(bladeRadius[i][j][lineId][k], BladeStation[m], BladeChord[m]);
 
                 // Find the local airfoil type.
-                label airfoil = interpolate(sectorRadius[i][j], BladeStation[m], BladeAirfoilTypeID[m]);
+                label airfoil = interpolate(bladeRadius[i][j][lineId][k], BladeStation[m], BladeAirfoilTypeID[m]);
                 label maxIndex = BladeAirfoilTypeID[m].size() - 1;
                 airfoil = min(max(0,airfoil),maxIndex);
 
                 // Find the local velocity magnitude compose of only the axial and tangential flow (do
                 // not include the radial (along blade span) flow).
-                Vmag[i][j][k] = Foam::pow((Foam::pow(windVectors[i][j][k].x(),2) + Foam::pow(windVectors[i][j][k].y(),2)),0.5);
+                Vmag[i][j][lineId][k] = Foam::pow((Foam::pow(windVectors[i][j][lineId][k].x(),2) + Foam::pow(windVectors[i][j][lineId][k].y(),2)),0.5);
 
                 // Get the angle of the wind with respect to rotor plane tangent direction.
-                scalar windAng = Foam::atan2(windVectors[i][j][k].x(),windVectors[i][j][k].y())/degRad; 
+                scalar windAng = Foam::atan2(windVectors[i][j][lineId][k].x(),windVectors[i][j][lineId][k].y())/degRad;
 
                 // Angle of attack is local angle of wind with respect to rotor plane tangent minus local twist.
-                alpha[i][j][k] = windAng - twistAng - pitch[i];
+                alpha[i][j][lineId][k] = windAng - twistAng - pitch[i];
+
+
+//cout<< "the alpha is " << alpha[1][1][1][1] << endl ;
 
                 // Use airfoil look-up tables to get coefficient of lift and drag.
-                Cl[i][j][k] = interpolate(alpha[i][j][k], airfoilAlpha[airfoil], airfoilCl[airfoil]);
-                Cd[i][j][k] = interpolate(alpha[i][j][k], airfoilAlpha[airfoil], airfoilCd[airfoil]);
+                Cl[i][j][lineId][k] = interpolate(alpha[i][j][lineId][k], airfoilAlpha[airfoil], airfoilCl[airfoil]);
+                Cd[i][j][lineId][k] = interpolate(alpha[i][j][lineId][k], airfoilAlpha[airfoil], airfoilCd[airfoil]);
 
-                // Apply tip/root-loss correction factor.
+
+// Apply tip/root-loss correction factor.
                 // Tip/root-loss correction factor of Glauert.
                 scalar F = 1.0;
 
@@ -1325,10 +1529,10 @@ void horizontalAxisWindTurbinesACS::computeBladeForce()
                 {
                     scalar g = 1.0;
 
-                    scalar ftip  = (TipRad[m] - sectorRadius[i][j])/(sectorRadius[i][j] * sin(mag(windAng)*degRad));
+                    scalar ftip  = (TipRad[m] - bladeRadius[i][j][lineId][k])/(bladeRadius[i][j][lineId][k] * sin(mag(windAng)*degRad));
                     scalar Ftip  = (2.0/(Foam::constant::mathematical::pi)) * acos(min(1.0, exp(-g * (NumBl[m] / 2.0) * ftip)));
 
-                    scalar froot = (sectorRadius[i][j] - HubRad[m])/(sectorRadius[i][j] * sin(mag(windAng)*degRad));
+                    scalar froot = (bladeRadius[i][j][lineId][k] - HubRad[m])/(bladeRadius[i][j][lineId][k] * sin(mag(windAng)*degRad));
                     scalar Froot = (2.0/(Foam::constant::mathematical::pi)) * acos(min(1.0, exp(-g * (NumBl[m] / 2.0) * froot)));
 
                     F = Ftip * Froot;
@@ -1336,52 +1540,83 @@ void horizontalAxisWindTurbinesACS::computeBladeForce()
 
                 // Using Cl, Cd, wind velocity, chord, and actuator element width, calculate the
                 // lift and drag per density.
-                //lift[i][j][k] = 0.5 * F * Cl[i][j][k] * Vmag[i][j][k] * Vmag[i][j][k] * chord * dr[i][k];
-                //drag[i][j][k] = 0.5 * F * Cd[i][j][k] * Vmag[i][j][k] * Vmag[i][j][k] * chord * dr[i][k];
-                Cl[i][j][k] *= F * forceScalar[i];
-                Cd[i][j][k] *= F * forceScalar[i];
-                lift[i][j][k] = 0.5 * Cl[i][j][k] * Vmag[i][j][k] * Vmag[i][j][k] * chord * dr[i][j];
-                drag[i][j][k] = 0.5 * Cd[i][j][k] * Vmag[i][j][k] * Vmag[i][j][k] * chord * dr[i][j];
 
+                Cl[i][j][lineId][k] *= F;
+                Cd[i][j][lineId][k] *= F;
+
+
+
+
+
+
+ //cout<<"i am guessing this is it " << endl;
+                lift[i][j][lineId][k] = scalar(double(1)/double(numLines[i]) * 0.5 * Cl[i][j][lineId][k] * Vmag[i][j][lineId][k] * Vmag[i][j][lineId][k] * chord * db[i][k] ) ;  //
+               drag[i][j][lineId][k] = scalar( double(1) /double(numLines[i]) * 0.5 * Cd[i][j][lineId][k]* Vmag[i][j][lineId][k] * Vmag[i][j][lineId][k] * chord * db[i][k] ) ;
+              
                 // Make the scalar lift and drag quantities vectors in the Cartesian coordinate system.
-                vector dragVector = lineAlignedVectors[i][j][k][0]*windVectors[i][j][k].x() + lineAlignedVectors[i][j][k][1]*windVectors[i][j][k].y();
+                vector dragVector = lineAlignedVectors[i][j][lineId][0]*windVectors[i][j][lineId][k].x() + lineAlignedVectors[i][j][lineId][1]*windVectors[i][j][lineId][k].y();
                 dragVector = dragVector/mag(dragVector);
 
-                vector liftVector = dragVector^lineAlignedVectors[i][j][k][2];
+                vector liftVector = dragVector^lineAlignedVectors[i][j][lineId][2];
                 liftVector = liftVector/mag(liftVector);
 
-                liftVector = -lift[i][j][k] * liftVector;
-                dragVector = -drag[i][j][k] * dragVector;
+                liftVector = -lift[i][j][lineId][k] * liftVector;
+                dragVector = -drag[i][j][lineId][k] * dragVector;
+
+
 
                 // Add up lift and drag to get the resultant force/density applied to this blade element.
-                bladeForce[i][j][k] = (liftVector + dragVector);
+                bladeForce[i][j][lineId][k] = liftVector + dragVector;
+
+               // cout << "the bladeForce is" << bladeForce[1][1][1][1]<< endl ;
 
                 // Find the component of the blade element force/density in the axial (along the shaft)
                 // direction.
-                axialForce[i][j][k] = -bladeForce[i][j][k] & uvShaft[i];
+                axialForce[i][j][lineId][k] = -bladeForce[i][j][lineId][k]& uvShaft[i];
+
 
                 // Find the component of the blade element force/density in the tangential (torque-creating)
                 // direction.
-                tangentialForce[i][j][k] = bladeForce[i][j][k] & lineAlignedVectors[i][j][k][1];
+                tangentialForce[i][j][lineId][k] = bladeForce[i][j][lineId][k] & lineAlignedVectors[i][j][lineId][1];
 
-                // Add this blade element's contribution to thrust to the total turbine thrust.
-                thrust[i] += axialForce[i][j][k] * solidity[i][j];
+
+//cout<<" but why ? " << endl;
+
+ // Add this blade element's contribution to thrust to the total turbine thrust.
+                thrust[i] += axialForce[i][j][lineId][k];                                    // CL: Check why summation of thrust is not working
+
+                //   printf ("bcwjcvbqw,cvb") ;
 
                 // Add this blade element's contribution to aerodynamic torque to the total turbine aerodynamic torque.
-                torqueRotor[i] += tangentialForce[i][j][k] * solidity[i][j] * sectorRadius[i][j] * cos(PreCone[m][0]);
-            }
-        }
+               torqueRotor[i] += tangentialForce[i][j][lineId][k] * bladeRadius[i][j][lineId][k] * cos(PreCone[m][j]); //* cos(PreCone[m][j]);
+
+
+
+
+            } // k ends here
+
+
+         }
+
+      } // j ends here
+
+ // Actaul power calculation commented, find out where turbineId is declared in global scope of the code and copy paste it.
 
         // Compute rotor power based on aerodynamic torque and rotation speed.
-        powerRotor[i] = torqueRotor[i] * rotSpeed[i];
+       powerRotor[i] = torqueRotor[i] * rotSpeed[i];
 
-        // Compute the generator power.
+        // Compute the generator electrical power.
         powerGenerator[i] = torqueGen[i] * (rotSpeed[i] * GBRatio[m]) * GenEfficiency[m];
-    }
-}
+
+
+} // loop windVectors    i ends here
+
+}   //  FUNC void horizontalAxisWindTurbinesACS::computeBladeForce()
+
+
 
 void horizontalAxisWindTurbinesACS::computeBodyForce()
-{  
+{
     // Zero out the body force to begin with.
     bodyForce *= 0.0;
 
@@ -1391,9 +1626,11 @@ void horizontalAxisWindTurbinesACS::computeBodyForce()
     scalar thrustBodyForceSum = 0.0;
     scalar torqueBodyForceSum = 0.0;
 
+
+
     forAll(bladeForce, i)
     {
-        
+
         int n = turbineTypeID[i];
 
         // Proceed to compute body forces for turbine i only if there are sphere cells on this processor for this turbine.
@@ -1401,74 +1638,49 @@ void horizontalAxisWindTurbinesACS::computeBodyForce()
         {
             // For each blade.
             forAll(bladeForce[i], j)
+
+             {        //For each line
+
+                    forAll (bladeForce[i][j], lineId)
+
+
             {
                 // For each blade point.
-                forAll(bladeForce[i][j], k)
+                forAll(bladeForce[i][j][lineId], k)
                 {
                     // For each sphere cell.
-                    forAll(sphereCells[i], m)
+                    forAll(sphereCells[i], m)                 // is the index 'i' now only related to speherCells variable ?
                     {
-                        scalar dis = mag(mesh_.C()[sphereCells[i][m]] - sectorPointLocations[i][j][k]);
+                        scalar dis = mag(mesh_.C()[sphereCells[i][m]] - sectorPoints[i][j][lineId][k]);
                         if (dis <= projectionRadius[i])
                         {
-                            bodyForce[sphereCells[i][m]] += bladeForce[i][j][k] * solidity[i][j] * (Foam::exp(-Foam::sqr(dis/epsilon[i]))/(Foam::pow(epsilon[i],3)*Foam::pow(Foam::constant::mathematical::pi,1.5)));
-                            thrustBodyForceSum += (-bladeForce[i][j][k] * solidity[i][j] * (Foam::exp(-Foam::sqr(dis/epsilon[i]))/(Foam::pow(epsilon[i],3)*Foam::pow(Foam::constant::mathematical::pi,1.5))) *
+                            bodyForce[sphereCells[i][m]] += bladeForce[i][j][lineId][k] * (Foam::exp(-Foam::sqr(dis/epsilon[i]))/(Foam::pow(epsilon[i],3)*Foam::pow(Foam::constant::mathematical::pi,1.5)));  // redo this into code which is readable and compute it onece and use it three times for frree hahah
+                            thrustBodyForceSum += (-bladeForce[i][j][lineId][k] * (Foam::exp(-Foam::sqr(dis/epsilon[i]))/(Foam::pow(epsilon[i],3)*Foam::pow(Foam::constant::mathematical::pi,1.5))) *
                                                     mesh_.V()[sphereCells[i][m]]) & uvShaft[i];
-                            torqueBodyForceSum += ( bladeForce[i][j][k] * solidity[i][j] * (Foam::exp(-Foam::sqr(dis/epsilon[i]))/(Foam::pow(epsilon[i],3)*Foam::pow(Foam::constant::mathematical::pi,1.5))) * 
-                                                    sectorRadius[i][j] * cos(PreCone[n][0]) * mesh_.V()[sphereCells[i][m]]) & lineAlignedVectors[i][j][k][1];
+                            torqueBodyForceSum += ( bladeForce[i][j][lineId][k] * (Foam::exp(-Foam::sqr(dis/epsilon[i]))/(Foam::pow(epsilon[i],3)*Foam::pow(Foam::constant::mathematical::pi,1.5))) *
+                                                    bladeRadius[i][j][lineId][k]  * cos(PreCone[n][j]) * mesh_.V()[sphereCells[i][m]]) & lineAlignedVectors[i][j][lineId][1];
+
+ // cout<< " i am here in line 1607" << endl ;
+
                         }
-                    }
-                }  
-            }
-        }
-        thrustSum += thrust[i];
-        torqueSum += torqueRotor[i];
-    }
-    reduce(thrustBodyForceSum,sumOp<scalar>());
-    reduce(torqueBodyForceSum,sumOp<scalar>());
-
-    // Print information comparing the actual thrust and torque to the integrated body force.
-    Info << "Thrust from Body Force = " << thrustBodyForceSum << tab << "Thrust from Act. Disk = " << thrustSum << tab << "Ratio = " << thrustBodyForceSum/thrustSum << endl;
-    Info << "Torque from Body Force = " << torqueBodyForceSum << tab << "Torque from Act. Disk = " << torqueSum << tab << "Ratio = " << torqueBodyForceSum/torqueSum << endl;
-}
-
-
-void horizontalAxisWindTurbinesACS::computeSectorAverage()
-{
-    forAll(alphaSecAvg, i)
-    {
-        forAll(alphaSecAvg[i], j)
-        {
-            forAll(alphaSecAvg[i][j], k)
-            {
-                windVectorsSecAvg[i][j][k] = vector::zero;
-                alphaSecAvg[i][j][k] = 0.0;
-                VmagSecAvg[i][j][k] = 0.0;
-                ClSecAvg[i][j][k] = 0.0;
-                CdSecAvg[i][j][k] = 0.0;
-                liftSecAvg[i][j][k] = 0.0;
-                dragSecAvg[i][j][k] = 0.0;
-                axialForceSecAvg[i][j][k] = 0.0;
-                tangentialForceSecAvg[i][j][k] = 0.0;
-
-                forAll(sectorIndices[i][k], m)
-                {
-                    if (sectorIndices[i][k][m] == j)
-                    {
-                        windVectorsSecAvg[i][j][k] += windVectors[i][k][m] / (scalar(nAzimuth[i][k])/scalar(nAvgSector[i]));
-                        alphaSecAvg[i][j][k] += alpha[i][k][m] / (scalar(nAzimuth[i][k])/scalar(nAvgSector[i]));
-                        VmagSecAvg[i][j][k] += Vmag[i][k][m] / (scalar(nAzimuth[i][k])/scalar(nAvgSector[i]));
-                        ClSecAvg[i][j][k] += Cl[i][k][m] / (scalar(nAzimuth[i][k])/scalar(nAvgSector[i]));
-                        CdSecAvg[i][j][k] += Cd[i][k][m] / (scalar(nAzimuth[i][k])/scalar(nAvgSector[i]));
-                        liftSecAvg[i][j][k] += lift[i][k][m] / (scalar(nAzimuth[i][k])/scalar(nAvgSector[i]));
-                        dragSecAvg[i][j][k] += drag[i][k][m] / (scalar(nAzimuth[i][k])/scalar(nAvgSector[i]));
-                        axialForceSecAvg[i][j][k] += axialForce[i][k][m] / (scalar(nAzimuth[i][k])/scalar(nAvgSector[i]));
-                        tangentialForceSecAvg[i][j][k] += tangentialForce[i][k][m] / (scalar(nAzimuth[i][k])/scalar(nAvgSector[i]));
                     }
                 }
             }
+
+          }
         }
+        thrustSum += thrust[i];
+        torqueSum += torqueRotor[i];
+//cout<< " i am here in line 1619" << endl ;
+
     }
+    reduce(thrustBodyForceSum,sumOp<scalar>());
+    reduce(torqueBodyForceSum,sumOp<scalar>());
+//cout<< " i am here in line 1624" << endl ;
+
+    // Print information comparing the actual thrust and torque to the integrated body force.
+    Info << "Thrust from Body Force = " << thrustBodyForceSum << tab << "Thrust from Act. Line = " << thrustSum << tab << "Ratio = " << thrustBodyForceSum/thrustSum << endl;
+    Info << "Torque from Body Force = " << torqueBodyForceSum << tab << "Torque from Act. Line = " << torqueSum << tab << "Ratio = " << torqueBodyForceSum/torqueSum << endl;
 }
 
 
@@ -1497,7 +1709,10 @@ vector horizontalAxisWindTurbinesACS::rotatePoint(vector point, vector rotationP
     point = point + rotationPoint;
 
     return point;
+
+      Info << "rotationMatrix = " << RM << endl;
 }
+
 
 scalar horizontalAxisWindTurbinesACS::interpolate(scalar xNew, DynamicList<scalar>& xOld, DynamicList<scalar>& yOld)
 {
@@ -1551,6 +1766,7 @@ scalar horizontalAxisWindTurbinesACS::interpolate(scalar xNew, DynamicList<scala
         return 0.0;
     }
 }
+
 
 label horizontalAxisWindTurbinesACS::interpolate(scalar xNew, DynamicList<scalar>& xOld, DynamicList<label>& yOld)
 {
@@ -1634,7 +1850,7 @@ scalar horizontalAxisWindTurbinesACS::standardToCompass(scalar dir)
     }
     return dir;
 }
-
+    
 void horizontalAxisWindTurbinesACS::update()
 {
     // Update the time step size.
@@ -1649,7 +1865,7 @@ void horizontalAxisWindTurbinesACS::update()
         // Find out which processor controls which actuator point,
         // and with that informatio sample the wind at the actuator
         // points.
-      //findControlProcNo();
+        findControlProcNo();
         computeWindVectors();
 
         // Update the rotor state.
@@ -1660,6 +1876,7 @@ void horizontalAxisWindTurbinesACS::update()
         computeRotSpeed();
         rotateBlades();
         yawNacelle();
+        //printDebug();
     }
     else if(bladeUpdateType[0] == "newPosition")
     {
@@ -1675,12 +1892,14 @@ void horizontalAxisWindTurbinesACS::update()
         // Find out which processor controls which actuator point,
         // and with that information sample the wind at the actuator
         // points.
-      //findControlProcNo();
+        findControlProcNo();
         computeWindVectors();
     }
 
     // Compute the blade forces.
     computeBladeForce();
+
+    //Info<< "windVectors[i][j][k].x():"<< windVectors[i][j].x()<<endl;
 
     // Project the blade forces as body forces.
     computeBodyForce();
@@ -1693,7 +1912,6 @@ void horizontalAxisWindTurbinesACS::update()
             if (outputIndex >= outputInterval)
     	    {
 	        outputIndex = 0;
-                computeSectorAverage();
 	        printOutputFiles();
 	    }
         }
@@ -1702,13 +1920,11 @@ void horizontalAxisWindTurbinesACS::update()
             if ((runTime_.value() - lastOutputTime) >= outputInterval)
             {
     	        lastOutputTime += outputInterval;
-                computeSectorAverage();
 	        printOutputFiles();
             }
         }
         else
         {
-            computeSectorAverage();
             printOutputFiles();
         }
 
@@ -1716,6 +1932,7 @@ void horizontalAxisWindTurbinesACS::update()
     // to true.
     pastFirstTimeStep = true;
 }
+
 
 void horizontalAxisWindTurbinesACS::openOutputFiles()
 {
@@ -1760,13 +1977,13 @@ void horizontalAxisWindTurbinesACS::openOutputFiles()
         thrustFile_ = new OFstream(rootDir/time/"thrust");
         *thrustFile_ << "#Turbine    Time(s)    dt(s)    thrust (N)" << endl;
 
-        // Create an aerodynamic power file.
+        // Create a rotor power file.
         powerRotorFile_ = new OFstream(rootDir/time/"powerRotor");
         *powerRotorFile_ << "#Turbine    Time(s)    dt(s)    rotor power (W)" << endl;
 
-        // Create a total power file.
+        // Create an electrical power file.
         powerGeneratorFile_ = new OFstream(rootDir/time/"powerGenerator");
-        *powerGeneratorFile_ << "#Turbine    Time(s)    dt(s)    rotor generator (W)" << endl;
+        *powerGeneratorFile_ << "#Turbine    Time(s)    dt(s)    generator power (W)" << endl;
 
         // Create a rotation rate file.
         rotSpeedFile_ = new OFstream(rootDir/time/"rotSpeed");
@@ -1776,9 +1993,9 @@ void horizontalAxisWindTurbinesACS::openOutputFiles()
         rotSpeedFFile_ = new OFstream(rootDir/time/"rotSpeedFiltered");
         *rotSpeedFFile_ << "#Turbine    Time(s)    dt(s)    filtered rotor rotation rate(rpm)" << endl;
 
-        // Create a blade 1 azimuth angle file.
+        // Create a sector 1 azimuth angle file.
         azimuthFile_ = new OFstream(rootDir/time/"azimuth");
-        *azimuthFile_ << "#Turbine    Time(s)    dt(s)    blade 1 azimuth angle (degrees)" << endl;
+        *azimuthFile_ << "#Turbine    Time(s)    dt(s)    sector 1 azimuth angle (degrees)" << endl;
 
         // Create a blade pitch angle file.
         pitchFile_ = new OFstream(rootDir/time/"pitch");
@@ -1790,75 +2007,97 @@ void horizontalAxisWindTurbinesACS::openOutputFiles()
 
         // Create an angle of attack file.
         alphaFile_ = new OFstream(rootDir/time/"alpha");
-        *alphaFile_ << "#Turbine    Sector    Time(s)    dt(s)    angle-of-attack(degrees)" << endl;
+       *alphaFile_ << "#Turbine    Blade   SectorLine    Time(s)    dt(s)    angle-of-attack(degrees)" << endl;
+
 
         // Create a wind speed magnitude file.
         VmagFile_ = new OFstream(rootDir/time/"Vmag");
-        *VmagFile_ << "#Turbine    Sector    Time(s)    dt(s)    Vmag(m/s)" << endl;
+       *VmagFile_ << "#Turbine    Blade   SectorLine  Time(s)    dt(s)    Vmag(m/s)" << endl;
     
-        // Create an axial wind speed file.
-        VaxialFile_ = new OFstream(rootDir/time/"Vaxial");
-        *VaxialFile_ << "#Turbine    Sector    Time(s)    dt(s)    Vaxial(m/s)" << endl;
+                // Create an axial wind speed file.
+                VaxialFile_ = new OFstream(rootDir/time/"Vaxial");
+                *VaxialFile_ << "#Turbine    Blade    SectorLine    Time(s)    dt(s)    Vaxial(m/s)" << endl;
 
-        // Create a tangential wind speed file.
-        VtangentialFile_ = new OFstream(rootDir/time/"Vtangential");
-        *VtangentialFile_ << "#Turbine    Sector    Time(s)    dt(s)    Vtangential(m/s)" << endl;
+                // Create a tangential wind speed file.
+                VtangentialFile_ = new OFstream(rootDir/time/"Vtangential");
+                *VtangentialFile_ << "#Turbine    Blade   SectorLine    Time(s)    dt(s)    Vtangential(m/s)" << endl;
 
-        // Create a radial wind speed file.
-        VradialFile_ = new OFstream(rootDir/time/"Vradial");
-        *VradialFile_ << "#Turbine    Sector    Time(s)    dt(s)    Vradial(m/s)" << endl;
+                // Create a radial wind speed file.
+                VradialFile_ = new OFstream(rootDir/time/"Vradial");
+                *VradialFile_ << "#Turbine    Blade   SectorLine    Time(s)    dt(s)    Vradial(m/s)" << endl;
 
-        // Create a coefficient of lift file.
-        ClFile_ = new OFstream(rootDir/time/"Cl");
-        *ClFile_ << "#Turbine    Sector    Time(s)    dt(s)    Cl" << endl;
+                // Create a coefficient of lift file.
+                ClFile_ = new OFstream(rootDir/time/"Cl");
+                *ClFile_ << "#Turbine    Blade   SectorLine    Time(s)    dt(s)    Cl" << endl;
 
-        // Create a coefficient of drag file.
-        CdFile_ = new OFstream(rootDir/time/"Cd");
-        *CdFile_ << "#Turbine    Sector    Time(s)    dt(s)    Cd" << endl;
+                // Create a coefficient of drag file.
+                CdFile_ = new OFstream(rootDir/time/"Cd");
+                *CdFile_ << "#Turbine    Blade   SectorLine    Time(s)    dt(s)    Cd" << endl;
 
-        // Create a lift file.
-        liftFile_ = new OFstream(rootDir/time/"lift");
-        *liftFile_ << "#Turbine    Sector    Time(s)    dt(s)    lift (N)" << endl;
+                // Create a lift file.
+                liftFile_ = new OFstream(rootDir/time/"lift");
+                *liftFile_ << "#Turbine    Blade   SectorLine    Time(s)    dt(s)    lift (N)" << endl;
 
-        // Create a drag file.
-        dragFile_ = new OFstream(rootDir/time/"drag");
-        *dragFile_ << "#Turbine    Sector    Time(s)    dt(s)    drag (N)" << endl;
+                // Create a drag file.
+                dragFile_ = new OFstream(rootDir/time/"drag");
+                *dragFile_ << "#Turbine    Blade   SectorLine    Time(s)    dt(s)    drag (N)" << endl;
 
-        // Create a axial force file.
-        axialForceFile_ = new OFstream(rootDir/time/"axialForce");
-        *axialForceFile_ << "#Turbine    Sector    Time(s)    dt(s)    axial force (N)" << endl;
+                // Create a axial force file.
+                axialForceFile_ = new OFstream(rootDir/time/"axialForce");
+                *axialForceFile_ << "#Turbine    Blade  SectorLine    Time(s)    dt(s)    axial force (N)" << endl;
 
-        // Create a tangential force file.
-        tangentialForceFile_ = new OFstream(rootDir/time/"tangentialForce");
-        *tangentialForceFile_ << "#Turbine    Sector    Time(s)    dt(s)    tangential force (N)" << endl;
+                // Create a tangential force file.
+                tangentialForceFile_ = new OFstream(rootDir/time/"tangentialForce");
+                *tangentialForceFile_ << "#Turbine    Blade  SectorLine    Time(s)    dt(s)    tangential force (N)" << endl;
+
+                // Create a x-location file.
+                xFile_ = new OFstream(rootDir/time/"x");
+                *xFile_ << "#Turbine    Blade    SectorLine    Time(s)    dt(s)    x-location(m)" << endl;
+
+                // Create a y-location file.
+                yFile_ = new OFstream(rootDir/time/"y");
+                *yFile_ << "#Turbine    Blade     SectorLine    Time(s)    dt(s)    y-location(m)" << endl;
+
+                // Create a z-location file.
+                zFile_ = new OFstream(rootDir/time/"z");
+                *zFile_ << "#Turbine    Blade    SectorLine    Time(s)    dt(s)    z-location(m)" << endl;
 
     }
 }
 
+
 void horizontalAxisWindTurbinesACS::printOutputFiles()
 {
+    //cout<< "hi ai am in line 2498" << endl ;
     if (Pstream::master())
-    {
-        forAll(alphaSecAvg,i)
+    { // cout<< "hi ai am in line 2500" << endl ;
+        forAll(sectorPoints,i)
         {
             // Write out time and delta t.
             *torqueRotorFile_ << i << " " << time << " " << dt << " ";
+// cout<< "hi ai am in line 2505" << endl ;
+
             *torqueGenFile_ << i << " " << time << " " << dt << " ";
+            // cout<< "hi ai am in line 2508" << endl ;
             *thrustFile_ << i << " " << time << " " << dt << " ";
+            // cout<< "just written the thrustFile next is powerRotorFile" << endl ;
             *powerRotorFile_ << i << " " << time << " " << dt << " ";
+              // cout<< "just written  the powerRotorFile next is powerGeneratorFile" << endl ;
             *powerGeneratorFile_ << i << " " << time << " " << dt << " ";
+              //  cout<< "just written  the powerGeneratorFile next is rotSpeedFile" << endl ;
             *rotSpeedFile_ << i << " " << time << " " << dt << " ";
             *rotSpeedFFile_ << i << " " << time << " " << dt << " ";
             *azimuthFile_ << i << " " << time << " " << dt << " ";
             *pitchFile_ << i << " " << time << " " << dt << " ";
             *nacYawFile_ << i << " " << time << " " << dt << " ";
 
+// cout<< "hi ai am in line 2517" << endl ;
             // Write out information for each turbine.
             *torqueRotorFile_ << torqueRotor[i]*fluidDensity[i] << endl;
             *torqueGenFile_ << torqueGen[i] << endl;
             *thrustFile_ << thrust[i]*fluidDensity[i] << endl;
             *powerRotorFile_ << powerRotor[i]*fluidDensity[i] << endl;
-            *powerGeneratorFile_ << powerGenerator[i]*fluidDensity[i] << endl;
+            *powerGeneratorFile_ << powerGenerator[i] << endl;
             *rotSpeedFile_ << rotSpeed[i]/rpmRadSec << endl;
             *rotSpeedFFile_ << rotSpeedF[i]/rpmRadSec << endl;
             *azimuthFile_ << azimuth[i]/degRad << endl;
@@ -1866,35 +2105,60 @@ void horizontalAxisWindTurbinesACS::printOutputFiles()
             *nacYawFile_ << standardToCompass(nacYaw[i]/degRad) << endl;
 
             // Proceed sector by sector.
-            forAll(alphaSecAvg[i], j)
-            {
-                // Write out time and delta t.
-                *alphaFile_ << i << " " << j << " " << time << " " << dt << " ";
-                *VmagFile_ << i << " " << j << " " <<  time << " " << dt << " ";
-                *VaxialFile_ << i << " " << j << " " <<  time << " " << dt << " ";
-                *VtangentialFile_ << i << " " << j << " " <<  time << " " << dt << " ";
-                *VradialFile_ << i << " " << j << " " <<  time << " " << dt << " ";
-                *ClFile_ << i << " " << j << " " <<  time << " " << dt << " ";
-                *CdFile_ << i << " " << j << " " <<  time << " " << dt << " ";
-                *liftFile_ << i << " " << j << " " <<  time << " " << dt << " ";
-                *dragFile_ << i << " " << j << " " <<  time << " " << dt << " ";
-                *axialForceFile_ << i << " " << j << " " <<  time << " " << dt << " ";
-                *tangentialForceFile_ << i << " " << j << " " <<  time << " " << dt << " ";
+            forAll(sectorPoints[i], j)
+         //  for (Foam::label i=0; i<(list).size(); i++)
 
-                forAll(alphaSecAvg[i][j], k)
-                {   
-                    *alphaFile_ << alphaSecAvg[i][j][k] << " ";
-                    *VmagFile_ << VmagSecAvg[i][j][k] << " ";
-                    *VaxialFile_ << windVectorsSecAvg[i][j][k].x() << " ";
-                    *VtangentialFile_ << windVectorsSecAvg[i][j][k].y() << " ";
-                    *VradialFile_ << windVectorsSecAvg[i][j][k].z() << " ";
-                    *ClFile_ << ClSecAvg[i][j][k] << " ";
-                    *CdFile_ << CdSecAvg[i][j][k] << " ";
-                    *liftFile_ << liftSecAvg[i][j][k]*fluidDensity[i] << " ";
-                    *dragFile_ << dragSecAvg[i][j][k]*fluidDensity[i] << " ";
-                    *axialForceFile_ << axialForceSecAvg[i][j][k]*fluidDensity[i] << " ";
-                    *tangentialForceFile_ << tangentialForceSecAvg[i][j][k]*fluidDensity[i] << " ";
-                }
+            {
+               // cout<< "hi ai am in line 2532" << endl ;
+
+                 // Proceed line by line
+
+
+                forAll(sectorPoints[i][j], lineId)
+                {
+                     // Write out time and delta t.
+                *alphaFile_ << i << " " << j << " " << lineId << " " << time << " " << dt << " ";
+                *VmagFile_ << i << " " << j << " " << lineId << " " << time << " " << dt << " ";
+                *VaxialFile_ << i << " " << j << " " << lineId << " " << time << " " << dt << " ";
+                *VtangentialFile_ << i << " " << j << " " << lineId << " " << time << " " << dt << " ";
+                *VradialFile_ << i << " " << j << " " << lineId << " " << time << " " << dt << " ";
+                *ClFile_ << i << " " << j << " " << lineId << " " << time << " " << dt << " ";
+                *CdFile_ << i << " " << j << " " <<  lineId << " " << time << " " << dt << " ";
+                *liftFile_ << i << " " << j << " " << lineId << " " <<  time << " " << dt << " ";
+                *dragFile_ << i << " " << j << " " << lineId << " " << time << " " << dt << " ";
+                *axialForceFile_ << i << " " << j << " " << lineId << " " << time << " " << dt << " ";
+                *tangentialForceFile_ << i << " " << j << " " << lineId << " " << time << " " << dt << " ";
+                *xFile_ << i << " " << j << " " << lineId << " " << time << " " << dt << " ";
+                *yFile_ << i << " " << j << " " << lineId << " " << time << " " << dt << " ";
+                *zFile_ << i << " " << j << " " << lineId << " " << time << " " << dt << " ";
+
+
+
+                    // Proceed point by point
+
+                    forAll(sectorPoints[i][j][lineId], k)
+                    {
+                      *alphaFile_ << alpha[i][j][lineId][k] << " ";
+                    *VmagFile_ << Vmag[i][j][lineId][k] << " ";
+                    *VaxialFile_ << windVectors[i][j][lineId][k].x() << " ";
+                    *VtangentialFile_ << windVectors[i][j][lineId][k].y() << " ";
+                    *VradialFile_ << windVectors[i][j][lineId][k].z() << " ";
+                    *ClFile_ << Cl[i][j][lineId][k] << " ";
+                    *CdFile_ << Cd[i][j][lineId][k] << " ";
+                    *liftFile_ << lift[i][j][lineId][k]*fluidDensity[i] << " ";
+                    *dragFile_ << drag[i][j][lineId][k]*fluidDensity[i] << " ";
+                    *axialForceFile_ << axialForce[i][j][lineId][k]*fluidDensity[i] << " ";
+                    *tangentialForceFile_ << tangentialForce[i][j][lineId][k]*fluidDensity[i] << " ";
+                    *xFile_ << sectorPoints[i][j][lineId][k].x() << " ";
+                    *yFile_ << sectorPoints[i][j][lineId][k].y() << " ";
+                    *zFile_ << sectorPoints[i][j][lineId][k].z() << " ";
+
+                    }
+
+
+// cout<< "hi ai am in line 2579" << endl ;
+
+
                 *alphaFile_ << endl;
                 *VmagFile_ << endl;
                 *VaxialFile_ << endl;
@@ -1906,9 +2170,14 @@ void horizontalAxisWindTurbinesACS::printOutputFiles()
                 *dragFile_ << endl;
                 *axialForceFile_ << endl;
                 *tangentialForceFile_ << endl;
+                *xFile_ << endl;
+                *yFile_ << endl;
+                *zFile_ << endl;
+                }    //writing the above list inside the loop should fix the bug of printing out sector line ID's correct in the output. 
+
             }
         }
-          
+
         *torqueRotorFile_ << endl;
         *torqueGenFile_ << endl;
         *thrustFile_ << endl;
@@ -1931,15 +2200,20 @@ void horizontalAxisWindTurbinesACS::printOutputFiles()
         *dragFile_ << endl;
         *axialForceFile_ << endl;
         *tangentialForceFile_ << endl;
+        *xFile_ << endl;
+        *yFile_ << endl;
+        *zFile_ << endl;
     }
 }
-
+   
+     
 void horizontalAxisWindTurbinesACS::printDebug()
 {
     Info << "Print Debugging Information" << endl;
     Info << "turbineType = " << turbineType << endl;
     Info << "baseLocation = " << baseLocation << endl;
-    Info << "nRadial = " << nRadial << endl;
+    Info << "numLinePoints = " << numLinePoints << endl;
+    Info << "numLines = " <<  numLines << endl ;
     Info << "pointDistType = " << pointDistType << endl;
     Info << "epsilon = " << epsilon << endl;
     Info << "projectionRadius = " << projectionRadius << endl;
@@ -1983,9 +2257,9 @@ void horizontalAxisWindTurbinesACS::printDebug()
 
     Info << "sphereCells = " << sphereCells << endl << endl << endl;
 
-    Info << "dr = " << dr << endl;
-    Info << "sectorPointLocations = " << sectorPointLocations << endl;
-    Info << "sectorRadius = " << sectorRadius << endl;
+    Info << "db = " << db << endl;
+    Info<< "total sector points =" << totBladePoints << endl;
+    Info << "bladeRadius = " << bladeRadius << endl;
     Info << "towerShaftIntersect = " << towerShaftIntersect << endl;
     Info << "rotorApex = " << rotorApex << endl;
     Info << "uvShaft = " << uvShaft << endl;
@@ -2010,6 +2284,7 @@ volVectorField& horizontalAxisWindTurbinesACS::force()
 
 
 }
+
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
