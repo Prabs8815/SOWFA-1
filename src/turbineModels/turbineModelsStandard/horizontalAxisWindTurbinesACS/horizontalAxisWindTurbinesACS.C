@@ -152,6 +152,7 @@ horizontalAxisWindTurbinesACS::horizontalAxisWindTurbinesACS
     outputIndex = 0;
 
     forAll(turbineName,turbineID)    // TODO: should i declare a separate dynamicList for turbineID ? 
+                                      // This is current version of ACS called AD1 
     {
         turbineType.append(word(turbineArrayProperties.subDict(turbineName[turbineID]).lookup("turbineType")));
         baseLocation.append(vector(turbineArrayProperties.subDict(turbineName[turbineID]).lookup("baseLocation")));
